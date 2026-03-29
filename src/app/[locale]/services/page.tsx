@@ -49,7 +49,7 @@ function ServiceCard({
   return (
     <Card variant="outlined" sx={{ height: "100%" }}>
       <CardContent>
-        <Typography variant="h5" component="h2" fontWeight={700} gutterBottom>
+        <Typography variant="h5" component="h3" fontWeight={700} gutterBottom>
           {block.title}
         </Typography>
         <Typography variant="body1" sx={{ mb: 2 }}>
@@ -121,7 +121,7 @@ export default async function ServicesPage({ params }: Props) {
           <Typography variant="overline" color="secondary" fontWeight={700} letterSpacing="0.1em">
             {s.primaryLabel}
           </Typography>
-          <Typography variant="h4" component="p" fontWeight={700} sx={{ mb: 3 }}>
+          <Typography variant="h4" component="h2" fontWeight={700} sx={{ mb: 3 }}>
             {s.primaryHeading}
           </Typography>
           <Grid container spacing={3}>
@@ -139,7 +139,7 @@ export default async function ServicesPage({ params }: Props) {
           <Typography variant="overline" color="secondary" fontWeight={700} letterSpacing="0.1em">
             {s.supportingLabel}
           </Typography>
-          <Typography variant="h4" component="p" fontWeight={700} sx={{ mb: 3 }}>
+          <Typography variant="h4" component="h2" fontWeight={700} sx={{ mb: 3 }}>
             {s.supportingHeading}
           </Typography>
           <Grid container spacing={3}>

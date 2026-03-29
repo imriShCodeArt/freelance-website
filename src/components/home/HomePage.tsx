@@ -222,7 +222,7 @@ export default function HomePage({
               <Grid key={label} size={{ xs: 12, sm: 6, md: 4 }}>
                 <Card variant="outlined" sx={{ height: "100%" }}>
                   <CardContent>
-                    <Typography variant="subtitle1" fontWeight={650}>
+                    <Typography variant="subtitle1" component="h3" fontWeight={650}>
                       {label}
                     </Typography>
                   </CardContent>
@@ -252,7 +252,7 @@ export default function HomePage({
               <Grid key={item.title} size={{ xs: 12, sm: 6 }}>
                 <Card variant="outlined" sx={{ height: "100%" }}>
                   <CardContent>
-                    <Typography variant="subtitle1" fontWeight={650} gutterBottom>
+                    <Typography variant="subtitle1" component="h3" fontWeight={650} gutterBottom>
                       {item.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">

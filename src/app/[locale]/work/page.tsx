@@ -17,6 +17,18 @@ import { getMessages } from "@/lib/i18n/get-messages";
 import { localeAlternates } from "@/lib/i18n/metadata-helpers";
 import { withLocale } from "@/lib/i18n/paths";
 
+const visuallyHidden = {
+  position: "absolute",
+  width: "1px",
+  height: "1px",
+  padding: 0,
+  margin: "-1px",
+  overflow: "hidden",
+  clip: "rect(0, 0, 0, 0)",
+  whiteSpace: "nowrap",
+  borderWidth: 0,
+} as const;
+
 type Props = { params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -60,6 +72,9 @@ export default async function WorkPage({ params }: Props) {
 
       <Section spacing="lg" sx={{ pb: { xs: 8, md: 10 } }}>
         <PageContainer>
+          <Typography component="h2" sx={visuallyHidden}>
+            {w.caseStudiesListHeading}
+          </Typography>
           <Grid container spacing={3}>
             {caseStudies.map((study) => {
               const copy =
@@ -97,7 +112,7 @@ export default async function WorkPage({ params }: Props) {
                             <Chip key={t} label={t} size="small" />
                           ))}
                         </Stack>
-                        <Typography variant="h5" component="h2" fontWeight={700} gutterBottom>
+                        <Typography variant="h5" component="h3" fontWeight={700} gutterBottom>
                           {copy.title}
                         </Typography>
                         <Typography variant="subtitle2" color="text.secondary" gutterBottom>
