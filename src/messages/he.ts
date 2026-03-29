@@ -32,6 +32,7 @@ export const he: Messages = {
   footer: {
     tagline:
       "אפליקציות אינטרנט בהתאמה אישית, ליווי שוטף ועבודה טכנית עם דגש על בהירות ותחזוקה לטווח ארוך.",
+    navAriaLabel: "ניווט תחתון",
   },
   caseStudyKind: {
     client: "פרויקט לקוח",
@@ -286,6 +287,7 @@ export const he: Messages = {
     title: "עבודות נבחרות",
     intro:
       "לכל פרויקט כאן מצורפים הבעיה העסקית ומה השתנה אחרי המסירה. חלק מסומנים כקונספט או יוזמה עצמית כשזו כנות מקצועית.",
+    caseStudiesListHeading: "תיעודי פרויקט",
     cta: "לדבר על הפרויקט שלכם",
     cardProblemLabel: "מה הייתה הבעיה העסקית?",
     cardOutcomeLabel: "מה השתנה",
@@ -336,6 +338,8 @@ export const he: Messages = {
     sending: "שולח…",
     emailPrefix: "דוא״ל:",
     actionThanksSpam: "תודה — אתקשר בקרוב.",
+    fieldRequired: "שדה חובה.",
+    errorPleaseReview: "נא לתקן את השדות המסומנים.",
     errorRequired: "נא למלא שם, דוא״ל והודעה.",
     errorEmail: "נא להזין כתובת דוא״ל תקינה.",
     errorNotConfigured: "שליחת דוא״ל מהאתר עדיין לא הוגדרה. ניתן לפנות אליי ישירות בכתובת למטה.",
