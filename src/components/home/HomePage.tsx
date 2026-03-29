@@ -99,7 +99,7 @@ export default function HomePage({
             inset: 0,
             zIndex: 1,
             background:
-              "linear-gradient(105deg, rgba(146,147,149,0.18) 0%, rgba(146,147,149,0.12) 38%, rgba(146,147,149,0.15) 62%, rgba(146,147,149,0.2) 100%)",
+              "linear-gradient(105deg, rgba(196,197,149,0.18) 0%, rgba(196,197,199,0.12) 38%, rgba(196,197,199,0.15) 62%, rgba(196,197,199,0.2) 100%)",
           }}
         />
         <PageContainer sx={{ position: "relative", zIndex: 2 }}>
@@ -108,7 +108,7 @@ export default function HomePage({
             <Typography variant="h2" component="h1" fontWeight={700}>
               {h.heroTitle}
             </Typography>
-            <Typography variant="h6" component="p" color="text.secondary" fontWeight={400}>
+            <Typography variant="h6" component="p" color="#000" fontWeight={400}>
               {h.heroSubtitle}
             </Typography>
             <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ pt: 1 }}>
