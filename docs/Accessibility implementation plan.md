@@ -135,3 +135,14 @@ These are strengths to **preserve** when refactoring:
 ## Summary
 
 Ship **P0** (forms, current page, landmarks, headings) first; layer **P1** (live regions, contrast, targets, media semantics); add **P2** automation and OS-specific checks so accessibility does not regress. This matches a **high-quality** bar: standards-aligned, bilingual, keyboard-first, and test-backed.
+
+---
+
+## Implementation status (in-repo)
+
+The following were implemented in code:
+
+- **P0:** Contact form field-level validation state (`fieldErrors`), error summary with `role="alert"` / `aria-live`, focus to first invalid field or summary; desktop + drawer nav `aria-current="page"`; **`<header>`** on `AppBar`; heading order fixes (services cards **h3**, work listing **h2** sr-only + card **h3**, home cards **h3** under section **h2**).
+- **P1:** Success `Alert` uses **`role="status"`** / **`aria-live="polite"`**; form **`aria-busy`** while submitting; footer nav **`aria-label`** from i18n; **44×44px** minimum targets on menu `IconButton`s, drawer close, and locale `ToggleButton`s; **skip-link** transition disabled under **`prefers-reduced-motion`**; app bar solid background when **`prefers-reduced-transparency`**.
+
+**Not done (still P2 / manual):** Playwright + axe in CI, routine Lighthouse/NVDA/VoiceOver passes, and a full contrast audit with token tweaks if measurements fall short.
