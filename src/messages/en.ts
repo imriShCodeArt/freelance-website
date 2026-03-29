@@ -7,7 +7,7 @@ export const en = {
       "Projects typically start from a modest four-figure engagement, depending on scope.",
     typicalStackLead: "Typical stack today:",
     typicalStackTrail:
-      ". I choose tools that match your maintenance and hiring reality, not trends.",
+      "I choose tools that match your maintenance and hiring reality, not trends.",
     stepPrefix: "Step",
   },
   nav: {

@@ -114,11 +114,31 @@ export default function HomePage({
               <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
                 {h.realUseP1}
               </Typography>
-              <Typography variant="body2" color="text.secondary">
+              <Typography variant="body2" color="text.secondary" component="div">
                 {messages.common.typicalStackLead}{" "}
-                <Box component="span" sx={{ fontFamily: "var(--font-geist-mono), monospace", fontSize: "0.9em" }}>
-                  {h.stack.join(" · ")}
-                </Box>
+                <Stack
+                  direction="row"
+                  component="div"
+                  flexWrap="wrap"
+                  useFlexGap
+                  gap={0.75}
+                  sx={{ display: "inline-flex", verticalAlign: "middle", maxWidth: "100%", my: 0.5 }}
+                >
+                  {h.stack.map((tech) => (
+                    <Chip
+                      key={tech}
+                      label={tech}
+                      size="small"
+                      variant="outlined"
+                      sx={{
+                        fontFamily: "var(--font-geist-mono), monospace",
+                        fontSize: "0.8125rem",
+                        height: 26,
+                      }}
+                    />
+                  ))}
+                </Stack>
+                <br/>
                 {messages.common.typicalStackTrail}
               </Typography>
             </Grid>
