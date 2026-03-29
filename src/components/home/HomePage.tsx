@@ -49,13 +49,49 @@ export default function HomePage({
             inset: 0,
             zIndex: 0,
             backgroundColor: "background.default",
-            backgroundImage:
-              "url(/abstract-system-grid-webapp-hero-background.png)",
-            backgroundSize: "cover",
-            backgroundPosition: "70% center",
-            backgroundRepeat: "no-repeat",
           }}
-        />
+        >
+          <Box
+            component="video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="/abstract-system-grid-webapp-hero-background.png"
+            sx={{
+              position: "absolute",
+              inset: 0,
+              width: "130%",
+              height: "100%",
+              objectFit: "cover",
+              objectPosition: "70% center",
+              display: "block",
+              "@media (prefers-reduced-motion: reduce)": {
+                display: "none",
+              },
+            }}
+          >
+            <source
+              src="/abstract-system-grid-webapp-hero-background.mp4"
+              type="video/mp4"
+            />
+          </Box>
+          <Box
+            sx={{
+              position: "absolute",
+              inset: 0,
+              backgroundImage:
+                "url(/abstract-system-grid-webapp-hero-background.png)",
+              backgroundSize: "cover",
+              backgroundPosition: "70% center",
+              backgroundRepeat: "no-repeat",
+              display: "none",
+              "@media (prefers-reduced-motion: reduce)": {
+                display: "block",
+              },
+            }}
+          />
+        </Box>
         <Box
           aria-hidden
           sx={{
@@ -63,7 +99,7 @@ export default function HomePage({
             inset: 0,
             zIndex: 1,
             background:
-              "linear-gradient(105deg, rgba(246,247,249,0.48) 0%, rgba(246,247,249,0.22) 38%, rgba(246,247,249,0.05) 62%, rgba(246,247,249,0.2) 100%)",
+              "linear-gradient(105deg, rgba(146,147,149,0.18) 0%, rgba(146,147,149,0.12) 38%, rgba(146,147,149,0.15) 62%, rgba(146,147,149,0.2) 100%)",
           }}
         />
         <PageContainer sx={{ position: "relative", zIndex: 2 }}>
