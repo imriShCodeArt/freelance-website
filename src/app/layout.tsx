@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { Geist, Geist_Mono, Noto_Sans_Hebrew } from "next/font/google";
 import "./globals.css";
 
@@ -30,7 +31,10 @@ export default function RootLayout({
 }>) {
   return (
     <html className={fontClasses} lang="en" dir="ltr" suppressHydrationWarning>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
