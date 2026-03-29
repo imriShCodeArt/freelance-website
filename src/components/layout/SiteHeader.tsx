@@ -73,7 +73,13 @@ export default function SiteHeader({
     <Box onClick={closeDrawer} sx={{ textAlign: "center", pt: 2, pb: 2 }}>
       <IconButton
         onClick={closeDrawer}
-        sx={{ position: "absolute", right: 8, top: 8 }}
+        sx={{
+          position: "absolute",
+          right: 8,
+          top: 8,
+          minWidth: 44,
+          minHeight: 44,
+        }}
         aria-label={header.closeMenu}
       >
         <CloseIcon />
@@ -89,6 +95,7 @@ export default function SiteHeader({
               component={NextLink}
               href={item.href}
               selected={pathname === item.href}
+              aria-current={pathname === item.href ? "page" : undefined}
               sx={{ textAlign: "center" }}
             >
               <ListItemText primary={item.label} />
@@ -102,6 +109,7 @@ export default function SiteHeader({
   return (
     <>
       <AppBar
+        component="header"
         position="sticky"
         color="inherit"
         elevation={0}
@@ -110,6 +118,10 @@ export default function SiteHeader({
           borderColor: "divider",
           backgroundColor: "rgba(255, 255, 255, 0.92)",
           backdropFilter: "blur(10px)",
+          "@media (prefers-reduced-transparency: reduce)": {
+            backgroundColor: "rgba(255, 255, 255, 0.98)",
+            backdropFilter: "none",
+          },
         }}
       >
         <Toolbar
@@ -145,6 +157,7 @@ export default function SiteHeader({
                   component={NextLink}
                   href={item.href}
                   color="inherit"
+                  aria-current={active ? "page" : undefined}
                   sx={{
                     fontWeight: active ? 700 : 500,
                     color: active ? "primary.main" : "text.secondary",
@@ -174,7 +187,12 @@ export default function SiteHeader({
             aria-label={header.openMenu}
             edge="end"
             onClick={() => setOpen(true)}
-            sx={{ display: { xs: "inline-flex", md: "none" }, ml: 1 }}
+            sx={{
+              display: { xs: "inline-flex", md: "none" },
+              ml: 1,
+              minWidth: 44,
+              minHeight: 44,
+            }}
           >
             <MenuIcon />
           </IconButton>
