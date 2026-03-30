@@ -176,12 +176,15 @@ export function RealUseSection({
                   <Chip
                     key={tech}
                     label={tech}
+                    color="info"
                     size="small"
                     variant="outlined"
                     sx={{
                       fontFamily: "var(--font-geist-mono), monospace",
                       fontSize: "0.8125rem",
                       height: 26,
+                      fontWeight: 700,
+                      px: ".25em",
                     }}
                   />
                 ))}

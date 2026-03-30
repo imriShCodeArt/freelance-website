@@ -7,7 +7,7 @@ export const en = {
       "Projects typically start from a modest four-figure engagement, depending on scope.",
     typicalStackLead: "Typical stack today:",
     typicalStackTrail:
-      "I choose tools that match your maintenance and hiring reality, not trends.",
+      "Tools are chosen based on your maintenance and hiring reality—not trends.",
     stepPrefix: "Step",
   },
   nav: {
@@ -71,9 +71,9 @@ export const en = {
     },
   },
   meta: {
-    defaultTitle: "Your external development team for custom web apps",
+    defaultTitle: "Web applications designed to perform and scale with your business",
     defaultDescription:
-      "I help small and medium businesses build and improve reliable, high-performance web applications with clean code, strong technical foundations, and ongoing development support.",
+      "Clean code, solid architecture, and ongoing support—ensuring your product remains reliable, adaptable, and ready to scale as your business grows.",
     servicesTitle: "Services",
     servicesDescription:
       "Custom web app development, ongoing support, performance, accessibility, and technical SEO—explained in plain language for growing businesses.",
@@ -89,9 +89,9 @@ export const en = {
   },
   home: {
     heroEyebrow: "Custom web apps for growing businesses",
-    heroTitle: "Your external development team for custom web apps",
+    heroTitle: "Web applications designed to perform and scale with your business",
     heroSubtitle:
-      "I help small and medium businesses build and improve reliable, high-performance web applications with clean code, strong technical foundations, and ongoing development support.",
+      "Clean code, solid architecture, and ongoing support—ensuring your product remains reliable, adaptable, and ready to scale as your business grows",
     ctaContact: "Get in touch",
     ctaServices: "View services",
     realUseEyebrow: "Built for real business use",
@@ -103,11 +103,11 @@ export const en = {
     cardBestFitBody:
       "Businesses that need tailored software, care about maintainability, and want a developer who stays involved after launch.",
     midParagraph:
-      "Whether you need a custom internal tool, client portal, dashboard, or ongoing product development, I work as a dependable technical partner focused on quality, speed, and long-term maintainability.",
-    buildEyebrow: "What I build",
+      "Whether you need a custom internal tool, client portal, dashboard, or ongoing product development, you get a dependable technical partner focused on quality, speed, and long-term maintainability.",
+    buildEyebrow: "What we Deliver",
     buildTitle: "Services snapshot",
     buildLead:
-      "I solve concrete operational needs—usually with web-based software your team and customers actually use.",
+      "Solving concrete operational needs—through web-based software your team and customers actually use.",
     buildCta: "How I can help",
     whyEyebrow: "Why work with me",
     whyTitle: "Quality that shows up after launch",
@@ -318,7 +318,7 @@ export const en = {
   },
   contact: {
     eyebrow: "Contact",
-    title: "Tell me about your project",
+    title: "Let's discuss your project",
     introP1:
       "Share what you are trying to improve or build. I read every message and reply personally—usually within one business day. We start with a short intro call so I can understand fit and scope; no commitment required.",
     introP2Before: "For context on how I work, see",
