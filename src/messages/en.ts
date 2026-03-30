@@ -71,7 +71,7 @@ export const en = {
     },
   },
   meta: {
-    defaultTitle: "Web applications designed to perform and scale with your business",
+    defaultTitle: "Web applications development, designed to perform and scale with your business",
     defaultDescription:
       "Clean code, solid architecture, and ongoing support—ensuring your product remains reliable, adaptable, and ready to scale as your business grows.",
     servicesTitle: "Services",
@@ -97,7 +97,7 @@ export const en = {
     realUseEyebrow: "Built for real business use",
     realUseTitle: "Technical work you can stake operations on",
     realUseP1:
-      "I focus on products that people use every day: internal tools, portals, and workflows—not experiments that fall apart under load.",
+      "Focused on products people use every day—internal tools, portals, and workflows, not experiments that fall apart under load.",
     cardTypicalEngagements: "Typical engagements",
     cardBestFit: "Best fit",
     cardBestFitBody:
