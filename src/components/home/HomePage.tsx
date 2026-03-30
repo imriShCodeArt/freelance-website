@@ -108,10 +108,19 @@ export default function HomePage({
             <Typography variant="h2" component="h1" fontWeight={700}>
               {h.heroTitle}
             </Typography>
-            <Typography variant="h6" component="p" color="#000" fontWeight={400}>
+            <Typography
+              variant="h6"
+              component="p"
+              color="#000"
+              fontWeight={400}
+            >
               {h.heroSubtitle}
             </Typography>
-            <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ pt: 1 }}>
+            <Stack
+              direction={{ xs: "column", sm: "row" }}
+              spacing={2}
+              sx={{ pt: 1 }}
+            >
               <Link href={contactHref} style={{ textDecoration: "none" }}>
                 <Button
                   component="span"
@@ -139,18 +148,34 @@ export default function HomePage({
         </PageContainer>
       </Section>
 
-      <Section spacing="md" sx={{ bgcolor: "background.paper", borderBlock: 1, borderColor: "divider" }}>
+      <Section
+        spacing="md"
+        sx={{
+          bgcolor: "background.paper",
+          borderBlock: 1,
+          borderColor: "divider",
+        }}
+      >
         <PageContainer>
           <Grid container spacing={4} alignItems="center">
             <Grid size={{ xs: 12, md: 7 }}>
               <Eyebrow>{h.realUseEyebrow}</Eyebrow>
-              <Typography variant="h4" component="h2" gutterBottom fontWeight={700}>
+              <Typography
+                variant="h4"
+                component="h2"
+                gutterBottom
+                fontWeight={700}
+              >
                 {h.realUseTitle}
               </Typography>
               <Typography variant="body1" color="text.secondary" sx={{ mb: 2 }}>
                 {h.realUseP1}
               </Typography>
-              <Typography variant="body2" color="text.secondary" component="div">
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                component="div"
+              >
                 {messages.common.typicalStackLead}{" "}
                 <Stack
                   direction="row"
@@ -158,36 +183,52 @@ export default function HomePage({
                   flexWrap="wrap"
                   useFlexGap
                   gap={0.75}
-                  sx={{ display: "inline-flex", verticalAlign: "middle", maxWidth: "100%", my: 0.5 }}
+                  sx={{
+                    display: "inline-flex",
+                    verticalAlign: "middle",
+                    maxWidth: "100%",
+                    my: 0.5,
+                  }}
                 >
                   {h.stack.map((tech) => (
                     <Chip
                       key={tech}
                       label={tech}
+                      color="info"
                       size="small"
                       variant="outlined"
                       sx={{
                         fontFamily: "var(--font-geist-mono), monospace",
                         fontSize: "0.8125rem",
                         height: 26,
+                        fontWeight:700,
+                        px: '.25em'
                       }}
                     />
                   ))}
                 </Stack>
-                <br/>
+                <br />
                 {messages.common.typicalStackTrail}
               </Typography>
             </Grid>
             <Grid size={{ xs: 12, md: 5 }}>
               <Card variant="outlined" sx={{ bgcolor: "background.default" }}>
                 <CardContent>
-                  <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+                  <Typography
+                    variant="subtitle2"
+                    color="text.secondary"
+                    gutterBottom
+                  >
                     {h.cardTypicalEngagements}
                   </Typography>
                   <Typography variant="body2" paragraph>
                     {messages.common.projectFloor}
                   </Typography>
-                  <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+                  <Typography
+                    variant="subtitle2"
+                    color="text.secondary"
+                    gutterBottom
+                  >
                     {h.cardBestFit}
                   </Typography>
                   <Typography variant="body2">{h.cardBestFitBody}</Typography>
@@ -222,7 +263,11 @@ export default function HomePage({
               <Grid key={label} size={{ xs: 12, sm: 6, md: 4 }}>
                 <Card variant="outlined" sx={{ height: "100%" }}>
                   <CardContent>
-                    <Typography variant="subtitle1" component="h3" fontWeight={650}>
+                    <Typography
+                      variant="subtitle1"
+                      component="h3"
+                      fontWeight={650}
+                    >
                       {label}
                     </Typography>
                   </CardContent>
@@ -244,7 +289,12 @@ export default function HomePage({
           <Typography variant="h4" component="h2" fontWeight={700} gutterBottom>
             {h.whyTitle}
           </Typography>
-          <Typography variant="body1" color="text.secondary" maxWidth="55ch" sx={{ mb: 4 }}>
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            maxWidth="55ch"
+            sx={{ mb: 4 }}
+          >
             {h.whyLead}
           </Typography>
           <Grid container spacing={2}>
@@ -252,7 +302,12 @@ export default function HomePage({
               <Grid key={item.title} size={{ xs: 12, sm: 6 }}>
                 <Card variant="outlined" sx={{ height: "100%" }}>
                   <CardContent>
-                    <Typography variant="subtitle1" component="h3" fontWeight={650} gutterBottom>
+                    <Typography
+                      variant="subtitle1"
+                      component="h3"
+                      fontWeight={650}
+                      gutterBottom
+                    >
                       {item.title}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
@@ -323,7 +378,10 @@ export default function HomePage({
           </Stack>
           <Grid container spacing={2}>
             {featured.map((study) => {
-              const copy = messages.caseStudies[study.slug as keyof typeof messages.caseStudies];
+              const copy =
+                messages.caseStudies[
+                  study.slug as keyof typeof messages.caseStudies
+                ];
               return (
                 <Grid key={study.slug} size={{ xs: 12, md: 6 }}>
                   <Link
@@ -339,7 +397,8 @@ export default function HomePage({
                       variant="outlined"
                       sx={{
                         height: "100%",
-                        transition: "box-shadow 0.2s ease, border-color 0.2s ease",
+                        transition:
+                          "box-shadow 0.2s ease, border-color 0.2s ease",
                         "&:hover": {
                           borderColor: "primary.light",
                           boxShadow: 2,
@@ -347,7 +406,13 @@ export default function HomePage({
                       }}
                     >
                       <CardContent>
-                        <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ mb: 1 }}>
+                        <Stack
+                          direction="row"
+                          spacing={1}
+                          flexWrap="wrap"
+                          useFlexGap
+                          sx={{ mb: 1 }}
+                        >
                           <Chip
                             label={messages.caseStudyKind[study.kind]}
                             size="small"
@@ -357,7 +422,12 @@ export default function HomePage({
                             <Chip key={t} label={t} size="small" />
                           ))}
                         </Stack>
-                        <Typography variant="h6" component="h3" fontWeight={650} gutterBottom>
+                        <Typography
+                          variant="h6"
+                          component="h3"
+                          fontWeight={650}
+                          gutterBottom
+                        >
                           {copy.title}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
@@ -373,17 +443,34 @@ export default function HomePage({
         </PageContainer>
       </Section>
 
-      <Section spacing="lg" sx={{ bgcolor: "background.paper", borderTop: 1, borderColor: "divider" }}>
+      <Section
+        spacing="lg"
+        sx={{
+          bgcolor: "background.paper",
+          borderTop: 1,
+          borderColor: "divider",
+        }}
+      >
         <PageContainer>
           <Grid container spacing={4}>
             <Grid size={{ xs: 12, md: 6 }}>
               <Eyebrow>{h.fitEyebrow}</Eyebrow>
-              <Typography variant="h5" component="h2" fontWeight={700} gutterBottom>
+              <Typography
+                variant="h5"
+                component="h2"
+                fontWeight={700}
+                gutterBottom
+              >
                 {h.fitTitle}
               </Typography>
               <Box
                 component="ul"
-                sx={{ m: 0, pl: 2.25, color: "text.secondary", "& li": { mb: 1 } }}
+                sx={{
+                  m: 0,
+                  pl: 2.25,
+                  color: "text.secondary",
+                  "& li": { mb: 1 },
+                }}
               >
                 {h.fitBullets.map((line) => (
                   <Typography key={line} component="li" variant="body1">
@@ -394,12 +481,22 @@ export default function HomePage({
             </Grid>
             <Grid size={{ xs: 12, md: 6 }}>
               <Eyebrow>{h.fitHonestyEyebrow}</Eyebrow>
-              <Typography variant="h5" component="h2" fontWeight={700} gutterBottom>
+              <Typography
+                variant="h5"
+                component="h2"
+                fontWeight={700}
+                gutterBottom
+              >
                 {h.notFitTitle}
               </Typography>
               <Box
                 component="ul"
-                sx={{ m: 0, pl: 2.25, color: "text.secondary", "& li": { mb: 1 } }}
+                sx={{
+                  m: 0,
+                  pl: 2.25,
+                  color: "text.secondary",
+                  "& li": { mb: 1 },
+                }}
               >
                 {h.notFitBullets.map((line) => (
                   <Typography key={line} component="li" variant="body1">
@@ -432,7 +529,10 @@ export default function HomePage({
               {h.ctaBandBody}
             </Typography>
             <Box sx={{ alignSelf: { xs: "stretch", sm: "flex-start" } }}>
-              <Link href={contactHref} style={{ textDecoration: "none", display: "block" }}>
+              <Link
+                href={contactHref}
+                style={{ textDecoration: "none", display: "block" }}
+              >
                 <Button
                   component="span"
                   variant="contained"
