@@ -13,6 +13,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import Image from "next/image";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import type { Locale } from "@/lib/i18n/config";
@@ -133,21 +134,34 @@ export default function SiteHeader({
             minHeight: { xs: 56, sm: 64 },
           }}
         >
-          <Typography
-            variant="h6"
+          <Box
             component={NextLink}
             href={homeHref}
             sx={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 1.25,
               flexGrow: { xs: 1, md: 0 },
               mr: { md: 4 },
-              fontWeight: 700,
               color: "text.primary",
               textDecoration: "none",
-              letterSpacing: "-0.02em",
             }}
           >
-            {brandName}
-          </Typography>
+            <Image
+              src="/Logo.png"
+              alt={`${brandName} logo`}
+              width={28}
+              height={28}
+              priority
+            />
+            <Typography
+              variant="h6"
+              component="span"
+              sx={{ fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1 }}
+            >
+              {brandName}
+            </Typography>
+          </Box>
           <Box sx={{ display: { xs: "none", md: "flex" }, gap: 0.5, flexGrow: 1 }}>
             {nav.map((item) => {
               const active = pathname === item.href;

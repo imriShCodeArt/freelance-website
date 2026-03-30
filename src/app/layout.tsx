@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Geist, Geist_Mono, Noto_Sans_Hebrew } from "next/font/google";
@@ -19,6 +20,14 @@ const notoSansHebrew = Noto_Sans_Hebrew({
 });
 
 const fontClasses = `${geistSans.variable} ${geistMono.variable} ${notoSansHebrew.variable}`;
+
+export const metadata: Metadata = {
+  icons: {
+    icon: "/Logo.ico",
+    shortcut: "/Logo.ico",
+    apple: "/Logo.ico",
+  },
+};
 
 /**
  * Default `lang` / `dir` here; `DocumentHtmlLocale` in `app/[locale]/layout.tsx` updates
