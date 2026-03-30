@@ -5,7 +5,7 @@
  */
 export const siteConfig = {
   /** Short label in the header (replace with your name or studio). */
-  shortName: "W.W. Dev",
+  shortName: "Imri W.",
   /** Shown in mailto links when email delivery is not configured. */
   publicContactEmail:
     process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "imriwain@gmail.com",
