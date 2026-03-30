@@ -8,11 +8,18 @@
 import { Resend } from "resend";
 import { defaultLocale, hasLocale, type Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/get-messages";
+export type ContactFieldErrors = {
+  name?: string;
+  email?: string;
+  message?: string;
+};
+
 export type ContactState = {
   submitted?: boolean;
   message?: string;
   error?: string;
   notConfigured?: boolean;
+  fieldErrors?: ContactFieldErrors;
 };
 
 function escapeHtml(s: string) {
@@ -61,11 +68,17 @@ export async function submitContact(
   const message = String(formData.get("message") ?? "").trim();
 
   if (!name || !email || !message) {
-    return { error: t.errorRequired };
+    return {
+      fieldErrors: {
+        ...(!name ? { name: t.fieldRequired } : {}),
+        ...(!email ? { email: t.fieldRequired } : {}),
+        ...(!message ? { message: t.fieldRequired } : {}),
+      },
+    };
   }
 
   if (!isProbablyValidEmail(email)) {
-    return { error: t.errorEmail };
+    return { fieldErrors: { email: t.errorEmail } };
   }
 
   const apiKey = process.env.RESEND_API_KEY;

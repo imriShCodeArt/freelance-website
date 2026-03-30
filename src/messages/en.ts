@@ -30,6 +30,7 @@ export const en = {
   footer: {
     tagline:
       "Custom web apps, ongoing support, and technical work focused on clarity and long-term maintainability.",
+    navAriaLabel: "Footer navigation",
   },
   caseStudyKind: {
     client: "Client project",
@@ -286,6 +287,7 @@ export const en = {
     title: "Selected work",
     intro:
       "Each project below states the business problem and what changed afterward. Some entries are labeled concept or self-initiated where that is honest positioning.",
+    caseStudiesListHeading: "Case studies",
     cta: "Talk about your project",
     cardProblemLabel: "What was the business problem?",
     cardOutcomeLabel: "What changed",
@@ -336,6 +338,8 @@ export const en = {
     sending: "Sending…",
     emailPrefix: "Email:",
     actionThanksSpam: "Thanks — I will be in touch soon.",
+    fieldRequired: "This field is required.",
+    errorPleaseReview: "Please review the highlighted fields.",
     errorRequired: "Please fill in your name, email, and message.",
     errorEmail: "Please enter a valid email address.",
     errorNotConfigured:

@@ -44,7 +44,7 @@ export default function SiteFooter({
           <Stack
             direction="row"
             component="nav"
-            aria-label="Footer"
+            aria-label={messages.footer.navAriaLabel}
             flexWrap="wrap"
             useFlexGap
             spacing={2}

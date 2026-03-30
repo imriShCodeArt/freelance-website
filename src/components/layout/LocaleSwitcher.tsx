@@ -33,12 +33,20 @@ export default function LocaleSwitcher({ locale, copy }: Props) {
       size="small"
       onChange={onChange}
       aria-label={copy.ariaLabel}
-      sx={{ ml: { xs: 0, md: 1 }, direction: 'ltr' }}
+      sx={{ ml: { xs: 0, md: 1 }, direction: "ltr" }}
     >
-      <ToggleButton value="en" aria-label={copy.english}>
+      <ToggleButton
+        value="en"
+        aria-label={copy.english}
+        sx={{ minWidth: 44, minHeight: 44, px: 1.5 }}
+      >
         EN
       </ToggleButton>
-      <ToggleButton value="he" aria-label={copy.hebrew}>
+      <ToggleButton
+        value="he"
+        aria-label={copy.hebrew}
+        sx={{ minWidth: 44, minHeight: 44, px: 1.5 }}
+      >
         עב׳
       </ToggleButton>
     </ToggleButtonGroup>
