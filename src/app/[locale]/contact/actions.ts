@@ -22,6 +22,10 @@ export type ContactState = {
   fieldErrors?: ContactFieldErrors;
 };
 
+function logPrefix() {
+  return "[contact-form]";
+}
+
 function escapeHtml(s: string) {
   return s
     .replace(/&/g, "&amp;")
@@ -86,6 +90,15 @@ export async function submitContact(
   const from = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
 
   if (!apiKey || !to) {
+    console.error(
+      `${logPrefix()} email not configured`,
+      JSON.stringify({
+        hasApiKey: Boolean(apiKey),
+        hasTo: Boolean(to),
+        from,
+        env: process.env.VERCEL_ENV ?? "local",
+      }),
+    );
     return {
       notConfigured: true,
       error: t.errorNotConfigured,
@@ -93,7 +106,7 @@ export async function submitContact(
   }
 
   const resend = new Resend(apiKey);
-  const { error } = await resend.emails.send({
+  const { data, error } = await resend.emails.send({
     from,
     to: [to],
     replyTo: email,
@@ -102,13 +115,39 @@ export async function submitContact(
 ${company ? `<p><strong>Company:</strong> ${escapeHtml(company)}</p>` : ""}
 ${timeline ? `<p><strong>Timeline / budget:</strong> ${escapeHtml(timeline)}</p>` : ""}
 <p><strong>Message:</strong></p><p>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>`,
+    text: `From: ${name} <${email}>
+${company ? `Company: ${company}\n` : ""}${timeline ? `Timeline / budget: ${timeline}\n` : ""}
+Message:
+${message}`,
   });
 
   if (error) {
+    console.error(
+      `${logPrefix()} resend send failed`,
+      JSON.stringify({
+        name,
+        email,
+        to,
+        from,
+        error,
+        env: process.env.VERCEL_ENV ?? "local",
+      }),
+    );
     return {
       error: t.errorSendFailed,
     };
   }
+
+  console.info(
+    `${logPrefix()} resend send succeeded`,
+    JSON.stringify({
+      id: data?.id ?? null,
+      to,
+      from,
+      replyTo: email,
+      env: process.env.VERCEL_ENV ?? "local",
+    }),
+  );
 
   return {
     submitted: true,
