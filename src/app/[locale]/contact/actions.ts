@@ -117,12 +117,14 @@ export async function submitContact(
     from,
     to: [to],
     replyTo: email,
-    subject: `Inquiry from ${name}`,
-    html: `<p><strong>From:</strong> ${escapeHtml(name)} &lt;${escapeHtml(email)}&gt;</p>
+    subject: `Inquiry from ${name} (${email})`,
+    html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p>
+<p><strong>Email:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
 ${company ? `<p><strong>Company:</strong> ${escapeHtml(company)}</p>` : ""}
 ${timeline ? `<p><strong>Timeline / budget:</strong> ${escapeHtml(timeline)}</p>` : ""}
 <p><strong>Message:</strong></p><p>${escapeHtml(message).replace(/\n/g, "<br/>")}</p>`,
-    text: `From: ${name} <${email}>
+    text: `Name: ${name}
+Email: ${email}
 ${company ? `Company: ${company}\n` : ""}${timeline ? `Timeline / budget: ${timeline}\n` : ""}
 Message:
 ${message}`,
