@@ -68,7 +68,6 @@ export default async function ContactPage({ params }: Props) {
               <Link href={`mailto:${siteConfig.publicContactEmail}`}>
                 {siteConfig.publicContactEmail}
               </Link>
-              .
             </Typography>
           </Stack>
         </PageContainer>
