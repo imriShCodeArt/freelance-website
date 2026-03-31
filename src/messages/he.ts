@@ -98,9 +98,9 @@ export const he: Messages = {
     orb: {
       eyebrow: "פיתוח ווב",
       titleLine1: "פול-סטאק",
-      titleLine2: "מונע AI",
+      titleLine2: "ממונף AI",
       subtitle: "בונה את העתיד הדיגיטלי של איחוד האמירויות - מערכת אחת בכל פעם.",
-      tags: ["Laravel / React", "אוטומציית AI", "פיתוח פול-סטאק"],
+      tags: ["React / Nextjs", "אוטומציית AI", "פיתוח פול-סטאק"],
     },
     realUseEyebrow: "בנוי לשימוש עסקי אמיתי",
     realUseTitle: "עבודה טכנית שאפשר לסמוך עליה בתפעול",

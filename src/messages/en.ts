@@ -117,10 +117,10 @@ export const en = {
     buildLead:
       "Solving concrete operational needs—through web-based software your team and customers actually use.",
     buildCta: "Services Page",
-    whyEyebrow: "Why work with me",
-    whyTitle: "Quality that shows up after launch",
+    whyEyebrow: "Why work with us",
+    whyTitle: "Quality products that allows you to grow",
     whyLead:
-      "I build with performance, accessibility, and maintainability in mind from the start, so your product is easier to use, easier to grow, and easier to support over time.",
+      "Delivering products with performance, accessibility, and maintainability in mind from the start, so your web-app is easier to use, easier to grow, and easier to support over time.",
     processEyebrow: "How we work",
     processTitle: "A straightforward process",
     workEyebrow: "Selected work",
