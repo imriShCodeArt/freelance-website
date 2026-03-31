@@ -117,10 +117,10 @@ export default function SiteHeader({
         sx={{
           borderBottom: 1,
           borderColor: "divider",
-          backgroundColor: "rgba(255, 255, 255, 0.92)",
+          backgroundColor: "rgba(13, 17, 23, 0.9)",
           backdropFilter: "blur(10px)",
           "@media (prefers-reduced-transparency: reduce)": {
-            backgroundColor: "rgba(255, 255, 255, 0.98)",
+            backgroundColor: "rgba(13, 17, 23, 0.98)",
             backdropFilter: "none",
           },
         }}

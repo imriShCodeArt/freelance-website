@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shining Stars Background</title>
+  <style>
+    :root {
+      --primary: #8ab4f8;
+      --primary-light: #b8d0fb;
+      --primary-dark: #5f8dd8;
+
+      --secondary: #7bcf9f;
+      --secondary-light: #a1dfb9;
+      --secondary-dark: #4ea877;
+
+      --bg: #0d1117;
+      --paper: #141b25;
+
+      --text: #e6edf6;
+      --text-secondary: #aab8cb;
+      --divider: rgba(170, 184, 203, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+
+    body {
+      font-family: Inter, system-ui, sans-serif;
+    }
+
+    .stars-scene {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(138, 180, 248, 0.08), transparent 18%),
+        radial-gradient(circle at 80% 30%, rgba(123, 207, 159, 0.05), transparent 20%),
+        radial-gradient(circle at 50% 75%, rgba(184, 208, 251, 0.05), transparent 28%),
+        linear-gradient(180deg, rgba(13, 17, 23, 0.15), rgba(13, 17, 23, 0.25));
+    }
+
+    .mist {
+      position: absolute;
+      inset: -10%;
+      background:
+        radial-gradient(circle at 30% 35%, rgba(138, 180, 248, 0.06), transparent 22%),
+        radial-gradient(circle at 65% 40%, rgba(184, 208, 251, 0.04), transparent 18%),
+        radial-gradient(circle at 55% 70%, rgba(123, 207, 159, 0.04), transparent 22%);
+      filter: blur(30px);
+      opacity: 0.9;
+      animation: mistDrift 18s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    .star-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(230, 237, 246, 0.9);
+      box-shadow:
+        0 0 6px rgba(230, 237, 246, 0.45),
+        0 0 12px rgba(184, 208, 251, 0.25);
+      opacity: 0.75;
+      animation: twinkle linear infinite;
+      will-change: transform, opacity, filter;
+    }
+
+    .star.soft {
+      background: rgba(170, 184, 203, 0.75);
+      box-shadow:
+        0 0 4px rgba(170, 184, 203, 0.22),
+        0 0 8px rgba(138, 180, 248, 0.12);
+    }
+
+    .star.blue {
+      background: rgba(184, 208, 251, 0.92);
+      box-shadow:
+        0 0 8px rgba(184, 208, 251, 0.45),
+        0 0 16px rgba(138, 180, 248, 0.24);
+    }
+
+    .star.green {
+      background: rgba(161, 223, 185, 0.9);
+      box-shadow:
+        0 0 8px rgba(161, 223, 185, 0.36),
+        0 0 14px rgba(123, 207, 159, 0.18);
+    }
+
+    .shining-star {
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      animation: starPulse 4s ease-in-out infinite;
+    }
+
+    .shining-star .core {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 6px;
+      height: 6px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: rgba(230, 237, 246, 0.98);
+      box-shadow:
+        0 0 10px rgba(230, 237, 246, 0.8),
+        0 0 22px rgba(184, 208, 251, 0.36);
+    }
+
+    .shining-star .ray-h,
+    .shining-star .ray-v,
+    .shining-star .ray-d1,
+    .shining-star .ray-d2 {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform-origin: center;
+      border-radius: 999px;
+      opacity: 0.9;
+      filter: blur(0.2px);
+    }
+
+    .shining-star .ray-h {
+      width: 26px;
+      height: 1.5px;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(184, 208, 251, 0.15),
+        rgba(230, 237, 246, 0.95),
+        rgba(184, 208, 251, 0.15),
+        transparent
+      );
+    }
+
+    .shining-star .ray-v {
+      width: 1.5px;
+      height: 26px;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(
+        180deg,
+        transparent,
+        rgba(184, 208, 251, 0.15),
+        rgba(230, 237, 246, 0.95),
+        rgba(184, 208, 251, 0.15),
+        transparent
+      );
+    }
+
+    .shining-star .ray-d1,
+    .shining-star .ray-d2 {
+      width: 20px;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(161, 223, 185, 0.12),
+        rgba(184, 208, 251, 0.7),
+        rgba(161, 223, 185, 0.12),
+        transparent
+      );
+    }
+
+    .shining-star .ray-d1 {
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .shining-star .ray-d2 {
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+    .vignette {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at center, transparent 50%, rgba(13, 17, 23, 0.16) 78%, rgba(13, 17, 23, 0.34) 100%);
+      pointer-events: none;
+    }
+
+    @keyframes twinkle {
+      0%, 100% {
+        opacity: 0.18;
+        transform: scale(0.8);
+      }
+      25% {
+        opacity: 0.65;
+        transform: scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: scale(1.18);
+      }
+      75% {
+        opacity: 0.5;
+        transform: scale(0.95);
+      }
+    }
+
+    @keyframes starPulse {
+      0%, 100% {
+        opacity: 0.5;
+        transform: translate(-50%, -50%) scale(0.9);
+      }
+      50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.22);
+      }
+    }
+
+    @keyframes mistDrift {
+      0% {
+        transform: translate3d(-1.5%, -1%, 0) scale(1);
+      }
+      100% {
+        transform: translate3d(1.5%, 1%, 0) scale(1.05);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="stars-scene">
+    <div class="mist"></div>
+    <div class="star-layer" id="smallStars"></div>
+    <div class="star-layer" id="midStars"></div>
+    <div class="star-layer" id="shineStars"></div>
+    <div class="vignette"></div>
+  </div>
+
+  <script>
+    const smallLayer = document.getElementById("smallStars");
+    const midLayer = document.getElementById("midStars");
+    const shineLayer = document.getElementById("shineStars");
+
+    function createStar(layer, options = {}) {
+      const star = document.createElement("div");
+      star.className = `star ${options.variant || ""}`.trim();
+
+      const size = options.size ?? (Math.random() * 2 + 1);
+      const left = options.left ?? Math.random() * 100;
+      const top = options.top ?? Math.random() * 100;
+      const duration = options.duration ?? (Math.random() * 4 + 3);
+      const delay = options.delay ?? (-Math.random() * 8);
+
+      star.style.width = `${size}px`;
+      star.style.height = `${size}px`;
+      star.style.left = `${left}%`;
+      star.style.top = `${top}%`;
+      star.style.animationDuration = `${duration}s`;
+      star.style.animationDelay = `${delay}s`;
+
+      layer.appendChild(star);
+    }
+
+    function createShiningStar(layer, left, top, scale = 1, duration = 4.5) {
+      const star = document.createElement("div");
+      star.className = "shining-star";
+      star.style.left = `${left}%`;
+      star.style.top = `${top}%`;
+      star.style.animationDuration = `${duration}s`;
+      star.style.animationDelay = `${-Math.random() * duration}s`;
+      star.style.transform = `translate(-50%, -50%) scale(${scale})`;
+
+      star.innerHTML = `
+        <div class="ray-h"></div>
+        <div class="ray-v"></div>
+        <div class="ray-d1"></div>
+        <div class="ray-d2"></div>
+        <div class="core"></div>
+      `;
+
+      layer.appendChild(star);
+    }
+
+    for (let i = 0; i < 90; i++) {
+      createStar(smallLayer, {
+        size: Math.random() * 1.8 + 0.8,
+        duration: Math.random() * 5 + 3,
+        variant: Math.random() > 0.8 ? "soft" : ""
+      });
+    }
+
+    for (let i = 0; i < 36; i++) {
+      const variants = ["blue", "green", "soft", ""];
+      createStar(midLayer, {
+        size: Math.random() * 2.6 + 1.4,
+        duration: Math.random() * 4 + 4,
+        variant: variants[Math.floor(Math.random() * variants.length)]
+      });
+    }
+
+    const shinePositions = [
+      [18, 24, 1.1, 5.2],
+      [34, 62, 0.9, 4.4],
+      [52, 28, 1.35, 5.8],
+      [68, 48, 1.05, 4.8],
+      [82, 20, 0.85, 4.1],
+      [76, 74, 1.2, 5.4]
+    ];
+
+    shinePositions.forEach(([left, top, scale, duration]) => {
+      createShiningStar(shineLayer, left, top, scale, duration);
+    });
+  </script>
+</body>
+</html>

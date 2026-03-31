@@ -88,14 +88,22 @@ export const en = {
       "Get in touch about custom web apps, dashboards, portals, and ongoing development support.",
   },
   home: {
-    heroEyebrow: "Custom web apps for growing businesses",
-    heroTitle: "Web applications designed to perform and scale with your business",
+    heroEyebrow: "Gush Etzion, Israel · Ready for Business",
+    heroTitle: "Custom web app development for growing businesses",
+    // heroTitle: "Web applications designed to perform and scale with your business",
     heroSubtitle:
       "Clean code, solid architecture, and ongoing support—ensuring your product remains reliable, adaptable, and ready to scale as your business grows",
     ctaContact: "Get in touch",
     ctaServices: "View services",
+    orb: {
+      eyebrow: "web developer",
+      titleLine1: "Full-Stack",
+      titleLine2: "AI-Powered",
+      subtitle: "Building your digital future - one system at a time.",
+      tags: ["React / Nextjs", "AI Automation", "Full-Stack Dev"],
+    },
     realUseEyebrow: "Built for real business use",
-    realUseTitle: "Technical work you can stake operations on",
+    realUseTitle: "Served for operations that can’t afford failure.",
     realUseP1:
       "Focused on products people use every day—internal tools, portals, and workflows, not experiments that fall apart under load.",
     cardTypicalEngagements: "Typical engagements",
@@ -105,10 +113,10 @@ export const en = {
     midParagraph:
       "Whether you need a custom internal tool, client portal, dashboard, or ongoing product development, you get a dependable technical partner focused on quality, speed, and long-term maintainability.",
     buildEyebrow: "What we Deliver",
-    buildTitle: "Services snapshot",
+    buildTitle: "Services",
     buildLead:
       "Solving concrete operational needs—through web-based software your team and customers actually use.",
-    buildCta: "How I can help",
+    buildCta: "Services Page",
     whyEyebrow: "Why work with me",
     whyTitle: "Quality that shows up after launch",
     whyLead:
@@ -129,11 +137,13 @@ export const en = {
       "Tell me what you're trying to fix or build. I usually respond within one business day, and we'll start with a short intro call—no commitment required.",
     ctaBandButton: "Contact me",
     scenarios: [
-      "Internal dashboards / admin panels",
-      "Client portals",
-      "Booking / workflow systems",
-      "Business automation tools",
-      "SaaS MVPs for small teams",
+      "Product Discovery & Planning",
+      "UX & System Design",
+      "MVP Development",
+      "Production & Scaling",
+      "Hosting & Infrastructure",
+      "Ongoing Development & Maintenance",
+      "Performance & Reliability Optimization",
     ],
     differentiators: [
       {
@@ -215,59 +225,96 @@ export const en = {
       "Final quotes depend on scope, integrations, and timeline after a short discovery conversation.",
     primary: [
       {
-        title: "Custom web app development",
-        what: "Tailored web software for your workflow, customers, or internal operations.",
+        title: "Product Discovery & Planning",
+        what: "Clarify goals, constraints, and scope before writing production code.",
         when:
-          "Off-the-shelf tools do not match how you work, or you need one system instead of five spreadsheets.",
-        get: "Discovery, scoped build, clear handoff, and documentation oriented toward whoever maintains the product next.",
+          "You have a problem to solve but need confidence about priorities, roadmap, and delivery phases.",
+        get: "A practical plan with clear milestones, technical direction, and realistic delivery sequencing.",
         examples: [
-          "Internal dashboards and admin panels",
-          "Client portals",
-          "Booking and workflow systems",
-          "Client-facing platforms",
+          "Requirements and scope definition",
+          "Roadmaps and implementation phases",
+          "Risk and dependency mapping",
+          "Delivery planning aligned to business goals",
         ],
       },
       {
-        title: "Ongoing development and technical support",
-        what: "A steady partner to improve, maintain, and extend what you already run in production.",
+        title: "UX & System Design",
+        what: "Design product flows and system architecture that can scale with your operations.",
         when:
-          "You have a live product or internal tool and need reliable changes without hiring full-time engineers yet.",
-        get: "Prioritized backlog work, pragmatic estimates, and communication that respects your operations.",
+          "You need better user journeys, cleaner structure, or a maintainable system blueprint before build.",
+        get: "User flow definition, interface direction, and technical architecture decisions with tradeoffs explained.",
         examples: [
-          "Feature additions and refactors",
-          "Production fixes and monitoring-minded updates",
-          "Business automation tied to your stack",
+          "User journeys and interaction patterns",
+          "Component and page structure planning",
+          "Data modeling and service boundaries",
+          "Architecture docs for implementation",
+        ],
+      },
+      {
+        title: "MVP Development",
+        what: "Build a focused first version that solves a real problem and is ready for live users.",
+        when:
+          "You need to launch quickly without accumulating avoidable technical debt.",
+        get: "A production-ready MVP with core features, clear handoff, and a path for iterative improvements.",
+        examples: [
+          "SaaS and internal MVPs",
+          "Client-facing portals",
+          "Workflow and operations tools",
+          "Validated first-release feature sets",
+        ],
+      },
+      {
+        title: "Production & Scaling",
+        what: "Strengthen your product for growth, higher usage, and more complex operational demands.",
+        when:
+          "Your app is live and needs reliability, scalability, or architecture upgrades.",
+        get: "Performance-aware scaling changes, safer deployments, and a stronger production posture.",
+        examples: [
+          "Scaling app and API architecture",
+          "Production hardening and release improvements",
+          "Database and query optimization",
+          "Reliability-focused refactors",
         ],
       },
     ],
     supporting: [
       {
-        title: "Performance optimization",
-        what: "Faster loads, smoother interactions, and fewer rough edges that frustrate users.",
-        when: "Pages feel slow, metrics slipped after growth, or you are preparing for more traffic.",
-        get: "Profiling-informed changes with before/after notes you can understand—not mystery tweaks.",
+        title: "Hosting & Infrastructure",
+        what: "Set up and evolve hosting environments that are secure, stable, and maintainable.",
+        when:
+          "You need better deployment foundations, environment consistency, or infrastructure cleanup.",
+        get: "Infrastructure decisions and implementation tailored to your product stage and budget.",
         examples: [
-          "Core Web Vitals improvements",
-          "Bundle and rendering hygiene",
-          "Caching and API efficiency",
+          "Environment setup and deployment pipelines",
+          "Domain, SSL, and hosting configuration",
+          "Operational monitoring basics",
+          "Infrastructure maintenance workflows",
         ],
       },
       {
-        title: "Accessibility improvements",
-        what: "More people can complete tasks in your product, aligned with common expectations and standards.",
-        when: "You have audit findings, legal risk, or a goal to serve a broader audience well.",
-        get: "Prioritized fixes, semantic structure, and keyboard/screen-reader sensible flows.",
-        examples: ["Forms and focus order", "Contrast and typography", "Component-level fixes"],
+        title: "Ongoing Development & Maintenance",
+        what: "Continuous support to improve, maintain, and extend your product after launch.",
+        when:
+          "You need reliable execution over time without building a full in-house engineering team.",
+        get: "Prioritized backlog delivery, ongoing fixes, and stable collaboration aligned with your operations.",
+        examples: [
+          "Feature enhancements and refactors",
+          "Maintenance and technical debt reduction",
+          "Support for changing business needs",
+          "Steady release cadence",
+        ],
       },
       {
-        title: "Technical SEO implementation",
-        what: "Solid technical foundations so search engines can crawl, index, and understand your site.",
-        when: "You are investing in content or local presence and need the platform to cooperate.",
-        get: "Metadata, sitemaps, structured data where appropriate, and performance-aware templates.",
+        title: "Performance & Reliability Optimization",
+        what: "Improve speed, resilience, and operational confidence where users and teams feel it most.",
+        when:
+          "You are seeing slow pages, unstable behavior, or reliability concerns under real-world load.",
+        get: "Measured optimizations with concrete before/after impact across performance and reliability.",
         examples: [
-          "Metadata and sharing cards",
-          "Clean URLs and internal linking patterns",
-          "Renderable critical content",
+          "Core Web Vitals and runtime performance improvements",
+          "Caching and rendering optimization",
+          "Error reduction and stability improvements",
+          "Monitoring-informed reliability fixes",
         ],
       },
     ],

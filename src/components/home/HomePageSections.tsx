@@ -8,6 +8,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
 import type { CaseStudyKind, CaseStudyMeta } from "@/content/case-studies";
+import { BuildSectionServiceCards } from "@/components/home/BuildSectionServiceCards";
 import Eyebrow from "@/components/layout/Eyebrow";
 import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
@@ -17,11 +18,36 @@ import type { Locale } from "@/lib/i18n/config";
 
 type HomeCopy = Messages["home"];
 type CaseStudiesCopy = Messages["caseStudies"];
+type ServicesCopy = Messages["services"];
 
 type SectionProps = {
   home: HomeCopy;
   locale: Locale;
 };
+
+const ORB_PARTICLES = Array.from({ length: 28 }, (_, i) => {
+  const size = 3.8 + (i % 5) * 0.9;
+  const left = 14 + ((i * 31) % 380);
+  const top = 148 + ((i * 19) % 240);
+  const dx = -34 + ((i * 13) % 68);
+  const duration = 13.6 + (i % 6) * 0.6;
+  const delay = (i % 7) * 0.7;
+  const colors = [
+    "rgba(138,180,248,0.82)",
+    "rgba(184,208,251,0.78)",
+    "rgba(123,207,159,0.74)",
+    "rgba(170,184,203,0.6)",
+  ];
+  return {
+    size,
+    left,
+    top,
+    dx,
+    duration,
+    delay,
+    color: colors[i % colors.length],
+  };
+});
 
 function LinkButton({
   href,
@@ -49,6 +75,8 @@ function LinkButton({
   );
 }
 
+// Kept for quick fallback/experimentation vs the orb hero background.
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function HeroGeometricBackground() {
   return (
     <Box
@@ -60,7 +88,7 @@ function HeroGeometricBackground() {
         overflow: "hidden",
         isolation: "isolate",
         background:
-          "radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.95), transparent 28%), radial-gradient(circle at 78% 24%, rgba(223, 228, 233, 0.55), transparent 26%), radial-gradient(circle at 50% 70%, rgba(213, 220, 228, 0.22), transparent 34%), linear-gradient(180deg, #f7f7f4 0%, #eef1f4 100%)",
+          "radial-gradient(circle at 18% 18%, rgba(138, 180, 248, 0.24), transparent 30%), radial-gradient(circle at 78% 24%, rgba(123, 207, 159, 0.2), transparent 28%), radial-gradient(circle at 50% 70%, rgba(95, 141, 216, 0.14), transparent 36%), linear-gradient(180deg, #0d1117 0%, #141b25 100%)",
         "@keyframes triDrift": {
           from: { transform: "translateY(0)" },
           to: { transform: "translateY(62px)" },
@@ -87,7 +115,7 @@ function HeroGeometricBackground() {
           zIndex: 0,
           opacity: 0.7,
           backgroundImage:
-            "linear-gradient(60deg, rgba(120, 130, 145, 0.12) 1px, transparent 1px), linear-gradient(-60deg, rgba(120, 130, 145, 0.12) 1px, transparent 1px), linear-gradient(0deg, rgba(120, 130, 145, 0.08) 1px, transparent 1px)",
+            "linear-gradient(60deg, rgba(170, 184, 203, 0.14) 1px, transparent 1px), linear-gradient(-60deg, rgba(170, 184, 203, 0.14) 1px, transparent 1px), linear-gradient(0deg, rgba(170, 184, 203, 0.09) 1px, transparent 1px)",
           backgroundSize: "72px 62px, 72px 62px, 72px 62px",
           backgroundPosition: "0 0, 0 0, 0 31px",
           maskImage: "radial-gradient(circle at center, black 52%, transparent 100%)",
@@ -98,7 +126,7 @@ function HeroGeometricBackground() {
           inset: "-10%",
           zIndex: 0,
           background:
-            "radial-gradient(circle at 30% 35%, rgba(255,255,255,0.52), transparent 22%), radial-gradient(circle at 66% 46%, rgba(210,218,230,0.45), transparent 24%), radial-gradient(circle at 56% 62%, rgba(255,255,255,0.28), transparent 18%)",
+            "radial-gradient(circle at 30% 35%, rgba(138,180,248,0.3), transparent 24%), radial-gradient(circle at 66% 46%, rgba(123,207,159,0.26), transparent 25%), radial-gradient(circle at 56% 62%, rgba(184,208,251,0.18), transparent 20%)",
           filter: "blur(30px)",
           opacity: 0.9,
           pointerEvents: "none",
@@ -115,8 +143,8 @@ function HeroGeometricBackground() {
           display: "block",
         },
         "& .blocks rect": {
-          fill: "rgba(194, 202, 212, 0.18)",
-          stroke: "rgba(255, 255, 255, 0.34)",
+          fill: "rgba(33, 44, 61, 0.5)",
+          stroke: "rgba(170, 184, 203, 0.3)",
           strokeWidth: 1,
           animation: "panelFloat 14s ease-in-out infinite",
         },
@@ -130,35 +158,35 @@ function HeroGeometricBackground() {
         },
         "& .routes-back path": {
           fill: "none",
-          stroke: "rgba(106, 118, 134, 0.22)",
+          stroke: "rgba(123, 143, 171, 0.3)",
           strokeWidth: 2.4,
           strokeLinecap: "round",
           strokeLinejoin: "round",
         },
         "& .routes-front path": {
           fill: "none",
-          stroke: "rgba(255, 255, 255, 0.84)",
+          stroke: "rgba(184, 208, 251, 0.7)",
           strokeWidth: 1.5,
           strokeLinecap: "round",
           strokeLinejoin: "round",
           strokeDasharray: "10 18",
-          filter: "drop-shadow(0 0 5px rgba(255,255,255,0.55))",
+          filter: "drop-shadow(0 0 5px rgba(184,208,251,0.45))",
           animation: "routeFlow 14s linear infinite",
         },
         "& .routes-front path:nth-of-type(2)": { animationDuration: "18s" },
         "& .routes-front path:nth-of-type(3)": { animationDuration: "16s" },
         "& .routes-front path:nth-of-type(4)": { animationDuration: "20s" },
         "& .nodes rect": {
-          fill: "rgba(120, 132, 150, 0.72)",
+          fill: "rgba(170, 184, 203, 0.65)",
           rx: 1.5,
           animation: "nodePulse 4.2s ease-in-out infinite",
         },
         "& .nodes rect:nth-of-type(2n)": { animationDelay: "0.8s" },
         "& .nodes rect:nth-of-type(3n)": { animationDelay: "1.6s" },
         "& .glow-points circle": {
-          fill: "#ffffff",
+          fill: "#b8d0fb",
           filter:
-            "drop-shadow(0 0 8px rgba(255,255,255,1)) drop-shadow(0 0 18px rgba(255,255,255,0.75))",
+            "drop-shadow(0 0 8px rgba(184,208,251,0.95)) drop-shadow(0 0 18px rgba(184,208,251,0.65))",
           animation: "sparkle 3.8s ease-in-out infinite",
         },
         "& .glow-points circle:nth-of-type(2)": { animationDelay: "0.6s" },
@@ -166,10 +194,10 @@ function HeroGeometricBackground() {
         "& .glow-points circle:nth-of-type(4)": { animationDelay: "1.8s" },
         "& .glow-points circle:nth-of-type(5)": { animationDelay: "2.4s" },
         "& .traveler": {
-          fill: "#ffffff",
+          fill: "#b8d0fb",
           opacity: 0.96,
           filter:
-            "drop-shadow(0 0 8px rgba(255,255,255,1)) drop-shadow(0 0 18px rgba(255,255,255,0.72))",
+            "drop-shadow(0 0 8px rgba(184,208,251,0.9)) drop-shadow(0 0 18px rgba(184,208,251,0.62))",
         },
         "@media (max-width: 900px)": {
           "& .tri-grid": { opacity: 0.5 },
@@ -261,6 +289,343 @@ function HeroGeometricBackground() {
   );
 }
 
+function HeroOrbBackground({
+  embedded = false,
+  orb,
+}: {
+  embedded?: boolean;
+  orb: HomeCopy["orb"];
+}) {
+  return (
+    <Box
+      aria-hidden
+      sx={{
+        position: embedded ? "relative" : "absolute",
+        inset: embedded ? "auto" : 0,
+        width: embedded ? "100%" : undefined,
+        height: embedded ? "100%" : undefined,
+        minHeight: embedded ? { xs: 320, md: 480 } : undefined,
+        zIndex: 0,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: embedded ? "visible" : "hidden",
+        background:
+          "radial-gradient(circle at 58% 45%, rgba(138, 180, 248, 0.035), transparent 34%), radial-gradient(circle at 72% 34%, rgba(123, 207, 159, 0.028), transparent 26%), transparent",
+        "@keyframes orbSpin": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(360deg)" },
+        },
+        "@keyframes orbSpinReverse": {
+          from: { transform: "rotate(0deg)" },
+          to: { transform: "rotate(-360deg)" },
+        },
+        "@keyframes orbAmbientShift": {
+          "0%, 100%": {
+            boxShadow:
+              "0 0 90px 20px rgba(138, 180, 248, 0.14), 0 0 180px 40px rgba(95, 141, 216, 0.06)",
+          },
+          "50%": {
+            boxShadow:
+              "0 0 90px 20px rgba(123, 207, 159, 0.12), 0 0 180px 40px rgba(138, 180, 248, 0.07)",
+          },
+        },
+        "@keyframes orbBreathe": {
+          "0%, 100%": { transform: "scale(1)", opacity: 0.92 },
+          "50%": { transform: "scale(1.04)", opacity: 1 },
+        },
+        "@keyframes orbGlowShift": {
+          "0%": {
+            background:
+              "radial-gradient(circle at 40% 40%, rgba(184, 208, 251, 0.28) 0%, rgba(138, 180, 248, 0.14) 36%, transparent 70%)",
+          },
+          "25%": {
+            background:
+              "radial-gradient(circle at 62% 32%, rgba(123, 207, 159, 0.24) 0%, rgba(138, 180, 248, 0.13) 40%, transparent 70%)",
+          },
+          "50%": {
+            background:
+              "radial-gradient(circle at 60% 64%, rgba(138, 180, 248, 0.24) 0%, rgba(95, 141, 216, 0.12) 42%, transparent 70%)",
+          },
+          "75%": {
+            background:
+              "radial-gradient(circle at 30% 60%, rgba(184, 208, 251, 0.22) 0%, rgba(123, 207, 159, 0.1) 40%, transparent 70%)",
+          },
+          "100%": {
+            background:
+              "radial-gradient(circle at 40% 40%, rgba(184, 208, 251, 0.28) 0%, rgba(138, 180, 248, 0.14) 36%, transparent 70%)",
+          },
+        },
+        "@keyframes orbParticleDrift": {
+          "0%": { transform: "translateY(0) translateX(0) scale(1)", opacity: 0 },
+          "10%": { opacity: 1 },
+          "85%": { opacity: 0.7 },
+          "100%": {
+            transform: "translateY(-170px) translateX(var(--dx)) scale(0.35)",
+            opacity: 0,
+          },
+        },
+        "@keyframes orbScanLine": {
+          "0%": { top: "12%", opacity: 0 },
+          "10%": { opacity: 1 },
+          "90%": { opacity: 0.5 },
+          "100%": { top: "88%", opacity: 0 },
+        },
+      }}
+    >
+      <Box
+        sx={{
+          position: "relative",
+          width: { xs: 440, md: 540 },
+          height: { xs: 440, md: 540 },
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          pointerEvents: "none",
+        }}
+      >
+        <Box
+          sx={{
+            position: "absolute",
+            width: { xs: 360, md: 500 },
+            height: { xs: 360, md: 500 },
+            borderRadius: "50%",
+            filter: "blur(8px)",
+            animation: "orbAmbientShift 8s ease-in-out infinite",
+          }}
+        />
+        <Box
+          sx={{
+            position: "absolute",
+            width: { xs: 300, md: 420 },
+            height: { xs: 300, md: 420 },
+            borderRadius: "50%",
+            animation: "orbSpin 9s linear infinite",
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              inset: 0,
+              borderRadius: "50%",
+              p: "2px",
+              background:
+                "conic-gradient(from 0deg, transparent 0%, rgba(184, 208, 251, 0.95) 12%, rgba(138, 180, 248, 0.95) 28%, rgba(123, 207, 159, 0.85) 43%, transparent 58%, rgba(138, 180, 248, 0.75) 76%, rgba(184, 208, 251, 0.95) 90%, transparent 100%)",
+              WebkitMask:
+                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+              WebkitMaskComposite: "xor",
+              maskComposite: "exclude",
+              filter:
+                "drop-shadow(0 0 10px rgba(138, 180, 248, 0.35)) drop-shadow(0 0 20px rgba(123, 207, 159, 0.18))",
+            },
+          }}
+        />
+        <Box
+          sx={{
+            position: "absolute",
+            width: { xs: 340, md: 470 },
+            height: { xs: 340, md: 470 },
+            borderRadius: "50%",
+            animation: "orbSpinReverse 13s linear infinite",
+            "&::before": {
+              content: '""',
+              position: "absolute",
+              inset: 0,
+              borderRadius: "50%",
+              p: "1px",
+              background:
+                "conic-gradient(from 180deg, transparent 0%, rgba(123, 207, 159, 0.75) 18%, transparent 35%, rgba(184, 208, 251, 0.55) 58%, rgba(138, 180, 248, 0.7) 74%, transparent 100%)",
+              WebkitMask:
+                "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+              WebkitMaskComposite: "xor",
+              maskComposite: "exclude",
+            },
+          }}
+        />
+        <Box
+          sx={{
+            position: "absolute",
+            width: { xs: 250, md: 360 },
+            height: { xs: 250, md: 360 },
+            borderRadius: "50%",
+            border: "1px solid rgba(184, 208, 251, 0.1)",
+            background:
+              "radial-gradient(ellipse at 35% 35%, rgba(184, 208, 251, 0.12) 0%, rgba(138, 180, 248, 0.1) 24%, rgba(95, 141, 216, 0.08) 48%, rgba(123, 207, 159, 0.05) 72%, transparent 100%)",
+            animation: "orbBreathe 15s ease-in-out infinite",
+          }}
+        />
+        <Box
+          sx={{
+            position: "absolute",
+            width: { xs: 210, md: 300 },
+            height: { xs: 210, md: 300 },
+            borderRadius: "50%",
+            filter: "blur(2px)",
+            animation: "orbGlowShift 6s ease-in-out infinite",
+          }}
+        />
+        <Box
+          sx={{
+            position: "absolute",
+            width: { xs: 250, md: 360 },
+            height: { xs: 250, md: 360 },
+            borderRadius: "50%",
+            overflow: "hidden",
+          }}
+        >
+          {ORB_PARTICLES.map((p, i) => (
+            <Box
+              key={i}
+              sx={{
+                position: "absolute",
+                borderRadius: "50%",
+                width: `${p.size}px`,
+                height: `${p.size}px`,
+                left: `${p.left}px`,
+                top: `${p.top}px`,
+                background: p.color,
+                boxShadow: `0 0 ${p.size * 3.5}px ${p.color}`,
+                "--dx": `${p.dx}px`,
+                animation: `orbParticleDrift ${p.duration}s linear infinite`,
+                animationDelay: `-${p.delay}s`,
+              }}
+            />
+          ))}
+        </Box>
+        <Box
+          sx={{
+            position: "absolute",
+            width: { xs: 250, md: 360 },
+            height: { xs: 250, md: 360 },
+            borderRadius: "50%",
+            overflow: "hidden",
+            "&::after": {
+              content: '""',
+              position: "absolute",
+              left: 0,
+              right: 0,
+              height: "2px",
+              background:
+                "linear-gradient(90deg, transparent, rgba(184, 208, 251, 0.45), rgba(138, 180, 248, 0.45), rgba(123, 207, 159, 0.35), transparent)",
+              boxShadow: "0 0 12px rgba(138, 180, 248, 0.25)",
+              animation: "orbScanLine 3.2s ease-in-out infinite",
+            },
+          }}
+        />
+        <Box
+          sx={{
+            position: "absolute",
+            zIndex: 6,
+            width: { xs: 220, md: 300 },
+            textAlign: "center",
+            px: 2,
+            pointerEvents: "none",
+          }}
+        >
+          <Typography
+            component="p"
+            sx={{
+              fontSize: { xs: "0.62rem", md: "0.75rem" },
+              letterSpacing: "0.16em",
+              textTransform: "uppercase",
+              color: "rgba(184, 208, 251, 0.78)",
+              fontWeight: 700,
+              mb: 1.25,
+            }}
+          >
+            {orb.eyebrow}
+          </Typography>
+          <Typography
+            component="p"
+            sx={{
+              fontSize: { xs: "2rem", md: "3rem" },
+              lineHeight: 1.03,
+              letterSpacing: "-0.02em",
+              fontWeight: 800,
+              color: "#e6edf6",
+              mb: 0.5,
+            }}
+          >
+            {orb.titleLine1}
+          </Typography>
+          <Typography
+            component="p"
+            sx={{
+              fontSize: { xs: "2rem", md: "2.5rem" },
+              lineHeight: 1.03,
+              letterSpacing: "-0.02em",
+              fontWeight: 800,
+              mb: 0.5,
+              background:
+                "linear-gradient(90deg, rgba(138,180,248,1) 0%, rgba(123,207,159,0.95) 60%, rgba(184,208,251,1) 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              color: "transparent",
+            }}
+          >
+            {orb.titleLine2}
+          </Typography>
+          <Typography
+            component="p"
+            sx={{
+              fontSize: { xs: "0.85rem", md: "1rem" },
+              lineHeight: 1.5,
+              color: "rgba(170, 184, 203, 0.86)",
+            }}
+          >
+            {orb.subtitle}
+          </Typography>
+        </Box>
+        <Box
+          sx={{
+            position: "absolute",
+            zIndex: 6,
+            right: { xs: -6, md: -18 },
+            top: { xs: 118, md: 106 },
+            display: { xs: "none", md: "grid" },
+            gap: 1.25,
+            pointerEvents: "none",
+          }}
+        >
+          {orb.tags.map((tag, index) => {
+            const waterAnim = index % 2 === 0 ? "orb-tag-water" : "orb-tag-water-alt";
+            const durationS = 5.2 + index * 0.55;
+            return (
+              <Box
+                key={tag}
+                sx={{
+                  py: 0.9,
+                  px: 1.5,
+                  borderRadius: 2,
+                  border: "1px solid",
+                  borderColor: index === 0 ? "rgba(139, 92, 246, 0.5)" : "rgba(56, 189, 248, 0.45)",
+                  background:
+                    index === 0 ? "rgba(30, 18, 51, 0.55)" : "rgba(10, 26, 41, 0.55)",
+                  color: index === 0 ? "rgba(196, 181, 253, 0.95)" : "rgba(103, 232, 249, 0.95)",
+                  fontSize: "1.15rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.04em",
+                  whiteSpace: "nowrap",
+                  boxShadow:
+                    index === 0
+                      ? "0 0 18px rgba(139, 92, 246, 0.25)"
+                      : "0 0 18px rgba(56, 189, 248, 0.22)",
+                  animation: `${waterAnim} ${durationS}s ease-in-out infinite`,
+                  animationDelay: `${index * 0.62}s`,
+                  "@media (prefers-reduced-motion: reduce)": {
+                    animation: "none",
+                  },
+                }}
+              >
+                {tag}
+              </Box>
+            );
+          })}
+        </Box>
+      </Box>
+    </Box>
+  );
+}
+
 export function HeroSection({ home, locale }: SectionProps) {
   const contactHref = withLocale(locale, "/contact");
   const servicesHref = withLocale(locale, "/services");
@@ -276,7 +641,6 @@ export function HeroSection({ home, locale }: SectionProps) {
         minHeight: { md: 440 },
       }}
     >
-      <HeroGeometricBackground />
       <Box
         aria-hidden
         sx={{
@@ -284,27 +648,59 @@ export function HeroSection({ home, locale }: SectionProps) {
           inset: 0,
           zIndex: 1,
           background:
-            "linear-gradient(105deg, rgba(196,197,149,0.18) 0%, rgba(196,197,199,0.12) 38%, rgba(196,197,199,0.15) 62%, rgba(196,197,199,0.2) 100%)",
+            "radial-gradient(ellipse at 76% 42%, rgba(138,180,248,0.08) 0%, rgba(138,180,248,0.03) 28%, transparent 60%), radial-gradient(ellipse at 68% 58%, rgba(123,207,159,0.06) 0%, transparent 42%), linear-gradient(180deg, rgba(13,17,23,0.6) 0%, rgba(13,17,23,0.24) 40%, rgba(13,17,23,0.58) 100%)",
         }}
       />
       <PageContainer sx={{ position: "relative", zIndex: 2 }}>
-        <Stack spacing={3} maxWidth={{ md: "min(48rem, 100%)" }}>
-          <Eyebrow>{home.heroEyebrow}</Eyebrow>
-          <Typography variant="h2" component="h1" fontWeight={700}>
-            {home.heroTitle}
-          </Typography>
-          <Typography variant="h6" component="p" color="#000" fontWeight={400}>
-            {home.heroSubtitle}
-          </Typography>
-          <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ pt: 1 }}>
-            <LinkButton href={contactHref} variant="contained" fullWidthMobile>
-              {home.ctaContact}
-            </LinkButton>
-            <LinkButton href={servicesHref} variant="outlined" fullWidthMobile>
-              {home.ctaServices}
-            </LinkButton>
-          </Stack>
-        </Stack>
+        <Grid container spacing={{ xs: 4, md: 2 }} alignItems="center">
+          <Grid size={{ xs: 12, md: 6 }}>
+            <Stack spacing={3}>
+              <Eyebrow
+                sx={{
+                  textTransform: "none",
+                  display: "inline-block",
+                  maxWidth: "100%",
+                  color: "transparent",
+                  backgroundImage:
+                    "linear-gradient(105deg, #4ea877 0%, #7bcf9f 30%, #e6edf6 50%, #7bcf9f 70%, #4ea877 100%)",
+                  backgroundSize: "240% 100%",
+                  WebkitBackgroundClip: "text",
+                  backgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  animation: "hero-eyebrow-shine 4s linear infinite",
+                  "@media (prefers-reduced-motion: reduce)": {
+                    animation: "none",
+                    backgroundImage: "none",
+                    backgroundSize: "auto",
+                    WebkitBackgroundClip: "unset",
+                    backgroundClip: "unset",
+                    WebkitTextFillColor: "unset",
+                    color: "secondary.main",
+                  },
+                }}
+              >
+                {home.heroEyebrow}
+              </Eyebrow>
+              <Typography variant="h2" component="h1" fontWeight={700}>
+                {home.heroTitle}
+              </Typography>
+              <Typography variant="h6" component="p" color="text.primary" fontWeight={400}>
+                {home.heroSubtitle}
+              </Typography>
+              <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ pt: 1 }}>
+                <LinkButton href={contactHref} variant="contained" fullWidthMobile>
+                  {home.ctaContact}
+                </LinkButton>
+                <LinkButton href={servicesHref} variant="outlined" fullWidthMobile>
+                  {home.ctaServices}
+                </LinkButton>
+              </Stack>
+            </Stack>
+          </Grid>
+          <Grid size={{ xs: 12, md: 6 }} sx={{ display: "flex", justifyContent: { md: "flex-end" } }}>
+            <HeroOrbBackground embedded orb={home.orb} />
+          </Grid>
+        </Grid>
       </PageContainer>
     </Section>
   );
@@ -394,8 +790,13 @@ export function MidParagraphSection({ home }: { home: HomeCopy }) {
   );
 }
 
-export function BuildSection({ home, locale }: SectionProps) {
+export function BuildSection({
+  home,
+  locale,
+  services,
+}: SectionProps & { services: ServicesCopy }) {
   const servicesHref = withLocale(locale, "/services");
+  const serviceDetails = [...services.primary, ...services.supporting];
   return (
     <Section spacing="lg" sx={{ bgcolor: "background.paper" }}>
       <PageContainer>
@@ -408,24 +809,13 @@ export function BuildSection({ home, locale }: SectionProps) {
             {home.buildLead}
           </Typography>
         </Stack>
-        <Grid container spacing={2}>
-          {home.scenarios.map((label) => (
-            <Grid key={label} size={{ xs: 12, sm: 6, md: 4 }}>
-              <Card variant="outlined" sx={{ height: "100%" }}>
-                <CardContent>
-                  <Typography variant="subtitle1" component="h3" fontWeight={650}>
-                    {label}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-        <Box sx={{ mt: 4 }}>
-          <LinkButton href={servicesHref} variant="contained">
-            {home.buildCta}
-          </LinkButton>
-        </Box>
+        <BuildSectionServiceCards
+          scenarios={home.scenarios}
+          serviceDetails={serviceDetails}
+          buildLead={home.buildLead}
+          buildCta={home.buildCta}
+          servicesHref={servicesHref}
+        />
       </PageContainer>
     </Section>
   );

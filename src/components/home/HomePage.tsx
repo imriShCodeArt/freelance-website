@@ -29,7 +29,7 @@ export default function HomePage({
       <HeroSection home={h} locale={locale} />
       <RealUseSection home={h} messages={messages} />
       <MidParagraphSection home={h} />
-      <BuildSection home={h} locale={locale} />
+      <BuildSection home={h} locale={locale} services={messages.services} />
       <WhySection home={h} />
       <ProcessSection home={h} stepPrefix={messages.common.stepPrefix} />
       <FeaturedWorkSection

@@ -4,27 +4,27 @@ import type { Locale } from "@/lib/i18n/config";
 const base = {
   cssVariables: true,
   palette: {
-    mode: "light" as const,
+    mode: "dark" as const,
     primary: {
-      main: "#1c2e45",
-      light: "#2d4a6f",
-      dark: "#121f30",
-      contrastText: "#fafbfc",
+      main: "#8ab4f8",
+      light: "#b8d0fb",
+      dark: "#5f8dd8",
+      contrastText: "#07111f",
     },
     secondary: {
-      main: "#3d5a4a",
-      light: "#527a63",
-      dark: "#2c4034",
+      main: "#7bcf9f",
+      light: "#a1dfb9",
+      dark: "#4ea877",
     },
     background: {
-      default: "#f6f7f9",
-      paper: "#ffffff",
+      default: "#0d1117",
+      paper: "#141b25",
     },
     text: {
-      primary: "#14181f",
-      secondary: "#4a5568",
+      primary: "#e6edf6",
+      secondary: "#aab8cb",
     },
-    divider: "rgba(20, 24, 31, 0.08)",
+    divider: "rgba(170, 184, 203, 0.22)",
   },
   shape: {
     borderRadius: 10,
@@ -69,6 +69,20 @@ const base = {
         root: {
           borderRadius: 8,
           paddingInline: 20,
+        },
+        contained: {
+          backgroundImage: "linear-gradient(135deg, #5f8dd8 0%, #8ab4f8 75%, #b8d0fb 100%)",
+          boxShadow: "0 6px 18px rgba(95, 141, 216, 0.32)",
+          "&:hover": {
+            backgroundImage: "linear-gradient(135deg, #557fc5 0%, #7ea9f4 55%, #acc7fa 100%)",
+            boxShadow: "0 10px 24px rgba(95, 141, 216, 0.4)",
+          },
+          "&:active": {
+            backgroundImage: "linear-gradient(135deg, #4a73b3 0%, #7099e4 52%, #9ebbf4 100%)",
+          },
+          "&.Mui-disabled": {
+            backgroundImage: "none",
+          },
         },
         sizeLarge: {
           paddingBlock: 12,
