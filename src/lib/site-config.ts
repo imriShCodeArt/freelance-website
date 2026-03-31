@@ -12,8 +12,17 @@ export const siteConfig = {
 } as const;
 
 export function getSiteUrl(): string {
-  return (
-    process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ??
-    "http://localhost:3000"
-  );
+  const fallback = "http://localhost:3000";
+  const raw = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+
+  if (!raw) return fallback;
+  if (raw.includes("@")) return fallback;
+
+  const normalized = raw.match(/^https?:\/\//i) ? raw : `https://${raw}`;
+
+  try {
+    return new URL(normalized).toString().replace(/\/$/, "");
+  } catch {
+    return fallback;
+  }
 }
