@@ -79,9 +79,9 @@ export default function ContactForm({ locale, contact }: Props) {
       <input type="hidden" name="locale" value={locale} />
       <input
         type="text"
-        name="company_website"
+        name="website_confirm"
         tabIndex={-1}
-        autoComplete="off"
+        autoComplete="new-password"
         aria-hidden
         style={{
           position: "absolute",

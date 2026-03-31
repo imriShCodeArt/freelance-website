@@ -60,8 +60,15 @@ export async function submitContact(
   const locale = localeFromForm(formData);
   const t = getMessages(locale).contact;
 
-  const trap = formData.get("company_website");
+  const trap = formData.get("website_confirm");
   if (trap != null && String(trap).trim() !== "") {
+    console.warn(
+      `${logPrefix()} spam trap filled`,
+      JSON.stringify({
+        value: String(trap).trim(),
+        env: process.env.VERCEL_ENV ?? "local",
+      }),
+    );
     return { submitted: true, message: t.actionThanksSpam };
   }
 
