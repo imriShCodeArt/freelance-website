@@ -53,6 +53,13 @@ function localeFromForm(formData: FormData): Locale {
   return hasLocale(raw) ? raw : defaultLocale;
 }
 
+function parseRecipientList(raw: string): string[] {
+  return raw
+    .split(",")
+    .map((value) => value.trim())
+    .filter(Boolean);
+}
+
 export async function submitContact(
   _prev: ContactState,
   formData: FormData,
@@ -95,13 +102,14 @@ export async function submitContact(
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.CONTACT_TO_EMAIL;
   const from = process.env.CONTACT_FROM_EMAIL ?? "onboarding@resend.dev";
+  const recipients = to ? parseRecipientList(to) : [];
 
-  if (!apiKey || !to) {
+  if (!apiKey || recipients.length === 0) {
     console.error(
       `${logPrefix()} email not configured`,
       JSON.stringify({
         hasApiKey: Boolean(apiKey),
-        hasTo: Boolean(to),
+        recipients,
         from,
         env: process.env.VERCEL_ENV ?? "local",
       }),
@@ -115,7 +123,7 @@ export async function submitContact(
   const resend = new Resend(apiKey);
   const { data, error } = await resend.emails.send({
     from,
-    to: [to],
+    to: recipients,
     replyTo: email,
     subject: `Inquiry from ${name} (${email})`,
     html: `<p><strong>Name:</strong> ${escapeHtml(name)}</p>
@@ -136,7 +144,7 @@ ${message}`,
       JSON.stringify({
         name,
         email,
-        to,
+        recipients,
         from,
         error,
         env: process.env.VERCEL_ENV ?? "local",
@@ -151,7 +159,7 @@ ${message}`,
     `${logPrefix()} resend send succeeded`,
     JSON.stringify({
       id: data?.id ?? null,
-      to,
+      recipients,
       from,
       replyTo: email,
       env: process.env.VERCEL_ENV ?? "local",
