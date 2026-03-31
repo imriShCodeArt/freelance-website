@@ -47,7 +47,7 @@ export const en = {
       after:
         "They moved day-to-day coordination into one web app. Managers see status at a glance, and updates no longer live in three different files.",
       approach:
-        "I mapped the real workflow first, then built a focused dashboard and role-based views. Performance and clarity mattered more than feature count.",
+        "The real workflow was mapped first, then translated into a focused dashboard and role-based views. Performance and clarity mattered more than feature count.",
     },
     "client-portal-booking": {
       title: "Client portal with booking handoff",
@@ -57,7 +57,7 @@ export const en = {
       after:
         "Clients log in, book or request changes, and upload files in one flow. Staff get structured requests instead of inbox archaeology.",
       approach:
-        "I kept the portal small and dependable: auth, booking rules, and notifications tied to how the business already worked.",
+        "The portal was kept small and dependable: auth, booking rules, and notifications tied to how the business already worked.",
     },
     "workflow-approvals": {
       title: "Internal workflow and approvals",
@@ -67,13 +67,13 @@ export const en = {
       after:
         "Requests have states, assignees, and history. The team can trace decisions without scrolling through old channels.",
       approach:
-        "I modeled the minimum viable states and built notifications around real handoffs—not a generic BPM monster.",
+        "Minimum viable states were modeled and notifications were built around real handoffs, not a generic BPM monster.",
     },
   },
   meta: {
     defaultTitle: "Web applications development, designed to perform and scale with your business",
     defaultDescription:
-      "Clean code, solid architecture, and ongoing support—ensuring your product remains reliable, adaptable, and ready to scale as your business grows.",
+      "Turn your idea into a product that automates your work and performs in the real world.",
     servicesTitle: "Services",
     servicesDescription:
       "Custom web app development, ongoing support, performance, accessibility, and technical SEO—explained in plain language for growing businesses.",
@@ -82,21 +82,21 @@ export const en = {
       "Case studies focused on business problems and outcomes: dashboards, portals, workflows, and internal tools.",
     aboutTitle: "About",
     aboutDescription:
-      "Independent freelance web developer focused on reliable custom web applications and long-term support for small and medium businesses.",
+      "Web development team focused on reliable custom web applications and long-term support for small and medium businesses.",
     contactTitle: "Contact",
     contactDescription:
       "Get in touch about custom web apps, dashboards, portals, and ongoing development support.",
   },
   home: {
     heroEyebrow: "Gush Etzion, Israel · Ready for Business",
-    heroTitle: "Custom web app development for growing businesses",
+    heroTitle: "Custom web app development",
     // heroTitle: "Web applications designed to perform and scale with your business",
     heroSubtitle:
-      "Clean code, solid architecture, and ongoing support—ensuring your product remains reliable, adaptable, and ready to scale as your business grows",
+      "Turn your idea into a product that automates your work and performs in the real world.",
     ctaContact: "Get in touch",
     ctaServices: "View services",
     orb: {
-      eyebrow: "web developer",
+      eyebrow: "web development",
       titleLine1: "Full-Stack",
       titleLine2: "AI-Powered",
       subtitle: "Building your digital future - one system at a time.",
@@ -129,13 +129,13 @@ export const en = {
       "Each example starts with a business problem and ends with what changed—not a feature laundry list.",
     workViewAll: "View all work",
     fitEyebrow: "Fit",
-    fitTitle: "Who I work best with",
+    fitTitle: "Who we work best with",
     fitHonestyEyebrow: "Honesty",
-    notFitTitle: "When I'm not the right fit",
+    notFitTitle: "When we're not the right fit",
     ctaBandTitle: "Ready to talk about your project?",
     ctaBandBody:
-      "Tell me what you're trying to fix or build. I usually respond within one business day, and we'll start with a short intro call—no commitment required.",
-    ctaBandButton: "Contact me",
+      "What is it that you need to fix or build? Let's talk about your product and see how we can get it up and running.",
+    ctaBandButton: "Contact us",
     scenarios: [
       "Product Discovery & Planning",
       "UX & System Design",
@@ -148,7 +148,7 @@ export const en = {
     differentiators: [
       {
         title: "Reliable delivery",
-        body: "I build carefully, communicate clearly, and keep commitments realistic.",
+        body: "Projects are built carefully, communication stays clear, and commitments stay realistic.",
       },
       {
         title: "High-quality codebase",
@@ -168,7 +168,7 @@ export const en = {
       },
       {
         title: "Long-term support",
-        body: "Not just launch—I stay available as your product and business evolve.",
+        body: "Support continues beyond launch as products and business needs evolve.",
       },
     ],
     processSteps: [
@@ -180,7 +180,7 @@ export const en = {
       {
         step: "2",
         title: "Design a focused build",
-        body: "I propose a scope that solves the core need first, with room to grow.",
+        body: "A scope is proposed that solves the core need first, with room to grow.",
       },
       {
         step: "3",
@@ -202,9 +202,9 @@ export const en = {
   },
   services: {
     eyebrow: "Services",
-    title: "What I do—and what it solves",
+    title: "What we do and what it solves",
     introP1:
-      "I work with businesses that need custom portals, dashboards, management systems, internal tools, booking or workflow systems, and client-facing platforms. If that sounds like you, the blocks below spell out how I help.",
+      "We work with businesses that need custom portals, dashboards, management systems, internal tools, booking or workflow systems, and client-facing platforms. If that sounds like your business, the blocks below explain how the work is delivered.",
     introBeforeWork: "See how this shows up in practice on the",
     introWorkLink: "work",
     introMiddle: "page, or jump straight to",
@@ -217,8 +217,8 @@ export const en = {
     cardWhen: "When you need it",
     cardWhatYouGet: "What you get",
     cardExamples: "Example use cases",
-    fitTitle: "Who I work best with",
-    notFitTitle: "When I'm not the right fit",
+    fitTitle: "Who we work best with",
+    notFitTitle: "When we're not the right fit",
     investmentTitle: "Investment expectations",
     investmentCta: "Discuss your project",
     investmentAfterQuote:
@@ -344,22 +344,22 @@ export const en = {
     eyebrowPrefix: "Case study ·",
     problemHeading: "What was the business problem?",
     afterHeading: "What changed after the solution?",
-    approachHeading: "How I approached it",
+    approachHeading: "How the solution was approached",
     cta: "Discuss something similar",
   },
   about: {
     eyebrow: "About",
-    title: "How I work—and why teams trust me with important systems",
-    p1: "I am an independent freelance web developer. I focus on building reliable, high-performance custom web applications for small and medium businesses that need ongoing technical support without hiring an in-house team.",
-    p2: "I act as an external development partner: I help you move beyond generic tools with software that fits how you actually operate—then I stay available as you grow.",
+    title: "How we work and why teams trust us with important systems",
+    p1: "We are a web development team focused on building reliable, high-performance custom web applications for small and medium businesses that need ongoing technical support without hiring a full in-house team.",
+    p2: "We act as an external development partner, helping businesses move beyond generic tools with software that fits how they actually operate, and remaining available as those operations grow.",
     styleTitle: "Working style",
     styleP1:
-      "I am straightforward in estimates, careful about scope, and consistent in communication. You should always know what is shipping next and why. I prefer small, verifiable steps over big-bang surprises.",
+      "We are straightforward in estimates, careful about scope, and consistent in communication. Teams should always know what is shipping next and why. Small, verifiable steps are preferred over big-bang surprises.",
     styleP2:
-      "Technically, I care about performance, accessibility, and maintainability from day one—because that is what keeps products pleasant to use and affordable to evolve.",
+      "Technically, performance, accessibility, and maintainability are treated as priorities from day one, because that is what keeps products pleasant to use and affordable to evolve.",
     expectTitle: "What you can expect",
     expectP1:
-      "Clear written updates, honest tradeoffs when requirements bump into time or budget, and code structured so the next developer (or future you) can reason about it. If I am not the right fit for a request, I will say so early.",
+      "Clear written updates, honest tradeoffs when requirements bump into time or budget, and code structured so the next developer or internal team can reason about it. If a request is not the right fit, that is made clear early.",
     ctaWork: "See work",
     ctaContact: "Get in touch",
   },
@@ -367,14 +367,14 @@ export const en = {
     eyebrow: "Contact",
     title: "Let's discuss your project",
     introP1:
-      "Share what you are trying to improve or build. I read every message and reply personally—usually within one business day. We start with a short intro call so I can understand fit and scope; no commitment required.",
-    introP2Before: "For context on how I work, see",
+      "Share what you are trying to improve or build. Every message is reviewed carefully, and replies usually arrive within one business day. The process starts with a short intro call to understand fit and scope, with no commitment required.",
+    introP2Before: "For context on how we work, see",
     introServices: "services",
     introAnd: "and",
     introWork: "work",
     introP2After: ".",
     preferEmail: "Prefer email?",
-    reachAt: "Reach me at",
+    reachAt: "Reach us at",
     formName: "Name",
     formEmail: "Email",
     formCompany: "Company (optional)",
@@ -384,22 +384,22 @@ export const en = {
     sendButton: "Send message",
     sending: "Sending…",
     emailPrefix: "Email:",
-    actionThanksSpam: "Thanks — I will be in touch soon.",
+    actionThanksSpam: "Thanks — someone from the team will be in touch soon.",
     fieldRequired: "This field is required.",
     errorPleaseReview: "Please review the highlighted fields.",
     errorRequired: "Please fill in your name, email, and message.",
     errorEmail: "Please enter a valid email address.",
     errorNotConfigured:
-      "Email delivery is not configured for this site yet. Use the address below to reach me directly.",
+      "Email delivery is not configured for this site yet. Use the address below to reach the team directly.",
     errorSendFailed:
-      "Something went wrong sending your message. Please try again or email me directly.",
+      "Something went wrong sending your message. Please try again or email the team directly.",
     successMessage:
-      "Thanks — I received your message. I usually reply within one business day.",
+      "Thanks — your message was received. Replies usually arrive within one business day.",
   },
   notFound: {
     kicker: "404",
     title: "Page not found",
-    body: "That URL does not exist or has moved. Head home or contact me if you were expecting something specific.",
+    body: "That URL does not exist or has moved. Head home or contact the team if you were expecting something specific.",
     home: "Back to home",
     contact: "Contact",
   },

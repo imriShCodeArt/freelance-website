@@ -11,8 +11,8 @@ import type { Messages } from "@/lib/i18n/get-messages";
 import type { Locale } from "@/lib/i18n/config";
 import { withLocale } from "@/lib/i18n/paths";
 
-import { FeaturedCaseStudyCard } from "./FeaturedCaseStudyCard";
-import { LinkButton } from "./LinkButton";
+import { FeaturedCaseStudyCard } from "./";
+import { LinkButton } from "../../shared/LinkButton";
 import type { CaseStudiesCopy, HomeCopy } from "./section-types";
 
 export function FeaturedWorkSection({

@@ -1,6 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import HomePage from "@/components/home/HomePage";
+import type { CaseStudyMeta } from "@/content/case-studies";
+import { caseStudies } from "@/content/case-studies";
+import {
+  BuildSection,
+  CtaBandSection,
+  FeaturedWorkSection,
+  FitSection,
+  HeroSection,
+  MidParagraphSection,
+  ProcessSection,
+  RealUseSection,
+  WhySection,
+} from "@/components/home/HomePageSections";
 import { hasLocale, type Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { localeAlternates } from "@/lib/i18n/metadata-helpers";
@@ -24,6 +36,25 @@ export default async function Home({ params }: Props) {
   if (!hasLocale(raw)) notFound();
   const locale = raw as Locale;
   const messages = getMessages(locale);
+  const h = messages.home;
+  const featured: CaseStudyMeta[] = caseStudies.slice(0, 2);
 
-  return <HomePage locale={locale} messages={messages} />;
+  return (
+    <>
+      <HeroSection home={h} locale={locale} />
+      <RealUseSection home={h} messages={messages} />
+      <MidParagraphSection home={h} />
+      <BuildSection home={h} locale={locale} services={messages.services} />
+      <WhySection home={h} />
+      <ProcessSection home={h} stepPrefix={messages.common.stepPrefix} />
+      <FeaturedWorkSection
+        home={h}
+        locale={locale}
+        messages={messages}
+        featured={featured}
+      />
+      <FitSection home={h} />
+      <CtaBandSection home={h} locale={locale} />
+    </>
+  );
 }

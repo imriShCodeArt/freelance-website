@@ -1,7 +1,7 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-import { BuildSectionServiceCards } from "./BuildSectionServiceCards";
+import { BuildSectionServiceCards } from "./";
 import Eyebrow from "@/components/layout/Eyebrow";
 import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";

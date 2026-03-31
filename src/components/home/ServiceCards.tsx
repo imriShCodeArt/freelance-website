@@ -1,11 +1,15 @@
-import type { BuildSectionServiceBlock } from "./buildSectionServiceTypes";
+import type { Messages } from "@/lib/i18n/get-messages";
 import {
   BuildSectionServiceCardRow,
   BuildSectionServiceCardsAccordion,
-} from "./BuildSectionServiceCardsAccordion";
+} from "./ServiceCardsAccordion";
 import { ServiceCardExpandedBody } from "./ServiceCardExpandedBody";
 
-export function BuildSectionServiceCards({
+type BuildSectionServiceBlock =
+  | Messages["services"]["primary"][number]
+  | Messages["services"]["supporting"][number];
+
+export default function ServiceCards({
   scenarios,
   serviceDetails,
   buildLead,

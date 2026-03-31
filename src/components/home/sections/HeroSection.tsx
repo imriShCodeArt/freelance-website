@@ -8,8 +8,8 @@ import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
 import { withLocale } from "@/lib/i18n/paths";
 
-import { HeroOrbBackground } from "./HeroOrbBackground";
-import { LinkButton } from "./LinkButton";
+import { HeroOrbBackground } from "./";
+import { LinkButton } from "../../shared/LinkButton";
 import type { SectionProps } from "./section-types";
 
 export function HeroSection({ home, locale }: SectionProps) {

@@ -3,8 +3,11 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Link from "next/link";
 
-import type { BuildSectionServiceBlock } from "./buildSectionServiceTypes";
-import { EXPANDABLE_CARD_CTA_DATA_ATTR } from "./expandableCardConstants";
+import type { Messages } from "@/lib/i18n/get-messages";
+
+type BuildSectionServiceBlock =
+  | Messages["services"]["primary"][number]
+  | Messages["services"]["supporting"][number];
 
 export function ServiceCardExpandedBody({
   detail,
@@ -40,7 +43,7 @@ export function ServiceCardExpandedBody({
       ) : null}
       <Link
         href={servicesHref}
-        {...{ [EXPANDABLE_CARD_CTA_DATA_ATTR]: "" }}
+        data-expandable-card-cta=""
         style={{ textDecoration: "none", display: "inline-flex" }}
         aria-label={`${label} - ${buildCta}`}
       >

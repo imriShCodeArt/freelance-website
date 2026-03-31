@@ -5,11 +5,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import { type MouseEvent, type ReactNode } from "react";
 
-import { EXPANDABLE_CARD_CTA_DATA_ATTR } from "./expandableCardConstants";
-
-export { EXPANDABLE_CARD_CTA_DATA_ATTR };
-
-const ctaSelector = `[${EXPANDABLE_CARD_CTA_DATA_ATTR}]`;
+const ctaSelector = "[data-expandable-card-cta]";
 
 export type ExpandableOutlineCardProps = {
   title: string;
@@ -24,8 +20,8 @@ export type ExpandableOutlineCardProps = {
 
 /**
  * Outlined card with accent top bar, hover lift, and an animated expand/collapse region
- * (grid 0fr/1fr). Use {@link EXPANDABLE_CARD_CTA_DATA_ATTR} on links/buttons that should
- * not trigger toggle when activated.
+ * (grid 0fr/1fr). Use `data-expandable-card-cta` on links/buttons that should not
+ * trigger toggle when activated.
  */
 export function ExpandableOutlineCard({
   title,

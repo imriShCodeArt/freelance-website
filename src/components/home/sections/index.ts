@@ -1,26 +1,23 @@
-export type { BuildSectionServiceBlock } from "./buildSectionServiceTypes";
 export { BuildSection } from "./BuildSection";
-export { BuildSectionServiceCards } from "./BuildSectionServiceCards";
+export { default as BuildSectionServiceCards } from "../ServiceCards";
 export {
   BuildSectionServiceCardsAccordion,
   BuildSectionServiceCardRow,
-} from "./BuildSectionServiceCardsAccordion";
-export { EXPANDABLE_CARD_CTA_DATA_ATTR } from "./expandableCardConstants";
-export { ExpandableOutlineCard } from "./ExpandableOutlineCard";
-export type { ExpandableOutlineCardProps } from "./ExpandableOutlineCard";
-export { ServiceCardExpandedBody } from "./ServiceCardExpandedBody";
+} from "../ServiceCardsAccordion";
+export { ExpandableOutlineCard } from "../ExpandableOutlineCard";
+export type { ExpandableOutlineCardProps } from "../ExpandableOutlineCard";
+export { ServiceCardExpandedBody } from "../ServiceCardExpandedBody";
 export { CtaBandSection } from "./CtaBandSection";
-export { FeaturedCaseStudyCard } from "./FeaturedCaseStudyCard";
+export { FeaturedCaseStudyCard } from "../FeaturedCaseStudyCard";
 export { FeaturedWorkSection } from "./FeaturedWorkSection";
 export { FitSection } from "./FitSection";
-export { HeroGeometricBackground } from "./HeroGeometricBackground";
-export { HeroOrbBackground } from "./HeroOrbBackground";
+export { HeroOrbBackground } from "../HeroOrbBackground";
 export { HeroSection } from "./HeroSection";
 export { MidParagraphSection } from "./MidParagraphSection";
 export { ProcessSection } from "./ProcessSection";
 export { RealUseSection } from "./RealUseSection";
 export { WhySection } from "./WhySection";
-export { WhySectionStarsBackground } from "./WhySectionStarsBackground";
+export { WhySectionStarsBackground } from "../WhySectionStarsBackground";
 export type {
   CaseStudiesCopy,
   HomeCopy,

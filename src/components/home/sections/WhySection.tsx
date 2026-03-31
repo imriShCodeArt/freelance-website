@@ -8,7 +8,7 @@ import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
 
 import type { HomeCopy } from "./section-types";
-import { WhySectionStarsBackground } from "./WhySectionStarsBackground";
+import { WhySectionStarsBackground } from "./";
 
 export function WhySection({ home }: { home: HomeCopy }) {
   return (

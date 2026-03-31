@@ -6,9 +6,9 @@ import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
 import { withLocale } from "@/lib/i18n/paths";
 
-import { LinkButton } from "./LinkButton";
+import { LinkButton } from "../../shared/LinkButton";
 import type { SectionProps } from "./section-types";
-import { WhySectionStarsBackground } from "./WhySectionStarsBackground";
+import { WhySectionStarsBackground } from "./";
 
 export function CtaBandSection({ home, locale }: SectionProps) {
   const contactHref = withLocale(locale, "/contact");
