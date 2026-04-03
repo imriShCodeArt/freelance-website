@@ -39,9 +39,6 @@ export function PackageAddOnsBlock({
             <Typography variant="subtitle1" fontWeight={650}>
               {addon.title}
             </Typography>
-            <Typography variant="body2" color="primary" fontWeight={600} sx={{ mt: 0.5 }}>
-              {addon.price}
-            </Typography>
             {addon.note ? (
               <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
                 {addon.note}
