@@ -8,13 +8,11 @@ import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
 
 import type { HomeCopy } from "./section-types";
-import { WhySectionStarsBackground } from "./";
 
 export function WhySection({ home }: { home: HomeCopy }) {
   return (
-    <Section spacing="lg" sx={{ position: "relative", overflow: "hidden" }}>
-      <WhySectionStarsBackground />
-      <PageContainer sx={{ position: "relative", zIndex: 1 }}>
+    <Section spacing="lg" sx={{ bgcolor: "background.paper" }}>
+      <PageContainer>
         <Eyebrow>{home.whyEyebrow}</Eyebrow>
         <Typography variant="h4" component="h2" fontWeight={700} gutterBottom>
           {home.whyTitle}

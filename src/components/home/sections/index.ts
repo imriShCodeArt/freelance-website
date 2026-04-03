@@ -15,6 +15,15 @@ export { HeroOrbBackground } from "../HeroOrbBackground";
 export { HeroSection } from "./HeroSection";
 export { MidParagraphSection } from "./MidParagraphSection";
 export { ProcessSection } from "./ProcessSection";
+export {
+  PackageAddOnsBlock,
+  PackageOfferCard,
+  PackagesSection,
+  SequentialPhaseBody,
+  TierColumn,
+  WhatYouGetBlock,
+} from "../packages";
+export type { PackageEntry, PackagesCopy } from "../packages";
 export { RealUseSection } from "./RealUseSection";
 export { WhySection } from "./WhySection";
 export { WhySectionStarsBackground } from "../WhySectionStarsBackground";

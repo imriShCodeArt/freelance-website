@@ -88,7 +88,7 @@ export const en = {
       "Get in touch about custom web apps, dashboards, portals, and ongoing development support.",
   },
   home: {
-    heroEyebrow: "Gush Etzion, Israel · Ready for Business",
+    heroEyebrow: "Driving Business Growth",
     heroTitle: "Custom web app development",
     // heroTitle: "Web applications designed to perform and scale with your business",
     heroSubtitle:
@@ -100,12 +100,12 @@ export const en = {
       titleLine1: "Full-Stack",
       titleLine2: "AI-Powered",
       subtitle: "Building your digital future - one system at a time.",
-      tags: ["React / Nextjs", "AI Automation", "Full-Stack Dev"],
+      tags: ["Web Applications", "AI Automation", "Digital Tools"],
     },
     realUseEyebrow: "Built for real business use",
-    realUseTitle: "Served for operations that can’t afford failure.",
+    realUseTitle: "Software that keeps your business moving",
     realUseP1:
-      "Focused on products people use every day—internal tools, portals, and workflows, not experiments that fall apart under load.",
+      "Focused on products people use every day—internal tools, portals, and workflows, delivering steady and battle tested solutions.",
     cardTypicalEngagements: "Typical engagements",
     cardBestFit: "Best fit",
     cardBestFitBody:
@@ -121,8 +121,10 @@ export const en = {
     whyTitle: "Quality products that allows you to grow",
     whyLead:
       "Delivering products with performance, accessibility, and maintainability in mind from the start, so your web-app is easier to use, easier to grow, and easier to support over time.",
-    processEyebrow: "How we work",
-    processTitle: "A straightforward process",
+    processEyebrow: "How it works",
+    processTitle: "From idea to production—without the chaos",
+    processSubtitle:
+      "A structured process that turns concepts into reliable, scalable web products.",
     workEyebrow: "Selected work",
     workTitle: "Case studies",
     workLead:
@@ -132,10 +134,10 @@ export const en = {
     fitTitle: "Who we work best with",
     fitHonestyEyebrow: "Honesty",
     notFitTitle: "When we're not the right fit",
-    ctaBandTitle: "Ready to talk about your project?",
+    ctaBandTitle: "Have an idea? Let's make it real",
     ctaBandBody:
-      "What is it that you need to fix or build? Let's talk about your product and see how we can get it up and running.",
-    ctaBandButton: "Contact us",
+      "Start with a short conversation. If it's a fit, we'll map the fastest path forward.",
+    ctaBandButton: "Start a project",
     scenarios: [
       "Product Discovery & Planning",
       "UX & System Design",
@@ -174,20 +176,127 @@ export const en = {
     processSteps: [
       {
         step: "1",
-        title: "Understand the problem",
-        body: "We align on workflow, users, and what success looks like before writing code.",
+        title: "Define",
+        body: "Turn your idea into a clear, executable plan.",
       },
       {
         step: "2",
-        title: "Design a focused build",
-        body: "A scope is proposed that solves the core need first, with room to grow.",
+        title: "Build",
+        body: "Launch a production-ready product with real users in mind.",
       },
       {
         step: "3",
-        title: "Ship and iterate",
-        body: "You get working software, clear handoff, and a path for ongoing improvements.",
+        title: "Grow",
+        body: "Evolve, improve, and scale—without rebuilding everything later.",
       },
     ],
+    packagesSection: {
+      eyebrow: "Packages",
+      title: "Outcomes and delivery certainty",
+      lead: "Clear paths, controlled execution, and real results—with transparent ranges. Final proposals depend on scope after a short discovery conversation.",
+      sequentialPathEyebrow: "Typical delivery sequence",
+      sequentialPathLead:
+        "Discovery Sprint, MVP Build, and Production Build are three chronological phases—each one builds on the last.",
+      pathStepProgress: (step: number) => `Step ${step} of 3`,
+      ongoingSectionEyebrow: "Then: continuous delivery",
+      whatYouGetLabel: "What you get",
+      timelineLabel: "Timeline",
+      pricingLabel: "Typical range",
+      packages: [
+        {
+          title: "Discovery Sprint",
+          subtitle: "Clarity before code",
+          items: [
+            "Product breakdown (features, flows, priorities)",
+            "UX direction (wireframes or flow-level structure)",
+            "Technical architecture (stack, data model, integrations)",
+            "Phased execution roadmap (MVP → scale)",
+            "Clear scope and cost ranges for the build",
+          ],
+          timeline: "3–7 days",
+          cta: "Start with a Discovery Sprint",
+        },
+        {
+          title: "MVP Build",
+          subtitle: "Launch a real product—not a prototype",
+          items: [
+            "Custom UI/UX design",
+            "Frontend and backend development",
+            "Authentication and user flows",
+            "Database and core business logic",
+            "Responsive, accessible interface",
+            "Deployment to production",
+            "Basic analytics and tracking",
+          ],
+          timeline: "3–8 weeks",
+          cta: "Build your MVP",
+        },
+        {
+          title: "Production Build",
+          subtitle: "Turn your product into a reliable system",
+          items: [
+            "Performance optimization (speed and load handling)",
+            "Advanced features and workflows",
+            "External integrations (APIs, payments, tools)",
+            "Improved UX based on real usage",
+            "Error handling and monitoring",
+            "Scalable architecture improvements",
+          ],
+          timeline: "1–3+ months",
+          cta: "Upgrade to production-grade",
+        },
+        {
+          title: "Ongoing Development",
+          subtitle: "A development team—without hiring one",
+          items: [
+            "Ongoing feature development",
+            "Bug fixes and support",
+            "Performance improvements",
+            "Technical guidance",
+            "Priority response times",
+          ],
+          cta: "Start ongoing development",
+          tiers: [
+            {
+              name: "Starter",
+              price: "$2,000/month",
+              detail: "Small updates and maintenance",
+            },
+            {
+              name: "Growth",
+              price: "$5,000/month",
+              detail: "Consistent feature delivery",
+            },
+            {
+              name: "Scale",
+              price: "$8,000–$10,000/month",
+              detail: "High priority, fast iteration",
+            },
+          ],
+        },
+      ],
+      addOnsTitle: "Enhancements that increase impact",
+      addOns: [
+        {
+          title: "UX/UI design",
+          price: "$1,500 – $5,000",
+          note: "Full product interface design",
+        },
+        {
+          title: "Performance optimization",
+          price: "$1,000 – $4,000",
+        },
+        {
+          title: "SEO and accessibility",
+          price: "$1,000 – $3,000",
+        },
+        {
+          title: "Hosting and DevOps",
+          price: "Setup: $500 – $2,000",
+          note: "Maintenance: $100 – $500/month",
+        },
+      ],
+    },
     stack: ["TypeScript", "React", "Next.js", "Node", "PostgreSQL", "REST & APIs"],
     fitBullets: [
       "Teams that need custom software tied to real workflows",

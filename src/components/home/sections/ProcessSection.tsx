@@ -22,6 +22,14 @@ export function ProcessSection({
         <Typography variant="h4" component="h2" fontWeight={700} gutterBottom>
           {home.processTitle}
         </Typography>
+        <Typography
+          variant="body1"
+          color="text.secondary"
+          maxWidth="56ch"
+          sx={{ mb: 2 }}
+        >
+          {home.processSubtitle}
+        </Typography>
         <Grid container spacing={3} sx={{ mt: 1 }}>
           {home.processSteps.map((step) => (
             <Grid key={step.step} size={{ xs: 12, md: 4 }}>

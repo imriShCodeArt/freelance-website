@@ -82,7 +82,7 @@ export function HeroSection({ home, locale }: SectionProps) {
               >
                 {home.heroEyebrow}
               </Eyebrow>
-              <Typography variant="h2" component="h1" fontWeight={700}>
+              <Typography variant="h2" component="h1" fontWeight={700} sx={{fontSize:{xs:"2.5rem", md:"3.5rem"}}}>
                 {home.heroTitle}
               </Typography>
               <Typography

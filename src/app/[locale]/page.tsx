@@ -9,6 +9,7 @@ import {
   FitSection,
   HeroSection,
   MidParagraphSection,
+  PackagesSection,
   ProcessSection,
   RealUseSection,
   WhySection,
@@ -44,9 +45,10 @@ export default async function Home({ params }: Props) {
       <HeroSection home={h} locale={locale} />
       <RealUseSection home={h} messages={messages} />
       <MidParagraphSection home={h} />
-      <BuildSection home={h} locale={locale} services={messages.services} />
-      <WhySection home={h} />
+      {/* <BuildSection home={h} locale={locale} services={messages.services} /> */}
       <ProcessSection home={h} stepPrefix={messages.common.stepPrefix} />
+      <PackagesSection home={h} locale={locale} />
+      <WhySection home={h} />
       <FeaturedWorkSection
         home={h}
         locale={locale}
