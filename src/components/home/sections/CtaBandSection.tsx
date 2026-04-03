@@ -6,7 +6,7 @@ import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
 import { withLocale } from "@/lib/i18n/paths";
 
-import { LinkButton } from "../../shared/LinkButton";
+import { LinkButton } from "@/components/ui/LinkButton";
 import type { SectionProps } from "./section-types";
 import { WhySectionStarsBackground } from "./";
 

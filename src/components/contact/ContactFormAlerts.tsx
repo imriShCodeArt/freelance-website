@@ -1,0 +1,60 @@
+"use client";
+
+import Alert from "@mui/material/Alert";
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
+import type { RefObject } from "react";
+import type { Messages } from "@/messages/en";
+import { siteConfig } from "@/lib/site-config";
+
+import type { ContactState } from "./actions";
+
+const ERROR_SUMMARY_ID = "contact-form-error-summary";
+
+export function ContactFormSuccessAlert({ message }: { message: string }) {
+  return (
+    <Alert
+      severity="success"
+      role="status"
+      aria-live="polite"
+      sx={{ maxWidth: 560 }}
+    >
+      {message}
+    </Alert>
+  );
+}
+
+type ErrorSummaryProps = {
+  contact: Messages["contact"];
+  state: Pick<ContactState, "error" | "notConfigured" | "fieldErrors">;
+  errorSummaryRef: RefObject<HTMLDivElement | null>;
+  hasFieldErrors: boolean;
+};
+
+export function ContactFormErrorSummary({
+  contact,
+  state,
+  errorSummaryRef,
+  hasFieldErrors,
+}: ErrorSummaryProps) {
+  return (
+    <Alert
+      ref={errorSummaryRef}
+      severity={state.notConfigured ? "info" : "error"}
+      role="alert"
+      aria-live="assertive"
+      tabIndex={-1}
+      id={ERROR_SUMMARY_ID}
+    >
+      {hasFieldErrors ? contact.errorPleaseReview : state.error}
+      {state.notConfigured ? (
+        <Typography variant="body2" sx={{ mt: 1 }}>
+          {contact.emailPrefix}{" "}
+          <Link href={`mailto:${siteConfig.publicContactEmail}`}>
+            {siteConfig.publicContactEmail}
+          </Link>
+        </Typography>
+      ) : null}
+    </Alert>
+  );
+}

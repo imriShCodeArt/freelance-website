@@ -13,12 +13,8 @@ export function TierColumn({ offer }: { offer: PackageEntry }) {
       component="ul"
       sx={{
         listStyle: "none",
-        p: 0,
         m: 0,
-        alignItems: { xs: "stretch", sm: "flex-end" },
-        textAlign: { xs: "start", sm: "end" },
-        width: { xs: "100%", sm: "fit-content" },
-        maxWidth: "100%",
+        width:"100%",
       }}
     >
       {offer.tiers.map((tier) => (

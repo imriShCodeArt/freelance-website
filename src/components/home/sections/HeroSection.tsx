@@ -6,10 +6,10 @@ import Typography from "@mui/material/Typography";
 import Eyebrow from "@/components/layout/Eyebrow";
 import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
+import { LinkButton } from "@/components/ui/LinkButton";
 import { withLocale } from "@/lib/i18n/paths";
 
 import { HeroOrbBackground } from "./";
-import { LinkButton } from "../../shared/LinkButton";
 import type { SectionProps } from "./section-types";
 
 export function HeroSection({ home, locale }: SectionProps) {

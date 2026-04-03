@@ -1,12 +1,12 @@
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-import { BuildSectionServiceCards } from "./";
 import Eyebrow from "@/components/layout/Eyebrow";
 import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
 import { withLocale } from "@/lib/i18n/paths";
 
+import { BuildSectionServiceCards } from "./";
 import type { SectionProps, ServicesCopy } from "./section-types";
 
 export function BuildSection({

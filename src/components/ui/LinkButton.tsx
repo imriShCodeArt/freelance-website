@@ -2,6 +2,7 @@ import Button from "@mui/material/Button";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
+/** App-wide primitive: Next.js link styled as a large MUI button. */
 export function LinkButton({
   href,
   variant,

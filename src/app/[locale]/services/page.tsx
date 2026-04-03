@@ -3,6 +3,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import Chip from "@mui/material/Chip";
 import Divider from "@mui/material/Divider";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
@@ -39,12 +40,17 @@ type ServiceBlockCopy = {
   examples: readonly string[];
 };
 
+const SEQUENTIAL_PACKAGE_COUNT = 3;
+
 function ServiceCard({
   block,
   labels,
+  stepProgressLabel,
 }: {
   block: ServiceBlockCopy;
   labels: ReturnType<typeof getMessages>["services"];
+  /** Step badge for the first three chronological packages (e.g. “Step 1 of 3”). */
+  stepProgressLabel?: string;
 }) {
   return (
     <Card
@@ -76,6 +82,15 @@ function ServiceCard({
       }}
     >
       <CardContent>
+        {stepProgressLabel ? (
+          <Chip
+            size="small"
+            label={stepProgressLabel}
+            color="secondary"
+            variant="outlined"
+            sx={{ mb: 1.5, fontWeight: 700 }}
+          />
+        ) : null}
         <Typography variant="h5" component="h3" fontWeight={700} gutterBottom>
           {block.title}
         </Typography>
@@ -141,6 +156,10 @@ export default async function ServicesPage({ params }: Props) {
   const locale = raw as Locale;
   const messages = getMessages(locale);
   const s = messages.services;
+  const packagesCopy = messages.home.packagesSection;
+  const sequentialBlocks = s.primary.slice(0, SEQUENTIAL_PACKAGE_COUNT);
+  const ongoingBlock = s.primary[SEQUENTIAL_PACKAGE_COUNT];
+  const homePackagesHref = `${withLocale(locale, "/")}#packages`;
   const workHref = withLocale(locale, "/work");
   const contactHref = withLocale(locale, "/contact");
 
@@ -154,6 +173,13 @@ export default async function ServicesPage({ params }: Props) {
           </Typography>
           <Typography variant="body1" color="text.secondary" maxWidth="65ch" sx={{ mb: 2 }}>
             {s.introP1}
+          </Typography>
+          <Typography variant="body2" color="text.secondary" maxWidth="65ch" sx={{ mb: 2 }}>
+            {s.introPackagesBefore}
+            <RouterLink href={homePackagesHref} fontWeight={600}>
+              {s.introPackagesLink}
+            </RouterLink>
+            {s.introPackagesAfter}
           </Typography>
           <Typography variant="body2" color="text.secondary" maxWidth="65ch">
             {s.introBeforeWork}{" "}
@@ -174,16 +200,55 @@ export default async function ServicesPage({ params }: Props) {
           <Typography variant="overline" color="secondary" fontWeight={700} letterSpacing="0.1em">
             {s.primaryLabel}
           </Typography>
-          <Typography variant="h4" component="h2" fontWeight={700} sx={{ mb: 3 }}>
+          <Typography variant="h4" component="h2" fontWeight={700} sx={{ mb: 1.5 }}>
             {s.primaryHeading}
           </Typography>
-          <Grid container spacing={3}>
-            {s.primary.map((block) => (
-              <Grid key={block.title} size={{ xs: 12, md: 6 }}>
-                <ServiceCard block={block} labels={s} />
+          <Typography variant="overline" color="secondary" fontWeight={700} letterSpacing="0.08em" display="block">
+            {packagesCopy.sequentialPathEyebrow}
+          </Typography>
+          <Typography variant="body1" color="text.secondary" maxWidth="72ch" sx={{ mb: 3 }}>
+            {packagesCopy.sequentialPathLead}
+          </Typography>
+          <Grid
+            container
+            spacing={3}
+            component="ol"
+            sx={{ m: 0, p: 0, listStyle: "none" }}
+          >
+            {sequentialBlocks.map((block, index) => (
+              <Grid
+                key={block.title}
+                component="li"
+                size={{ xs: 12, md: 4 }}
+                sx={{ display: "flex" }}
+              >
+                <ServiceCard
+                  block={block}
+                  labels={s}
+                  stepProgressLabel={packagesCopy.pathStepProgress(index + 1)}
+                />
               </Grid>
             ))}
           </Grid>
+          {ongoingBlock ? (
+            <Box sx={{ mt: 4 }}>
+              <Typography
+                variant="overline"
+                color="secondary"
+                fontWeight={700}
+                letterSpacing="0.1em"
+                component="p"
+                sx={{ mb: 2 }}
+              >
+                {packagesCopy.ongoingSectionEyebrow}
+              </Typography>
+              <Grid container spacing={3}>
+                <Grid size={{ xs: 12, md: 8 }} sx={{ mx: { md: "auto" } }}>
+                  <ServiceCard block={ongoingBlock} labels={s} />
+                </Grid>
+              </Grid>
+            </Box>
+          ) : null}
         </PageContainer>
       </Section>
 

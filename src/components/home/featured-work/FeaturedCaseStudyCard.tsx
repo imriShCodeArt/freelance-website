@@ -9,7 +9,7 @@ import type { CaseStudyMeta } from "@/content/case-studies";
 import type { Locale } from "@/lib/i18n/config";
 import { withLocale } from "@/lib/i18n/paths";
 
-import type { CaseStudiesCopy } from "./sections/section-types";
+import type { CaseStudiesCopy } from "@/components/home/sections/section-types";
 
 export function FeaturedCaseStudyCard({
   locale,

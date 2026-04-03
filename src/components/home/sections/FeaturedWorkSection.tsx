@@ -12,7 +12,7 @@ import type { Locale } from "@/lib/i18n/config";
 import { withLocale } from "@/lib/i18n/paths";
 
 import { FeaturedCaseStudyCard } from "./";
-import { LinkButton } from "../../shared/LinkButton";
+import { LinkButton } from "@/components/ui/LinkButton";
 import type { CaseStudiesCopy, HomeCopy } from "./section-types";
 
 export function FeaturedWorkSection({

@@ -3,7 +3,7 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-import { LinkButton } from "../../shared/LinkButton";
+import { LinkButton } from "@/components/ui/LinkButton";
 
 import { SequentialPhaseBody } from "./SequentialPhaseBody";
 import { TierColumn } from "./TierColumn";
@@ -51,7 +51,12 @@ export function PackageOfferCard({
             color: "primary.contrastText",
           }}
         >
-          <Typography variant="caption" fontWeight={700} component="p" sx={{ m: 0 }}>
+          <Typography
+            variant="caption"
+            fontWeight={700}
+            component="p"
+            sx={{ m: 0 }}
+          >
             {stepLabel}
           </Typography>
         </Box>
@@ -72,11 +77,11 @@ export function PackageOfferCard({
           spacing={2}
           sx={{ flex: 1, alignContent: "flex-start" }}
         >
-          <Grid size={{ xs: 12, md: 7 }}>
+          <Grid size={{ xs: 12, md: 6 }}>
             <WhatYouGetBlock offer={offer} labels={labels} />
           </Grid>
           <Grid
-            size={{ xs: 12, md: 5 }}
+            size={{ xs: 12, md: 6 }}
             sx={{
               display: "flex",
               flexDirection: "column",

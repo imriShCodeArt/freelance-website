@@ -9,7 +9,7 @@ import Section from "@/components/layout/Section";
 import { withLocale } from "@/lib/i18n/paths";
 import type { Locale } from "@/lib/i18n/config";
 
-import { WhySectionStarsBackground } from "../WhySectionStarsBackground";
+import { WhySectionStarsBackground } from "../decor/WhySectionStarsBackground";
 import type { HomeCopy } from "./section-types";
 
 import { PackageAddOnsBlock } from "../packages/PackageAddOnsBlock";
@@ -30,7 +30,7 @@ export function PackagesSection({
   const followingPackages = p.packages.slice(SEQUENTIAL_PHASE_COUNT);
 
   return (
-    <Section spacing="lg" sx={{ position: "relative", overflow: "hidden" }}>
+    <Section id="packages" spacing="lg" sx={{ position: "relative", overflow: "hidden" }}>
       <WhySectionStarsBackground />
       <PageContainer sx={{ position: "relative", zIndex: 1 }}>
         <Stack spacing={1} sx={{ mb: 4 }}>

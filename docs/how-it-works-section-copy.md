@@ -53,10 +53,6 @@ Know exactly what to build, how it works, and what it will take—before develop
 
 3–7 days
 
-## Pricing
-
-**$1,500 – $4,000**
-
 ## CTA
 
 **Start with a Discovery Sprint**
@@ -109,8 +105,6 @@ A functional, production-ready web app built for real users and real usage.
 3–8 weeks
 
 ## Pricing
-
-**$8,000 – $30,000**
 
 ## CTA
 
@@ -180,8 +174,6 @@ Stability, performance, and scalability for products that people depend on daily
 1–3+ months
 
 ## Pricing
-
-**$20,000 – $80,000+**
 
 ## CTA
 
@@ -290,21 +282,15 @@ High priority, fast iteration
 
 ### UX/UI Design
 
-$1,500 – $5,000
 Full product interface design
 
 ### Performance Optimization
 
-$1,000 – $4,000
-
 ### SEO & Accessibility
-
-$1,000 – $3,000
 
 ### Hosting & DevOps
 
-Setup: $500 – $2,000
-Maintenance: $100 – $500/month
+Setup & Maintenance
 
 ---
 

@@ -12,7 +12,7 @@ import { getMessages } from "@/lib/i18n/get-messages";
 import { localeAlternates } from "@/lib/i18n/metadata-helpers";
 import { withLocale } from "@/lib/i18n/paths";
 import { siteConfig } from "@/lib/site-config";
-import ContactForm from "./ContactForm";
+import ContactForm from "@/components/contact";
 
 type Props = { params: Promise<{ locale: string }> };
 
