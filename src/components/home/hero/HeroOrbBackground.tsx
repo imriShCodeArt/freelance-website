@@ -317,7 +317,8 @@ export function HeroOrbBackground({
           sx={{
             position: "absolute",
             zIndex: 6,
-            right: { xs: -6, md: -18 },
+            /* Logical edge: outer side of the orb follows reading direction (RTL → screen right). */
+            insetInlineEnd: { xs: -6, md: -18 },
             top: { xs: 118, md: 106 },
             display: { xs: "none", md: "grid" },
             gap: 1.25,
