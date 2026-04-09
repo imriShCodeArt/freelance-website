@@ -1,19 +1,9 @@
 "use client";
 
-import Alert from "@mui/material/Alert";
 import Link from "@mui/material/Link";
-import Snackbar from "@mui/material/Snackbar";
 import type { LinkProps } from "@mui/material/Link";
-import { useCallback, useState, useSyncExternalStore, type ReactNode } from "react";
-import { createPortal } from "react-dom";
-
-function useIsClient() {
-  return useSyncExternalStore(
-    () => () => {},
-    () => true,
-    () => false,
-  );
-}
+import type { ReactNode } from "react";
+import { useCopyEmailClipboard } from "./useCopyEmailClipboard";
 
 type CopyEmailLinkProps = {
   email: string;
@@ -35,58 +25,18 @@ export function CopyEmailLink({
   underline = "hover",
   sx,
 }: CopyEmailLinkProps) {
-  const [open, setOpen] = useState(false);
-  const [toastMessage, setToastMessage] = useState("");
-  const [severity, setSeverity] = useState<"success" | "error">("success");
-  const isClient = useIsClient();
-
-  const handleClose = useCallback(
-    (_: unknown, reason?: string) => {
-      if (reason === "clickaway") return;
-      setOpen(false);
-    },
-    [],
-  );
-
-  const handleClick = useCallback(async () => {
-    try {
-      await navigator.clipboard.writeText(email);
-      setSeverity("success");
-      setToastMessage(copiedToast);
-      setOpen(true);
-    } catch {
-      setSeverity("error");
-      setToastMessage(copyFailedToast);
-      setOpen(true);
-    }
-  }, [email, copiedToast, copyFailedToast]);
-
-  const snackbar = isClient ? (
-    <Snackbar
-      open={open}
-      autoHideDuration={5000}
-      onClose={handleClose}
-      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-    >
-      <Alert
-        onClose={handleClose}
-        severity={severity}
-        variant="filled"
-        role="status"
-        aria-live="polite"
-        sx={{ width: "100%" }}
-      >
-        {toastMessage}
-      </Alert>
-    </Snackbar>
-  ) : null;
+  const { copy, snackbarPortal } = useCopyEmailClipboard({
+    email,
+    copiedToast,
+    copyFailedToast,
+  });
 
   return (
     <>
       <Link
         component="button"
         type="button"
-        onClick={handleClick}
+        onClick={() => void copy()}
         aria-label={ariaLabel}
         color={color}
         variant={variant}
@@ -101,7 +51,7 @@ export function CopyEmailLink({
       >
         {children}
       </Link>
-      {snackbar && createPortal(snackbar, document.body)}
+      {snackbarPortal}
     </>
   );
 }
