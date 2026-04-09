@@ -210,6 +210,10 @@ export const he: Messages = {
     cardStackLabel: "סטאק",
     cardHighlightsLabel: "נקודות שיא",
     cardRecruiterLabel: "למה זה חשוב",
+    aboutCtaTitle: "רוצים את התמונה המלאה?",
+    aboutCtaBody:
+      "בעמוד אודות תמצאו רקע, איך אני עובד, ואילו תפקידים אני מחפש.",
+    aboutCtaButton: "אודות",
   },
   workDetail: {
     back: "כל הפרויקטים",

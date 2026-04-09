@@ -208,6 +208,10 @@ export const en = {
     cardStackLabel: "Stack",
     cardHighlightsLabel: "Highlights",
     cardRecruiterLabel: "Why it matters",
+    aboutCtaTitle: "Want the full picture?",
+    aboutCtaBody:
+      "The About page covers my background, how I work, and the roles I am targeting.",
+    aboutCtaButton: "About",
   },
   workDetail: {
     back: "All projects",

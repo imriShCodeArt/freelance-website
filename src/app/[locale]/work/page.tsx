@@ -51,6 +51,7 @@ export default async function WorkPage({ params }: Props) {
   const messages = getMessages(locale);
   const w = messages.work;
   const contactHref = withLocale(locale, "/contact");
+  const aboutHref = withLocale(locale, "/about");
 
   return (
     <>
@@ -71,7 +72,7 @@ export default async function WorkPage({ params }: Props) {
         </PageContainer>
       </Section>
 
-      <Section spacing="lg" sx={{ pb: { xs: 8, md: 10 } }}>
+      <Section spacing="lg">
         <PageContainer>
           <Typography component="h2" sx={visuallyHidden}>
             {w.caseStudiesListHeading}
@@ -148,6 +149,36 @@ export default async function WorkPage({ params }: Props) {
               );
             })}
           </Grid>
+        </PageContainer>
+      </Section>
+
+      <Section spacing="md" sx={{ pb: { xs: 8, md: 10 } }}>
+        <PageContainer>
+          <Stack
+            spacing={2}
+            sx={{
+              p: { xs: 3, md: 4 },
+              borderRadius: 2,
+              border: 1,
+              borderColor: "divider",
+              bgcolor: "background.paper",
+              maxWidth: 640,
+            }}
+          >
+            <Typography variant="h5" component="h2" fontWeight={700}>
+              {w.aboutCtaTitle}
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              {w.aboutCtaBody}
+            </Typography>
+            <Box>
+              <NextLink href={aboutHref} style={{ textDecoration: "none" }}>
+                <Button component="span" variant="contained" size="large">
+                  {w.aboutCtaButton}
+                </Button>
+              </NextLink>
+            </Box>
+          </Stack>
         </PageContainer>
       </Section>
     </>
