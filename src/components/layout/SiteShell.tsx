@@ -5,6 +5,7 @@ import { getMainNav } from "@/lib/navigation";
 import { siteConfig } from "@/lib/site-config";
 import SiteFooter from "./SiteFooter";
 import SiteHeader from "./SiteHeader";
+import SiteMainStarsBackdrop from "./SiteMainStarsBackdrop";
 
 export default function SiteShell({
   locale,
@@ -36,9 +37,25 @@ export default function SiteShell({
       <Box
         id="main-content"
         component="main"
-        sx={{ flex: 1, display: "flex", flexDirection: "column" }}
+        sx={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+          position: "relative",
+        }}
       >
-        {children}
+        <SiteMainStarsBackdrop />
+        <Box
+          sx={{
+            position: "relative",
+            zIndex: 1,
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {children}
+        </Box>
       </Box>
       <SiteFooter nav={nav} messages={messages} />
     </Box>
