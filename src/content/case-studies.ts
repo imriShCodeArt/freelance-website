@@ -53,8 +53,7 @@ export const caseStudies: readonly CaseStudy[] = [
     },
     he: {
       title: "Sushi Bayit Vegan",
-      summary:
-        "אתר מסעדה המשלב WordPress עם חוויית חנות מבוססת React.",
+      summary: "אתר מסעדה המשלב WordPress עם חוויית חנות מבוססת React.",
       role: "מפתח פרונטאנד ו-WordPress.",
       highlights: [
         "פיתחתי ושילבתי רכיבי React אינטראקטיביים עבור חוויית החנות.",
@@ -71,53 +70,6 @@ export const caseStudies: readonly CaseStudy[] = [
         "פיתחתי ושילבתי רכיבי React מותאמים עבור חלון החנות, ומימשתי לוגיקה תומכת ב-PHP כדי להרחיב את הפונקציונליות של האתר בתוך WordPress.",
       outcomes:
         "התוצאה היתה חוויית הזמנה אינטראקטיבית ומלוטשת יותר למסעדה. זה מדגים עבודת React פרקטית בתוך סביבת CMS קיימת, יחד עם התאמות WordPress ושיפור UX.",
-    },
-  },
-  {
-    slug: "simplee-exam-platform",
-    kind: "product",
-    stack: ["React", "JavaScript", "GitHub", "Asana"] as const,
-    en: {
-      title: "Simplee Exam Platform",
-      summary:
-        "Remote exam and test management application with evaluator and exam-facing interfaces.",
-      role: "Frontend contributor on a remote product team.",
-      highlights: [
-        "Contributed to a remote exam and test management system with monitoring and proctoring capabilities.",
-        "Implemented frontend refinements to help move the product toward production readiness.",
-        "Collaborated remotely using GitHub and Asana while improving React components across multiple interfaces.",
-      ] as const,
-      recruiterAngle:
-        "Relevant for product teams looking for someone who can contribute inside an existing React codebase and help push features toward release readiness.",
-      overview:
-        "Simplee was a remote exam and test management application with dedicated product surfaces for evaluation and exam workflows. My work focused on improving the frontend experience as the product moved toward release.",
-      engineeringChallenges:
-        "The work involved contributing inside an existing product with multiple interfaces, where the challenge was refining components and flows without disrupting a system already heading toward production.",
-      implementationNotes:
-        "I worked on React components and frontend refinements across both sides of the application, collaborating as part of a remote team and aligning implementation work through GitHub and Asana.",
-      outcomes:
-        "The result was a more polished and production-ready frontend across key parts of the application. It demonstrates collaboration inside an active product team, component-level improvement, and the ability to contribute effectively without owning the whole system.",
-    },
-    he: {
-      title: "Simplee Exam Platform",
-      summary:
-        "אפליקציית ניהול בחינות ומבחנים מרחוק עם ממשקי בוחנים ונבחנים.",
-      role: "תורם פרונטאנד בתוך צוות מוצר מרוחק.",
-      highlights: [
-        "תרמתי למערכת בחינות ומבחנים מרחוק עם יכולות ניטור ו-proctoring.",
-        "מימשתי שיפורי פרונטאנד שסייעו לקדם את המוצר למוכנות לפרודקשן.",
-        "שיתפתי פעולה מרחוק דרך GitHub ו-Asana תוך שיפור רכיבי React במספר ממשקים.",
-      ],
-      recruiterAngle:
-        "רלוונטי לצוותי מוצר שמחפשים מישהו שיודע להשתלב בבסיס קוד React קיים ולעזור לקדם פיצ'רים למוכנות שחרור.",
-      overview:
-        "Simplee היתה אפליקציית ניהול בחינות ומבחנים מרחוק עם ממשקים נפרדים לבוחנים ולנבחנים. העבודה שלי התמקדה בשיפור חוויית הפרונטאנד בזמן שהמוצר התקדם לקראת שחרור.",
-      engineeringChallenges:
-        "העבודה דרשה השתלבות בתוך מוצר קיים עם כמה ממשקים, כשהאתגר היה ללטש רכיבים וזרימות בלי להפריע למערכת שכבר התקדמה לכיוון פרודקשן.",
-      implementationNotes:
-        "עבדתי על רכיבי React ועל שיפורי פרונטאנד בשני צדי האפליקציה, תוך שיתוף פעולה כחלק מצוות מרוחק ויישור קו דרך GitHub ו-Asana.",
-      outcomes:
-        "התוצאה היתה פרונטאנד מלוטש ומוכן יותר לפרודקשן בחלקים מרכזיים של האפליקציה. זה מדגים עבודה כחלק מצוות מוצר פעיל, שיפור ברמת רכיב ויכולת לתרום ביעילות גם בלי בעלות על כל המערכת.",
     },
   },
   {
@@ -165,6 +117,52 @@ export const caseStudies: readonly CaseStudy[] = [
         "מימשתי את התוסף ב-PHP על בסיס WordPress ו-WooCommerce, הוספתי הודעות SMS לעדכוני סטטוס, ובניתי לוגיקה מותאמת לטיפול בהזמנות וחישוב עומס למטבח.",
       outcomes:
         "התוצאה היתה זרימת הזמנות שימושית יותר תפעולית, שחיברה בין החנות לבין המימוש בשטח. זה מדגים פיתוח תוספים מותאם, חשיבה מערכתית ונוחות עם עבודת אינטגרציה.",
+    },
+  },
+  {
+    slug: "simplee-exam-platform",
+    kind: "product",
+    stack: ["React", "JavaScript", "GitHub", "Asana"] as const,
+    en: {
+      title: "Simplee Exam Platform",
+      summary:
+        "Remote exam and test management application with evaluator and exam-facing interfaces.",
+      role: "Frontend contributor on a remote product team.",
+      highlights: [
+        "Contributed to a remote exam and test management system with monitoring and proctoring capabilities.",
+        "Implemented frontend refinements to help move the product toward production readiness.",
+        "Collaborated remotely using GitHub and Asana while improving React components across multiple interfaces.",
+      ] as const,
+      recruiterAngle:
+        "Relevant for product teams looking for someone who can contribute inside an existing React codebase and help push features toward release readiness.",
+      overview:
+        "Simplee was a remote exam and test management application with dedicated product surfaces for evaluation and exam workflows. My work focused on improving the frontend experience as the product moved toward release.",
+      engineeringChallenges:
+        "The work involved contributing inside an existing product with multiple interfaces, where the challenge was refining components and flows without disrupting a system already heading toward production.",
+      implementationNotes:
+        "I worked on React components and frontend refinements across both sides of the application, collaborating as part of a remote team and aligning implementation work through GitHub and Asana.",
+      outcomes:
+        "The result was a more polished and production-ready frontend across key parts of the application. It demonstrates collaboration inside an active product team, component-level improvement, and the ability to contribute effectively without owning the whole system.",
+    },
+    he: {
+      title: "Simplee Exam Platform",
+      summary: "אפליקציית ניהול בחינות ומבחנים מרחוק עם ממשקי בוחנים ונבחנים.",
+      role: "תורם פרונטאנד בתוך צוות מוצר מרוחק.",
+      highlights: [
+        "תרמתי למערכת בחינות ומבחנים מרחוק עם יכולות ניטור ו-proctoring.",
+        "מימשתי שיפורי פרונטאנד שסייעו לקדם את המוצר למוכנות לפרודקשן.",
+        "שיתפתי פעולה מרחוק דרך GitHub ו-Asana תוך שיפור רכיבי React במספר ממשקים.",
+      ],
+      recruiterAngle:
+        "רלוונטי לצוותי מוצר שמחפשים מישהו שיודע להשתלב בבסיס קוד React קיים ולעזור לקדם פיצ'רים למוכנות שחרור.",
+      overview:
+        "Simplee היתה אפליקציית ניהול בחינות ומבחנים מרחוק עם ממשקים נפרדים לבוחנים ולנבחנים. העבודה שלי התמקדה בשיפור חוויית הפרונטאנד בזמן שהמוצר התקדם לקראת שחרור.",
+      engineeringChallenges:
+        "העבודה דרשה השתלבות בתוך מוצר קיים עם כמה ממשקים, כשהאתגר היה ללטש רכיבים וזרימות בלי להפריע למערכת שכבר התקדמה לכיוון פרודקשן.",
+      implementationNotes:
+        "עבדתי על רכיבי React ועל שיפורי פרונטאנד בשני צדי האפליקציה, תוך שיתוף פעולה כחלק מצוות מרוחק ויישור קו דרך GitHub ו-Asana.",
+      outcomes:
+        "התוצאה היתה פרונטאנד מלוטש ומוכן יותר לפרודקשן בחלקים מרכזיים של האפליקציה. זה מדגים עבודה כחלק מצוות מוצר פעיל, שיפור ברמת רכיב ויכולת לתרום ביעילות גם בלי בעלות על כל המערכת.",
     },
   },
   {
@@ -243,8 +241,7 @@ export const caseStudies: readonly CaseStudy[] = [
     },
     he: {
       title: "WooCommerce Product Composer",
-      summary:
-        "תוסף מותאם לבניית חבילות מוצרים ישירות מעמוד המוצר.",
+      summary: "תוסף מותאם לבניית חבילות מוצרים ישירות מעמוד המוצר.",
       role: "מפתח WordPress ו-WooCommerce עם דגש על UX מוצרי.",
       highlights: [
         "אפשרתי יצירת חבילות מוצרים דינמיות ישירות מעמוד המוצר.",
