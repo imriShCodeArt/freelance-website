@@ -27,7 +27,7 @@ export const en = {
   },
   footer: {
     tagline:
-      "Frontend / full-stack developer focused on React, Next.js, WordPress, WooCommerce, and production web systems.",
+      "Frontend / Full-Stack Developer focused on React, Next.js, WordPress, WooCommerce, and production web systems.",
     navAriaLabel: "Footer navigation",
     connectAriaLabel: "Social and contact links",
     github: "GitHub",
@@ -44,7 +44,7 @@ export const en = {
   meta: {
     defaultTitle: "Imri Wainberg — Frontend / Full-Stack Developer",
     defaultDescription:
-      "Frontend / full-stack developer with 7+ years of experience across React, Next.js, WordPress, WooCommerce, accessibility, and production website maintenance.",
+      "Frontend / Full-Stack Developer with 7+ years of experience across React, Next.js, WordPress, WooCommerce, accessibility, and production website maintenance.",
     servicesTitle: "Experience",
     servicesDescription:
       "Experience across frontend, full-stack, WordPress / WooCommerce, custom plugins, integrations, accessibility, and large-scale website maintenance.",
@@ -59,8 +59,8 @@ export const en = {
       "Reach out about frontend, full-stack, WordPress, or WooCommerce roles, collaborations, and introductions.",
   },
   home: {
-    heroEyebrow: "Frontend / full-stack developer",
-    heroTitle: "Frontend / full-stack developer for real production work",
+    heroEyebrow: "Frontend / Full-Stack Developer",
+    heroTitle: "Frontend / Full-Stack Developer for real production work",
     heroSubtitle:
       "I build React, Next.js, WordPress, and WooCommerce products with a focus on maintainable frontend systems, custom plugins, and practical production support.",
     ctaContact: "Contact me",
