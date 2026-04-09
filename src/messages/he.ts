@@ -64,19 +64,19 @@ export const he: Messages = {
     heroEyebrow: "מפתח פרונטאנד / פול-סטאק",
     heroTitle: "מפתח פרונטאנד / פול-סטאק לעבודה אמיתית בפרודקשן",
     heroSubtitle:
-      "אני בונה מוצרים עם React, Next.js, WordPress ו-WooCommerce, עם דגש על מערכות פרונטאנד מתוחזקות, תוספים מותאמים ותמיכה פרקטית בפרודקשן.",
+      "אני בונה מוצרים עם React, Next.js, WordPress ו-WooCommerce, עם דגש על מערכות פרונטאנד, תוספים מותאמים ותמיכה פרקטית בפרודקשן.",
     ctaContact: "צור קשר",
     ctaProjects: "לפרויקטים",
     ctaResume: "הורד קורות חיים",
     orb: {
-      eyebrow: "סטאק ומיקוד",
+      eyebrow: "טכנולוגיות",
       titleLine1: "React · Next.js",
       titleLine2: "TypeScript",
       subtitle: "WordPress, WooCommerce, נגישות וביצועים.",
       tags: ["React", "Next.js", "TypeScript", "WordPress", "WooCommerce", "נגישות"],
     },
-    realUseEyebrow: "חוזקות",
-    realUseTitle: "מה אני יכול לעזור לצוות לשחרר",
+    realUseEyebrow: "כישורים",
+    realUseTitle: "מה אני יכול לתרום לצוות",
     realUseP1:
       "הניסיון שלי כולל UI למוצרים, מערכות מסחר אלקטרוני, פיתוח מותאם ל-WordPress ו-WooCommerce ותחזוקה שוטפת של אתרי פרודקשן חיים.",
     cardTypicalEngagements: "איך אני עובד",
@@ -91,7 +91,7 @@ export const he: Messages = {
     whyTitle: "למה צוותים סומכים עלי בפרודקשן",
     whyLead:
       "אני מביא ניסיון מעשי בממשקי React, עבודת WordPress מותאמת, זרימות WooCommerce, אינטגרציות, נגישות ותמיכה ארוכת טווח בפרודקשן.",
-    workEyebrow: "הוכחה",
+    workEyebrow: "עבודות",
     workTitle: "פרויקטים מובילים",
     workLead:
       "הפרויקטים האלה מראים את סוג העבודה שאני רוצה שיגייסו אותי עבורה: תוספים מותאמים, מסחר אלקטרוני עם אינטגרציות ועבודת פרונטאנד המחוברת לזרימות משתמש אמיתיות.",
