@@ -104,7 +104,7 @@ export const he: Messages = {
     fitTitle: "צוותים ותפקידים שבהם אני נכנס מהר לקצב",
     fitHonestyEyebrow: "כנות",
     notFitTitle: "פחות התאמה",
-    ctaBandTitle: "מעניין לדבר?",
+    ctaBandTitle: "מעוניינים  לדבר?",
     ctaBandBody:
       "אני פתוח להזדמנויות פרילנס ומשרה מלאה, במיוחד בתפקידי פרונטאנד, פול-סטאק ו-WordPress / WooCommerce.",
     ctaBandPrimary: "צור קשר",
