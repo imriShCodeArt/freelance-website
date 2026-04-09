@@ -6,5 +6,5 @@ export { HeroSection } from "./HeroSection";
 export { MidParagraphSection } from "./MidParagraphSection";
 export { RealUseSection } from "./RealUseSection";
 export { WhySection } from "./WhySection";
-export { WhySectionStarsBackground } from "../decor/WhySectionStarsBackground";
+export { StarsBgElm } from "../decor/StarsBgElm";
 export type { ExperienceCopy, HomeCopy, SectionProps } from "./section-types";

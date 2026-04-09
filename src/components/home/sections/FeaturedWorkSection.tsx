@@ -12,6 +12,7 @@ import type { Messages } from "@/lib/i18n/get-messages";
 import type { Locale } from "@/lib/i18n/config";
 import { withLocale } from "@/lib/i18n/paths";
 
+import { StarsBgElm } from "../decor/StarsBgElm";
 import { FeaturedCaseStudyCard } from "../featured-work/FeaturedCaseStudyCard";
 import { LinkButton } from "@/components/ui/LinkButton";
 import type { HomeCopy } from "./section-types";
@@ -29,8 +30,9 @@ export function FeaturedWorkSection({
 }) {
   const workHref = withLocale(locale, "/work");
   return (
-    <Section spacing="lg">
-      <PageContainer>
+    <Section spacing="lg" sx={{ position: "relative", overflow: "hidden" }}>
+      <StarsBgElm />
+      <PageContainer sx={{ position: "relative", zIndex: 1 }}>
         <Stack
           direction={{ xs: "column", sm: "row" }}
           justifyContent="space-between"

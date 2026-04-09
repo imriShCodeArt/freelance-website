@@ -11,6 +11,7 @@ import { LinkButton } from "@/components/ui/LinkButton";
 import { siteConfig } from "@/lib/site-config";
 import { withLocale } from "@/lib/i18n/paths";
 
+import { StarsBgElm } from "../decor/StarsBgElm";
 import { HeroOrbBackground } from "../hero/HeroOrbBackground";
 import type { SectionProps } from "./section-types";
 
@@ -57,6 +58,9 @@ export function HeroSection({ home, locale }: SectionProps) {
         minHeight: { md: 440 },
       }}
     >
+      <Box sx={{ position: "absolute", inset: 0, zIndex: 0, pointerEvents: "none" }}>
+        <StarsBgElm />
+      </Box>
       <Box
         aria-hidden
         sx={{

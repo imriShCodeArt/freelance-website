@@ -10,7 +10,7 @@ import { withLocale } from "@/lib/i18n/paths";
 
 import { LinkButton } from "@/components/ui/LinkButton";
 import type { SectionProps } from "./section-types";
-import { WhySectionStarsBackground } from "../decor/WhySectionStarsBackground";
+import { StarsBgElm } from "../decor/StarsBgElm";
 
 export function CtaBandSection({ home, locale }: SectionProps) {
   const contactHref = withLocale(locale, "/contact");
@@ -18,7 +18,7 @@ export function CtaBandSection({ home, locale }: SectionProps) {
 
   return (
     <Section spacing="lg" sx={{ position: "relative", overflow: "hidden" }}>
-      <WhySectionStarsBackground />
+      <StarsBgElm />
       <PageContainer sx={{ position: "relative", zIndex: 1 }}>
         <Stack
           spacing={2}

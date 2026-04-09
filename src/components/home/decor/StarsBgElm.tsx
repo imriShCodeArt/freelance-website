@@ -3,7 +3,7 @@
 import Box from "@mui/material/Box";
 import { useEffect, useRef } from "react";
 
-export function WhySectionStarsBackground() {
+export function StarsBgElm() {
   const smallLayerRef = useRef<HTMLDivElement | null>(null);
   const midLayerRef = useRef<HTMLDivElement | null>(null);
   const shineLayerRef = useRef<HTMLDivElement | null>(null);
