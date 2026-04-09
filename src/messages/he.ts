@@ -15,7 +15,7 @@ export const he: Messages = {
   },
   nav: {
     home: "בית",
-    services: "ניסיון",
+    services: "רקע",
     work: "פרויקטים",
     about: "אודות",
     contact: "צור קשר",
@@ -51,7 +51,7 @@ export const he: Messages = {
     defaultTitle: "אמרי ויינברג — מפתח פרונטאנד / פול-סטאק",
     defaultDescription:
       "מפתח פרונטאנד / פול-סטאק אוטודידקט עם יותר מ-7 שנות ניסיון ב-React, Next.js, WordPress, WooCommerce, נגישות ותחזוקת אתרי פרודקשן.",
-    servicesTitle: "ניסיון",
+    servicesTitle: "רקע",
     servicesDescription:
       "ניסיון בפרונטאנד, פול-סטאק, WordPress / WooCommerce, תוספים מותאמים, אינטגרציות, נגישות ותחזוקת אתרים בהיקף גדול.",
     workTitle: "פרויקטים",
@@ -149,7 +149,7 @@ export const he: Messages = {
     ],
   },
   experience: {
-    eyebrow: "ניסיון",
+    eyebrow: "רקע",
     title: "איפה אני מוסיף ערך",
     intro:
       "הניסיון שלי משלב מסירת פרונטאנד, מסחר אלקטרוני, פיתוח פול-סטאק, ניהול פרויקטים, פיתוח WordPress מותאם ותחזוקת אתרים בהיקף גדול.",
@@ -240,8 +240,8 @@ export const he: Messages = {
         body: "אני מפתח פרונטאנד / פול-סטאק אוטודידקט עם יותר מ-7 שנות ניסיון בפיתוח ווב, שיווק וניהול נכסים דיגיטליים. הכלים המרכזיים שלי ביום-יום הם JavaScript, TypeScript, React, Next.js, WordPress ו-WooCommerce.",
       },
       {
-        heading: "הדרך להנדסה",
-        body: "הדרך שלי להנדסה לא היתה שגרתית. אני אוטודידקט, ובמקביל למדתי גם בקורסים אונליין ובמסגרות פרונטליות, כולל ג'ון ברייס בחיפה. במהלך הפסקת קריירה אחרי תאונה המשכתי ללמוד והעמקתי ב-React וב-Next.js.",
+        heading: "מסלול ההכשרה שלי",
+        body: "המסלול שלי לעולם ההנדסה אינו שגרתי. התחלתי ב-2014 עם טכנולוגיות ליבה של הווב, ובהדרגה התרחבתי ליסודות צד שרת, פיתוח מערכות ניהול תוכן (CMS), ולסטאקים מודרניים של Fullstack—React, Next.js, Redux, Node.js וארכיטקטורות מבוססות API. במקביל להכשרה דרך John Bryce, צברתי ניסיון מעשי בבנייה ותחזוקה של אתרים פעילים כקבלן משנה.",
       },
       {
         heading: "פרילנס ופרודקשן",
@@ -274,7 +274,7 @@ export const he: Messages = {
     introP1:
       "אני פתוח להזדמנויות פרילנס ומשרה מלאה בתחומי הפרונטאנד, פול-סטאק ו-WordPress / WooCommerce. אפשר להשתמש בטופס להיכרות או לשיחה על תפקיד, ובדרך כלל אחזור תוך יום עסקים.",
     introP2Before: "הקשר נוסף נמצא בדפי",
-    introExperience: "ניסיון",
+    introExperience: "רקע",
     introAnd: "ו",
     introWork: "פרויקטים",
     introP2After: ".",

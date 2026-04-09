@@ -239,7 +239,7 @@ export const en = {
       },
       {
         heading: "Path into engineering",
-        body: "My path into engineering was not traditional. I am self-taught, and I also trained through online and in-person coursework, including John Bryce in Haifa. During a career break after an accident, I kept learning and deepened my React and Next.js skills.",
+        body: "My path into engineering is non-traditional. I started in 2014 with core web technologies and gradually expanded into backend fundamentals, CMS development, and modern fullstack stacks—React, Next.js, Redux, Node.js, and API-driven architectures. In parallel with training through John Bryce, I gained hands-on experience delivering and maintaining live websites as a subcontractor.",
       },
       {
         heading: "Freelance and production experience",
