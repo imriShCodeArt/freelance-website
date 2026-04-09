@@ -2,7 +2,7 @@
 
 import Alert from "@mui/material/Alert";
 import Typography from "@mui/material/Typography";
-import type { RefObject } from "react";
+import { useEffect, useRef, type RefObject } from "react";
 import { CopyEmailLink } from "@/components/ui";
 import type { Messages } from "@/messages/en";
 import { siteConfig } from "@/lib/site-config";
@@ -12,8 +12,14 @@ import type { ContactState } from "./actions";
 const ERROR_SUMMARY_ID = "contact-form-error-summary";
 
 export function ContactFormSuccessAlert({ message }: { message: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    ref.current?.focus();
+  }, []);
   return (
     <Alert
+      ref={ref}
+      tabIndex={-1}
       severity="success"
       role="status"
       aria-live="polite"

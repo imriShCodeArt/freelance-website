@@ -24,6 +24,7 @@ export const he: Messages = {
     getInTouch: "צור קשר",
     openMenu: "פתח תפריט",
     closeMenu: "סגור תפריט",
+    primaryNavAriaLabel: "ניווט ראשי",
   },
   localeSwitcher: {
     ariaLabel: "שפה",

@@ -22,6 +22,7 @@ export const en = {
     getInTouch: "Contact me",
     openMenu: "Open menu",
     closeMenu: "Close menu",
+    primaryNavAriaLabel: "Primary",
   },
   localeSwitcher: {
     ariaLabel: "Language",

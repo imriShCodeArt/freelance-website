@@ -45,6 +45,25 @@ body {
   outline-offset: 2px;
 }
 
+/* Full-card links (featured work, project grid) — focus ring on the interactive wrapper */
+.card-as-link {
+  border-radius: 10px;
+}
+
+.card-as-link:focus {
+  outline: none;
+}
+
+.card-as-link:focus-visible {
+  outline: 2px solid #b8d0fb;
+  outline-offset: 3px;
+}
+
+.card-as-link:focus-visible .MuiCard-root {
+  border-color: rgba(184, 208, 251, 0.55);
+  box-shadow: 0 0 0 1px rgba(138, 180, 248, 0.35);
+}
+
 /* Homepage services cards — global keyframes so RSC modules avoid @emotion/react keyframes (uses createContext). */
 @keyframes home-service-card-in {
   from {

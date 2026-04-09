@@ -1,6 +1,12 @@
 import { createTheme } from "@mui/material/styles";
 import type { Locale } from "@/lib/i18n/config";
 
+/** Matches `src/app/globals.css` `:focus-visible` for MUI components. */
+const focusVisibleRing = {
+  outline: "2px solid #b8d0fb",
+  outlineOffset: 2,
+} as const;
+
 const base = {
   cssVariables: true,
   palette: {
@@ -22,7 +28,8 @@ const base = {
     },
     text: {
       primary: "#e6edf6",
-      secondary: "#aab8cb",
+      /** Slightly lighter than before for better contrast on `background.default` (WCAG 1.4.3). */
+      secondary: "#b4c4d8",
     },
     divider: "rgba(170, 184, 203, 0.22)",
   },
@@ -69,6 +76,7 @@ const base = {
         root: {
           borderRadius: 8,
           paddingInline: 20,
+          "&:focus-visible": focusVisibleRing,
         },
         contained: {
           backgroundImage: "linear-gradient(135deg, #5f8dd8 0%, #8ab4f8 75%, #b8d0fb 100%)",
@@ -93,6 +101,32 @@ const base = {
     MuiLink: {
       defaultProps: {
         underline: "hover" as const,
+      },
+      styleOverrides: {
+        root: {
+          "&:focus-visible": focusVisibleRing,
+        },
+      },
+    },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          "&:focus-visible": focusVisibleRing,
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          "&:has(input:focus-visible)": focusVisibleRing,
+        },
+      },
+    },
+    MuiChip: {
+      styleOverrides: {
+        outlined: {
+          borderColor: "rgba(180, 196, 216, 0.38)",
+        },
       },
     },
   },

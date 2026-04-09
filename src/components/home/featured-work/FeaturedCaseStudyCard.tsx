@@ -25,6 +25,7 @@ export function FeaturedCaseStudyCard({
   return (
     <Link
       href={withLocale(locale, `/work/${study.slug}`)}
+      className="card-as-link"
       style={{ textDecoration: "none", color: "inherit", display: "block", height: "100%" }}
     >
       <Card

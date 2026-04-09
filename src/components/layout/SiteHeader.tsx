@@ -89,21 +89,23 @@ export default function SiteHeader({
         {brandName}
       </Typography>
       <Divider />
-      <List>
-        {nav.map((item) => (
-          <ListItem key={item.href} disablePadding>
-            <ListItemButton
-              component={NextLink}
-              href={item.href}
-              selected={pathname === item.href}
-              aria-current={pathname === item.href ? "page" : undefined}
-              sx={{ textAlign: "center" }}
-            >
-              <ListItemText primary={item.label} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <Box component="nav" aria-label={header.primaryNavAriaLabel}>
+        <List>
+          {nav.map((item) => (
+            <ListItem key={item.href} disablePadding>
+              <ListItemButton
+                component={NextLink}
+                href={item.href}
+                selected={pathname === item.href}
+                aria-current={pathname === item.href ? "page" : undefined}
+                sx={{ textAlign: "center" }}
+              >
+                <ListItemText primary={item.label} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Box>
     </Box>
   );
 
@@ -162,7 +164,11 @@ export default function SiteHeader({
               {brandName}
             </Typography>
           </Box>
-          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 0.5, flexGrow: 1 }}>
+          <Box
+            component="nav"
+            aria-label={header.primaryNavAriaLabel}
+            sx={{ display: { xs: "none", md: "flex" }, gap: 0.5, flexGrow: 1 }}
+          >
             {nav.map((item) => {
               const active = pathname === item.href;
               return (

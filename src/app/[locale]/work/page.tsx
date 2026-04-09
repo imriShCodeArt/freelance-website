@@ -85,6 +85,7 @@ export default async function WorkPage({ params }: Props) {
                 <Grid key={study.slug} size={{ xs: 12, md: 6 }}>
                   <NextLink
                     href={withLocale(locale, `/work/${study.slug}`)}
+                    className="card-as-link"
                     style={{
                       textDecoration: "none",
                       color: "inherit",
