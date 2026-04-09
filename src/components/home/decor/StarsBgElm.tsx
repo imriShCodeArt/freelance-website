@@ -1,13 +1,28 @@
 "use client";
 
 import Box from "@mui/material/Box";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+/** Tuned between density and cost (several instances can mount site-wide). */
+const STAR_COUNT_SMALL = 72;
+const STAR_COUNT_MID = 30;
+const COMET_DELAY_MIN_MS = 8000;
+const COMET_DELAY_MAX_MS = 16000;
 
 export function StarsBgElm() {
   const smallLayerRef = useRef<HTMLDivElement | null>(null);
   const midLayerRef = useRef<HTMLDivElement | null>(null);
   const shineLayerRef = useRef<HTMLDivElement | null>(null);
   const cometLayerRef = useRef<HTMLDivElement | null>(null);
+  const [tabHidden, setTabHidden] = useState(
+    typeof document !== "undefined" ? document.hidden : false,
+  );
+
+  useEffect(() => {
+    const onVisibility = () => setTabHidden(document.hidden);
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => document.removeEventListener("visibilitychange", onVisibility);
+  }, []);
 
   useEffect(() => {
     const smallLayer = smallLayerRef.current;
@@ -16,6 +31,9 @@ export function StarsBgElm() {
     const cometLayer = cometLayerRef.current;
 
     if (!smallLayer || !midLayer || !shineLayer || !cometLayer) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return;
 
     const timers: number[] = [];
     let disposed = false;
@@ -109,17 +127,17 @@ export function StarsBgElm() {
 
     const scheduleNextComet = () => {
       if (disposed) return;
-      const delay = 5000 + Math.random() * 9000;
+      const delay = COMET_DELAY_MIN_MS + Math.random() * (COMET_DELAY_MAX_MS - COMET_DELAY_MIN_MS);
       scheduleTimeout(() => {
         spawnComet();
-        if (Math.random() > 0.7) {
+        if (Math.random() > 0.55) {
           scheduleTimeout(spawnComet, 600 + Math.random() * 1200);
         }
         scheduleNextComet();
       }, delay);
     };
 
-    for (let i = 0; i < 90; i += 1) {
+    for (let i = 0; i < STAR_COUNT_SMALL; i += 1) {
       createStar(smallLayer, {
         size: Math.random() * 1.8 + 0.8,
         duration: Math.random() * 5 + 3,
@@ -127,7 +145,7 @@ export function StarsBgElm() {
       });
     }
 
-    for (let i = 0; i < 36; i += 1) {
+    for (let i = 0; i < STAR_COUNT_MID; i += 1) {
       const variants: Array<"" | "soft" | "blue" | "green"> = ["blue", "green", "soft", ""];
       createStar(midLayer, {
         size: Math.random() * 2.6 + 1.4,
@@ -141,8 +159,6 @@ export function StarsBgElm() {
       [34, 62, 0.9, 4.4],
       [52, 28, 1.35, 5.8],
       [68, 48, 1.05, 4.8],
-      [82, 20, 0.85, 4.1],
-      [76, 74, 1.2, 5.4],
     ];
 
     shinePositions.forEach(([left, top, scale, duration]) => {
@@ -164,11 +180,13 @@ export function StarsBgElm() {
   return (
     <Box
       aria-hidden
+      className={tabHidden ? "stars-bg--paused" : undefined}
       sx={{
         position: "absolute",
         inset: 0,
         overflow: "hidden",
         pointerEvents: "none",
+        isolation: "isolate",
         background:
           "radial-gradient(circle at 20% 20%, rgba(138, 180, 248, 0.08), transparent 18%), radial-gradient(circle at 80% 30%, rgba(123, 207, 159, 0.05), transparent 20%), radial-gradient(circle at 50% 75%, rgba(184, 208, 251, 0.05), transparent 28%), linear-gradient(180deg, rgba(13, 17, 23, 0.15), rgba(13, 17, 23, 0.25))",
         "& .why-stars-mist": {
@@ -184,6 +202,7 @@ export function StarsBgElm() {
           position: "absolute",
           inset: 0,
           pointerEvents: "none",
+          contain: "layout style paint",
         },
         "& .why-stars-star": {
           position: "absolute",
@@ -193,7 +212,7 @@ export function StarsBgElm() {
             "0 0 6px rgba(230, 237, 246, 0.45), 0 0 12px rgba(184, 208, 251, 0.25)",
           opacity: 0.75,
           animation: "why-stars-twinkle linear infinite",
-          willChange: "transform, opacity, filter",
+          willChange: "transform, opacity",
         },
         "& .why-stars-star.soft": {
           background: "rgba(170, 184, 203, 0.75)",
@@ -270,7 +289,7 @@ export function StarsBgElm() {
           opacity: 0,
           willChange: "transform, opacity",
           animation: "why-stars-comet-fly var(--duration, 5s) ease-out forwards",
-          filter: "drop-shadow(0 0 8px rgba(184, 208, 251, 0.28))",
+          boxShadow: "0 0 10px rgba(184, 208, 251, 0.35)",
         },
         "& .why-stars-comet::before": {
           content: '""',
@@ -326,6 +345,10 @@ export function StarsBgElm() {
               "translate3d(var(--travel-x, 420px), var(--travel-y, 180px), 0) rotate(var(--angle, -25deg)) scaleX(1)",
           },
         },
+        "&.stars-bg--paused .why-stars-mist, &.stars-bg--paused .why-stars-star, &.stars-bg--paused .why-stars-shining-star, &.stars-bg--paused .why-stars-comet":
+          {
+            animationPlayState: "paused",
+          },
         "@media (prefers-reduced-motion: reduce)": {
           "& .why-stars-mist, & .why-stars-star, & .why-stars-shining-star, & .why-stars-comet": {
             animation: "none !important",

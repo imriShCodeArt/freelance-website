@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 
 import type { HomeCopy } from "@/components/home/sections/section-types";
 
-export const ORB_PARTICLES = Array.from({ length: 28 }, (_, i) => {
+export const ORB_PARTICLES = Array.from({ length: 14 }, (_, i) => {
   const size = 3.8 + (i % 5) * 0.9;
   const left = 14 + ((i * 31) % 380);
   const top = 148 + ((i * 19) % 240);
@@ -50,6 +50,10 @@ export function HeroOrbBackground({
         overflow: embedded ? "visible" : "hidden",
         background:
           "radial-gradient(circle at 58% 45%, rgba(138, 180, 248, 0.035), transparent 34%), radial-gradient(circle at 72% 34%, rgba(123, 207, 159, 0.028), transparent 26%), transparent",
+        "@media (prefers-reduced-motion: reduce)": {
+          "& .orb-anim": { animation: "none !important" },
+          "& .orb-scan::after": { animation: "none !important" },
+        },
         "@keyframes orbSpin": {
           from: { transform: "rotate(0deg)" },
           to: { transform: "rotate(360deg)" },
@@ -58,41 +62,9 @@ export function HeroOrbBackground({
           from: { transform: "rotate(0deg)" },
           to: { transform: "rotate(-360deg)" },
         },
-        "@keyframes orbAmbientShift": {
-          "0%, 100%": {
-            boxShadow:
-              "0 0 90px 20px rgba(138, 180, 248, 0.14), 0 0 180px 40px rgba(95, 141, 216, 0.06)",
-          },
-          "50%": {
-            boxShadow:
-              "0 0 90px 20px rgba(123, 207, 159, 0.12), 0 0 180px 40px rgba(138, 180, 248, 0.07)",
-          },
-        },
         "@keyframes orbBreathe": {
           "0%, 100%": { transform: "scale(1)", opacity: 0.92 },
           "50%": { transform: "scale(1.04)", opacity: 1 },
-        },
-        "@keyframes orbGlowShift": {
-          "0%": {
-            background:
-              "radial-gradient(circle at 40% 40%, rgba(184, 208, 251, 0.28) 0%, rgba(138, 180, 248, 0.14) 36%, transparent 70%)",
-          },
-          "25%": {
-            background:
-              "radial-gradient(circle at 62% 32%, rgba(123, 207, 159, 0.24) 0%, rgba(138, 180, 248, 0.13) 40%, transparent 70%)",
-          },
-          "50%": {
-            background:
-              "radial-gradient(circle at 60% 64%, rgba(138, 180, 248, 0.24) 0%, rgba(95, 141, 216, 0.12) 42%, transparent 70%)",
-          },
-          "75%": {
-            background:
-              "radial-gradient(circle at 30% 60%, rgba(184, 208, 251, 0.22) 0%, rgba(123, 207, 159, 0.1) 40%, transparent 70%)",
-          },
-          "100%": {
-            background:
-              "radial-gradient(circle at 40% 40%, rgba(184, 208, 251, 0.28) 0%, rgba(138, 180, 248, 0.14) 36%, transparent 70%)",
-          },
         },
         "@keyframes orbParticleDrift": {
           "0%": { transform: "translateY(0) translateX(0) scale(1)", opacity: 0 },
@@ -129,10 +101,12 @@ export function HeroOrbBackground({
             height: { xs: 360, md: 500 },
             borderRadius: "50%",
             filter: "blur(8px)",
-            animation: "orbAmbientShift 8s ease-in-out infinite",
+            boxShadow:
+              "0 0 90px 20px rgba(130, 194, 230, 0.12), 0 0 180px 40px rgba(100, 155, 210, 0.055)",
           }}
         />
         <Box
+          className="orb-anim"
           sx={{
             position: "absolute",
             width: { xs: 300, md: 420 },
@@ -157,6 +131,7 @@ export function HeroOrbBackground({
           }}
         />
         <Box
+          className="orb-anim"
           sx={{
             position: "absolute",
             width: { xs: 340, md: 470 },
@@ -179,6 +154,7 @@ export function HeroOrbBackground({
           }}
         />
         <Box
+          className="orb-anim"
           sx={{
             position: "absolute",
             width: { xs: 250, md: 360 },
@@ -197,7 +173,8 @@ export function HeroOrbBackground({
             height: { xs: 210, md: 300 },
             borderRadius: "50%",
             filter: "blur(2px)",
-            animation: "orbGlowShift 6s ease-in-out infinite",
+            background:
+              "radial-gradient(circle at 58% 52%, rgba(138, 180, 248, 0.22) 0%, rgba(95, 141, 216, 0.11) 42%, transparent 70%)",
           }}
         />
         <Box
@@ -212,6 +189,7 @@ export function HeroOrbBackground({
           {ORB_PARTICLES.map((p, i) => (
             <Box
               key={i}
+              className="orb-anim"
               sx={{
                 position: "absolute",
                 borderRadius: "50%",
@@ -220,7 +198,7 @@ export function HeroOrbBackground({
                 left: `${p.left}px`,
                 top: `${p.top}px`,
                 background: p.color,
-                boxShadow: `0 0 ${p.size * 3.5}px ${p.color}`,
+                boxShadow: `0 0 ${p.size * 2.6}px ${p.color}`,
                 "--dx": `${p.dx}px`,
                 animation: `orbParticleDrift ${p.duration}s linear infinite`,
                 animationDelay: `-${p.delay}s`,
@@ -229,6 +207,7 @@ export function HeroOrbBackground({
           ))}
         </Box>
         <Box
+          className="orb-scan"
           sx={{
             position: "absolute",
             width: { xs: 250, md: 360 },
@@ -331,6 +310,7 @@ export function HeroOrbBackground({
             return (
               <Box
                 key={tag}
+                className="orb-anim"
                 sx={{
                   py: 0.9,
                   px: 1.5,
@@ -350,9 +330,6 @@ export function HeroOrbBackground({
                       : "0 0 18px rgba(56, 189, 248, 0.22)",
                   animation: `${waterAnim} ${durationS}s ease-in-out infinite`,
                   animationDelay: `${index * 0.62}s`,
-                  "@media (prefers-reduced-motion: reduce)": {
-                    animation: "none",
-                  },
                 }}
               >
                 {tag}
