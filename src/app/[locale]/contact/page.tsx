@@ -74,19 +74,6 @@ export default async function ContactPage({ params }: Props) {
             </Typography>
             <Stack spacing={1}>
               <Typography variant="body2" color="text.secondary">
-                <CopyEmailLink
-                  email={siteConfig.publicContactEmail}
-                  copiedToast={messages.common.emailCopiedToast}
-                  copyFailedToast={messages.common.emailCopyFailedToast}
-                  ariaLabel={messages.common.copyEmailAriaLabel}
-                  color="inherit"
-                  variant="inherit"
-                  sx={{ color: "inherit" }}
-                >
-                  {messages.footer.email}: {siteConfig.publicContactEmail}
-                </CopyEmailLink>
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
                 <Link href={siteConfig.publicGithubUrl} target="_blank" rel="noopener noreferrer">
                   {messages.footer.github}
                 </Link>

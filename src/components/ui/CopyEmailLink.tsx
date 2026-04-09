@@ -4,7 +4,16 @@ import Alert from "@mui/material/Alert";
 import Link from "@mui/material/Link";
 import Snackbar from "@mui/material/Snackbar";
 import type { LinkProps } from "@mui/material/Link";
-import { useCallback, useState, type ReactNode } from "react";
+import { useCallback, useState, useSyncExternalStore, type ReactNode } from "react";
+import { createPortal } from "react-dom";
+
+function useIsClient() {
+  return useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
+}
 
 type CopyEmailLinkProps = {
   email: string;
@@ -29,6 +38,7 @@ export function CopyEmailLink({
   const [open, setOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [severity, setSeverity] = useState<"success" | "error">("success");
+  const isClient = useIsClient();
 
   const handleClose = useCallback(
     (_: unknown, reason?: string) => {
@@ -51,6 +61,26 @@ export function CopyEmailLink({
     }
   }, [email, copiedToast, copyFailedToast]);
 
+  const snackbar = isClient ? (
+    <Snackbar
+      open={open}
+      autoHideDuration={5000}
+      onClose={handleClose}
+      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+    >
+      <Alert
+        onClose={handleClose}
+        severity={severity}
+        variant="filled"
+        role="status"
+        aria-live="polite"
+        sx={{ width: "100%" }}
+      >
+        {toastMessage}
+      </Alert>
+    </Snackbar>
+  ) : null;
+
   return (
     <>
       <Link
@@ -71,23 +101,7 @@ export function CopyEmailLink({
       >
         {children}
       </Link>
-      <Snackbar
-        open={open}
-        autoHideDuration={5000}
-        onClose={handleClose}
-        anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-      >
-        <Alert
-          onClose={handleClose}
-          severity={severity}
-          variant="filled"
-          role="status"
-          aria-live="polite"
-          sx={{ width: "100%" }}
-        >
-          {toastMessage}
-        </Alert>
-      </Snackbar>
+      {snackbar && createPortal(snackbar, document.body)}
     </>
   );
 }
