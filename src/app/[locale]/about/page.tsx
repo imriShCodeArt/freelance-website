@@ -11,6 +11,7 @@ import { hasLocale, type Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { localeAlternates } from "@/lib/i18n/metadata-helpers";
 import { withLocale } from "@/lib/i18n/paths";
+import { siteConfig } from "@/lib/site-config";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -41,28 +42,22 @@ export default async function AboutPage({ params }: Props) {
           <Typography variant="h2" component="h1" fontWeight={700} gutterBottom>
             {a.title}
           </Typography>
-          <Typography variant="body1" color="text.secondary" paragraph>
-            {a.p1}
-          </Typography>
-          <Typography variant="body1" color="text.secondary" paragraph>
-            {a.p2}
-          </Typography>
-          <Typography variant="h5" component="h2" fontWeight={700} sx={{ mt: 4, mb: 2 }}>
-            {a.styleTitle}
-          </Typography>
-          <Typography variant="body1" color="text.secondary" paragraph>
-            {a.styleP1}
-          </Typography>
-          <Typography variant="body1" color="text.secondary" paragraph>
-            {a.styleP2}
-          </Typography>
-          <Typography variant="h5" component="h2" fontWeight={700} sx={{ mt: 4, mb: 2 }}>
-            {a.expectTitle}
-          </Typography>
-          <Typography variant="body1" color="text.secondary" paragraph>
-            {a.expectP1}
-          </Typography>
-          <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ mt: 4 }}>
+          {a.blocks.map((block, index) => (
+            <section key={block.heading}>
+              <Typography
+                variant="h5"
+                component="h2"
+                fontWeight={700}
+                sx={{ mt: index === 0 ? 2 : 4, mb: 2 }}
+              >
+                {block.heading}
+              </Typography>
+              <Typography variant="body1" color="text.secondary" paragraph>
+                {block.body}
+              </Typography>
+            </section>
+          ))}
+          <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ mt: 4 }} flexWrap="wrap" useFlexGap>
             <Link href={workHref} style={{ textDecoration: "none" }}>
               <Button component="span" variant="outlined" size="large">
                 {a.ctaWork}
@@ -73,6 +68,15 @@ export default async function AboutPage({ params }: Props) {
                 {a.ctaContact}
               </Button>
             </Link>
+            <Button
+              component="a"
+              href={siteConfig.resumePath}
+              download
+              variant="outlined"
+              size="large"
+            >
+              {a.ctaResume}
+            </Button>
           </Stack>
         </PageContainer>
       </Section>

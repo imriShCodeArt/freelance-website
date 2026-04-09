@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { CaseStudyMeta } from "@/content/case-studies";
-import { caseStudies } from "@/content/case-studies";
+import { listCaseStudyMeta } from "@/content/case-studies";
 import {
-  BuildSection,
   CtaBandSection,
   FeaturedWorkSection,
   FitSection,
   HeroSection,
   MidParagraphSection,
-  PackagesSection,
-  ProcessSection,
   RealUseSection,
   WhySection,
 } from "@/components/home/HomePageSections";
@@ -38,23 +34,20 @@ export default async function Home({ params }: Props) {
   const locale = raw as Locale;
   const messages = getMessages(locale);
   const h = messages.home;
-  const featured: CaseStudyMeta[] = caseStudies.slice(0, 2);
+  const featured = listCaseStudyMeta().slice(0, 2);
 
   return (
     <>
       <HeroSection home={h} locale={locale} />
       <RealUseSection home={h} messages={messages} />
-      <MidParagraphSection home={h} />
-      {/* <BuildSection home={h} locale={locale} services={messages.services} /> */}
-      <ProcessSection home={h} stepPrefix={messages.common.stepPrefix} />
-      <PackagesSection home={h} locale={locale} />
-      <WhySection home={h} />
       <FeaturedWorkSection
         home={h}
         locale={locale}
         messages={messages}
         featured={featured}
       />
+      <MidParagraphSection home={h} />
+      <WhySection home={h} />
       <FitSection home={h} />
       <CtaBandSection home={h} locale={locale} />
     </>

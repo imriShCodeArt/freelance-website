@@ -69,7 +69,7 @@ export function RealUseSection({
                   {home.cardTypicalEngagements}
                 </Typography>
                 <Typography variant="body2" paragraph>
-                  {messages.common.projectFloor}
+                  {home.strengthsCardBody}
                 </Typography>
                 <Typography variant="subtitle2" color="text.secondary" gutterBottom>
                   {home.cardBestFit}

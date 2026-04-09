@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -11,7 +12,7 @@ import { notFound } from "next/navigation";
 import Eyebrow from "@/components/layout/Eyebrow";
 import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
-import { caseStudies } from "@/content/case-studies";
+import { caseStudies, getCaseStudyLocaleCopy } from "@/content/case-studies";
 import { hasLocale, type Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { localeAlternates } from "@/lib/i18n/metadata-helpers";
@@ -77,8 +78,8 @@ export default async function WorkPage({ params }: Props) {
           </Typography>
           <Grid container spacing={3}>
             {caseStudies.map((study) => {
-              const copy =
-                messages.caseStudies[study.slug as keyof typeof messages.caseStudies];
+              const copy = getCaseStudyLocaleCopy(study.slug, locale);
+              if (!copy) return null;
               return (
                 <Grid key={study.slug} size={{ xs: 12, md: 6 }}>
                   <NextLink
@@ -108,24 +109,37 @@ export default async function WorkPage({ params }: Props) {
                             size="small"
                             variant="outlined"
                           />
-                          {study.tags.map((t) => (
+                          {study.stack.map((t) => (
                             <Chip key={t} label={t} size="small" />
                           ))}
                         </Stack>
                         <Typography variant="h5" component="h3" fontWeight={700} gutterBottom>
                           {copy.title}
                         </Typography>
+                        <Typography variant="body2" color="text.secondary" paragraph>
+                          {copy.summary}
+                        </Typography>
                         <Typography variant="subtitle2" color="text.secondary" gutterBottom>
-                          {w.cardProblemLabel}
+                          {w.cardRoleLabel}
                         </Typography>
                         <Typography variant="body2" color="text.secondary" paragraph>
-                          {copy.problem}
+                          {copy.role}
                         </Typography>
-                        <Typography variant="subtitle2" color="secondary" fontWeight={700}>
-                          {w.cardOutcomeLabel}
+                        <Typography variant="subtitle2" color="secondary" fontWeight={700} gutterBottom>
+                          {w.cardHighlightsLabel}
+                        </Typography>
+                        <Box component="ul" sx={{ m: 0, pl: 2.25, color: "text.secondary" }}>
+                          {copy.highlights.map((line) => (
+                            <Typography key={line} component="li" variant="body2" sx={{ mb: 0.5 }}>
+                              {line}
+                            </Typography>
+                          ))}
+                        </Box>
+                        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 2 }} gutterBottom>
+                          {w.cardRecruiterLabel}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                          {copy.outcome}
+                          {copy.recruiterAngle}
                         </Typography>
                       </CardContent>
                     </Card>

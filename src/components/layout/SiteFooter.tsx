@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import type { Messages } from "@/lib/i18n/get-messages";
@@ -15,6 +16,7 @@ export default function SiteFooter({
   messages: Messages;
 }) {
   const year = new Date().getFullYear();
+  const f = messages.footer;
   return (
     <Box
       component="footer"
@@ -31,43 +33,94 @@ export default function SiteFooter({
           direction={{ xs: "column", sm: "row" }}
           spacing={3}
           justifyContent="space-between"
-          alignItems={{ xs: "flex-start", sm: "center" }}
+          alignItems={{ xs: "flex-start", sm: "flex-start" }}
         >
           <Box>
             <Typography variant="subtitle1" fontWeight={700} gutterBottom>
               {siteConfig.shortName}
             </Typography>
             <Typography variant="body2" color="text.secondary" maxWidth={360}>
-              {messages.footer.tagline}
+              {f.tagline}
             </Typography>
           </Box>
-          <Stack
-            direction="row"
-            component="nav"
-            aria-label={messages.footer.navAriaLabel}
-            flexWrap="wrap"
-            useFlexGap
-            spacing={2}
-            sx={{ columnGap: 2, rowGap: 1 }}
-          >
-            {nav.map((item) => (
-              <RouterLink
-                key={item.href}
-                href={item.href}
+          <Stack spacing={2} alignItems={{ xs: "flex-start", sm: "flex-end" }}>
+            <Stack
+              direction="row"
+              component="nav"
+              aria-label={f.navAriaLabel}
+              flexWrap="wrap"
+              useFlexGap
+              spacing={2}
+              sx={{ columnGap: 2, rowGap: 1 }}
+            >
+              {nav.map((item) => (
+                <RouterLink
+                  key={item.href}
+                  href={item.href}
+                  color="text.secondary"
+                  variant="body2"
+                  fontWeight={500}
+                >
+                  {item.label}
+                </RouterLink>
+              ))}
+            </Stack>
+            <Stack
+              direction="row"
+              component="nav"
+              aria-label={f.connectAriaLabel}
+              flexWrap="wrap"
+              useFlexGap
+              spacing={2}
+              sx={{ columnGap: 2, rowGap: 1 }}
+            >
+              <Link
+                href={siteConfig.publicGithubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 color="text.secondary"
                 variant="body2"
                 fontWeight={500}
+                underline="hover"
               >
-                {item.label}
-              </RouterLink>
-            ))}
+                {f.github}
+              </Link>
+              {siteConfig.publicLinkedInUrl ? (
+                <Link
+                  href={siteConfig.publicLinkedInUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  color="text.secondary"
+                  variant="body2"
+                  fontWeight={500}
+                  underline="hover"
+                >
+                  {f.linkedin}
+                </Link>
+              ) : null}
+              <Link
+                href={`mailto:${siteConfig.publicContactEmail}`}
+                color="text.secondary"
+                variant="body2"
+                fontWeight={500}
+                underline="hover"
+              >
+                {f.email}
+              </Link>
+              <Link
+                href={siteConfig.resumePath}
+                download
+                color="text.secondary"
+                variant="body2"
+                fontWeight={500}
+                underline="hover"
+              >
+                {f.resume}
+              </Link>
+            </Stack>
           </Stack>
         </Stack>
-        <Typography
-          variant="caption"
-          color="text.secondary"
-          sx={{ display: "block", mt: 4 }}
-        >
+        <Typography variant="caption" color="text.secondary" sx={{ display: "block", mt: 4 }}>
           {messages.common.builtWith(siteConfig.shortName, year)}
         </Typography>
       </PageContainer>

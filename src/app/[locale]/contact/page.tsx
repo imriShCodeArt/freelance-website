@@ -7,12 +7,12 @@ import Eyebrow from "@/components/layout/Eyebrow";
 import PageContainer from "@/components/layout/PageContainer";
 import RouterLink from "@/components/layout/RouterLink";
 import Section from "@/components/layout/Section";
+import ContactForm from "@/components/contact";
 import { hasLocale, type Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { localeAlternates } from "@/lib/i18n/metadata-helpers";
 import { withLocale } from "@/lib/i18n/paths";
 import { siteConfig } from "@/lib/site-config";
-import ContactForm from "@/components/contact";
 
 type Props = { params: Promise<{ locale: string }> };
 
@@ -33,7 +33,7 @@ export default async function ContactPage({ params }: Props) {
   const locale = raw as Locale;
   const messages = getMessages(locale);
   const c = messages.contact;
-  const servicesHref = withLocale(locale, "/services");
+  const experienceHref = withLocale(locale, "/services");
   const workHref = withLocale(locale, "/work");
 
   return (
@@ -48,9 +48,9 @@ export default async function ContactPage({ params }: Props) {
             {c.introP1}
           </Typography>
           <Typography variant="body2" color="text.secondary" maxWidth="55ch" sx={{ mb: 4 }}>
-            {messages.common.projectFloor} {c.introP2Before}{" "}
-            <RouterLink href={servicesHref} fontWeight={600}>
-              {c.introServices}
+            {c.introP2Before}{" "}
+            <RouterLink href={experienceHref} fontWeight={600}>
+              {c.introExperience}
             </RouterLink>{" "}
             {c.introAnd}{" "}
             <RouterLink href={workHref} fontWeight={600}>
@@ -59,8 +59,35 @@ export default async function ContactPage({ params }: Props) {
             {c.introP2After}
           </Typography>
           <ContactForm locale={locale} contact={c} />
-          <Stack spacing={1} sx={{ mt: 5, maxWidth: 560 }}>
-            <Typography variant="subtitle2" color="text.secondary">
+          <Stack spacing={2} sx={{ mt: 5, maxWidth: 560 }}>
+            <Typography variant="subtitle1" fontWeight={700}>
+              {c.directHeading}
+            </Typography>
+            <Stack spacing={1}>
+              <Typography variant="body2" color="text.secondary">
+                <Link href={`mailto:${siteConfig.publicContactEmail}`}>
+                  {messages.footer.email}: {siteConfig.publicContactEmail}
+                </Link>
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                <Link href={siteConfig.publicGithubUrl} target="_blank" rel="noopener noreferrer">
+                  {messages.footer.github}
+                </Link>
+              </Typography>
+              {siteConfig.publicLinkedInUrl ? (
+                <Typography variant="body2" color="text.secondary">
+                  <Link href={siteConfig.publicLinkedInUrl} target="_blank" rel="noopener noreferrer">
+                    {messages.footer.linkedin}
+                  </Link>
+                </Typography>
+              ) : null}
+              <Typography variant="body2" color="text.secondary">
+                <Link href={siteConfig.resumePath} download>
+                  {messages.footer.resume}
+                </Link>
+              </Typography>
+            </Stack>
+            <Typography variant="subtitle2" color="text.secondary" sx={{ pt: 1 }}>
               {c.preferEmail}
             </Typography>
             <Typography variant="body2" color="text.secondary">

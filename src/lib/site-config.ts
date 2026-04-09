@@ -1,14 +1,17 @@
 /**
- * Edit branding and contact defaults in one place.
+ * Central public profile and branding. Marketing copy lives in `src/messages/*`.
  * For production metadata and sitemap URLs, set NEXT_PUBLIC_SITE_URL (no trailing slash).
- * Titles, descriptions, and marketing copy live in `src/messages/*` (i18s).
  */
 export const siteConfig = {
-  /** Short label in the header (replace with your name or studio). */
-  shortName: "Imri W.",
-  /** Shown in mailto links when email delivery is not configured. */
+  shortName: "Imri Wainberg",
   publicContactEmail:
     process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "imriwain@gmail.com",
+  publicGithubUrl:
+    process.env.NEXT_PUBLIC_GITHUB_URL ?? "https://github.com/imriShCodeArt",
+  publicLinkedInUrl:
+    process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "",
+  /** Static file in `public/` */
+  resumePath: "/imri-wainberg-resume.pdf",
 } as const;
 
 export function getSiteUrl(): string {

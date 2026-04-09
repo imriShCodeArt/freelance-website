@@ -3,7 +3,8 @@ import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
-import type { CaseStudyKind, CaseStudyMeta } from "@/content/case-studies";
+import type { CaseStudyMeta } from "@/content/case-studies";
+import { getCaseStudyLocaleCopy } from "@/content/case-studies";
 import Eyebrow from "@/components/layout/Eyebrow";
 import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
@@ -11,9 +12,9 @@ import type { Messages } from "@/lib/i18n/get-messages";
 import type { Locale } from "@/lib/i18n/config";
 import { withLocale } from "@/lib/i18n/paths";
 
-import { FeaturedCaseStudyCard } from "./";
+import { FeaturedCaseStudyCard } from "../featured-work/FeaturedCaseStudyCard";
 import { LinkButton } from "@/components/ui/LinkButton";
-import type { CaseStudiesCopy, HomeCopy } from "./section-types";
+import type { HomeCopy } from "./section-types";
 
 export function FeaturedWorkSection({
   home,
@@ -52,14 +53,16 @@ export function FeaturedWorkSection({
         </Stack>
         <Grid container spacing={2}>
           {featured.map((study) => {
-            const copy = messages.caseStudies[study.slug as keyof CaseStudiesCopy];
+            const copy = getCaseStudyLocaleCopy(study.slug, locale);
+            if (!copy) return null;
             return (
               <Grid key={study.slug} size={{ xs: 12, md: 6 }}>
                 <FeaturedCaseStudyCard
                   locale={locale}
                   study={study}
-                  copy={copy}
-                  kindLabel={messages.caseStudyKind[study.kind as CaseStudyKind]}
+                  title={copy.title}
+                  summary={copy.summary}
+                  kindLabel={messages.caseStudyKind[study.kind]}
                 />
               </Grid>
             );

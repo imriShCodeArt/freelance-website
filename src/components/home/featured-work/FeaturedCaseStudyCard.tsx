@@ -9,17 +9,17 @@ import type { CaseStudyMeta } from "@/content/case-studies";
 import type { Locale } from "@/lib/i18n/config";
 import { withLocale } from "@/lib/i18n/paths";
 
-import type { CaseStudiesCopy } from "@/components/home/sections/section-types";
-
 export function FeaturedCaseStudyCard({
   locale,
   study,
-  copy,
+  title,
+  summary,
   kindLabel,
 }: {
   locale: Locale;
   study: CaseStudyMeta;
-  copy: CaseStudiesCopy[keyof CaseStudiesCopy];
+  title: string;
+  summary: string;
   kindLabel: string;
 }) {
   return (
@@ -41,15 +41,15 @@ export function FeaturedCaseStudyCard({
         <CardContent>
           <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap sx={{ mb: 1 }}>
             <Chip label={kindLabel} size="small" variant="outlined" />
-            {study.tags.slice(0, 2).map((tag) => (
+            {study.stack.slice(0, 3).map((tag) => (
               <Chip key={tag} label={tag} size="small" />
             ))}
           </Stack>
           <Typography variant="h6" component="h3" fontWeight={650} gutterBottom>
-            {copy.title}
+            {title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {copy.outcome}
+            {summary}
           </Typography>
         </CardContent>
       </Card>

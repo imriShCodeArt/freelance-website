@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
@@ -7,27 +8,41 @@ import Eyebrow from "@/components/layout/Eyebrow";
 import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
 import { LinkButton } from "@/components/ui/LinkButton";
+import { siteConfig } from "@/lib/site-config";
 import { withLocale } from "@/lib/i18n/paths";
 
-import { HeroOrbBackground } from "./";
+import { HeroOrbBackground } from "../hero/HeroOrbBackground";
 import type { SectionProps } from "./section-types";
 
 export function HeroSection({ home, locale }: SectionProps) {
   const contactHref = withLocale(locale, "/contact");
-  const servicesHref = withLocale(locale, "/services");
+  const workHref = withLocale(locale, "/work");
 
   const ctaStack = (
     <Stack
       direction={{ xs: "column", sm: "row" }}
       spacing={2}
       sx={{ pt: { xs: 0, md: 1 } }}
+      useFlexGap
+      flexWrap="wrap"
     >
       <LinkButton href={contactHref} variant="contained" fullWidthMobile>
         {home.ctaContact}
       </LinkButton>
-      <LinkButton href={servicesHref} variant="outlined" fullWidthMobile>
-        {home.ctaServices}
+      <LinkButton href={workHref} variant="outlined" fullWidthMobile>
+        {home.ctaProjects}
       </LinkButton>
+      <Button
+        component="a"
+        href={siteConfig.resumePath}
+        download
+        variant="outlined"
+        color="primary"
+        size="large"
+        sx={{ width: { xs: "100%", sm: "auto" } }}
+      >
+        {home.ctaResume}
+      </Button>
     </Stack>
   );
 
@@ -82,15 +97,10 @@ export function HeroSection({ home, locale }: SectionProps) {
               >
                 {home.heroEyebrow}
               </Eyebrow>
-              <Typography variant="h2" component="h1" fontWeight={700} sx={{fontSize:{xs:"2.5rem", md:"3.5rem"}}}>
+              <Typography variant="h2" component="h1" fontWeight={700} sx={{ fontSize: { xs: "2.5rem", md: "3.5rem" } }}>
                 {home.heroTitle}
               </Typography>
-              <Typography
-                variant="h6"
-                component="p"
-                color="text.primary"
-                fontWeight={400}
-              >
+              <Typography variant="h6" component="p" color="text.primary" fontWeight={400}>
                 {home.heroSubtitle}
               </Typography>
               <Box sx={{ display: { xs: "none", md: "block" } }}>{ctaStack}</Box>
