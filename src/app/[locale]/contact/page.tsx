@@ -3,11 +3,12 @@ import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { notFound } from "next/navigation";
+import ContactForm from "@/components/contact";
 import Eyebrow from "@/components/layout/Eyebrow";
 import PageContainer from "@/components/layout/PageContainer";
 import RouterLink from "@/components/layout/RouterLink";
 import Section from "@/components/layout/Section";
-import ContactForm from "@/components/contact";
+import { CopyEmailLink } from "@/components/ui";
 import { hasLocale, type Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { localeAlternates } from "@/lib/i18n/metadata-helpers";
@@ -58,16 +59,32 @@ export default async function ContactPage({ params }: Props) {
             </RouterLink>
             {c.introP2After}
           </Typography>
-          <ContactForm locale={locale} contact={c} />
+          <ContactForm
+            locale={locale}
+            contact={c}
+            emailCopy={{
+              copiedToast: messages.common.emailCopiedToast,
+              copyFailedToast: messages.common.emailCopyFailedToast,
+              ariaLabel: messages.common.copyEmailAriaLabel,
+            }}
+          />
           <Stack spacing={2} sx={{ mt: 5, maxWidth: 560 }}>
             <Typography variant="subtitle1" fontWeight={700}>
               {c.directHeading}
             </Typography>
             <Stack spacing={1}>
               <Typography variant="body2" color="text.secondary">
-                <Link href={`mailto:${siteConfig.publicContactEmail}`}>
+                <CopyEmailLink
+                  email={siteConfig.publicContactEmail}
+                  copiedToast={messages.common.emailCopiedToast}
+                  copyFailedToast={messages.common.emailCopyFailedToast}
+                  ariaLabel={messages.common.copyEmailAriaLabel}
+                  color="inherit"
+                  variant="inherit"
+                  sx={{ color: "inherit" }}
+                >
                   {messages.footer.email}: {siteConfig.publicContactEmail}
-                </Link>
+                </CopyEmailLink>
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 <Link href={siteConfig.publicGithubUrl} target="_blank" rel="noopener noreferrer">
@@ -92,9 +109,17 @@ export default async function ContactPage({ params }: Props) {
             </Typography>
             <Typography variant="body2" color="text.secondary">
               {c.reachAt}{" "}
-              <Link href={`mailto:${siteConfig.publicContactEmail}`}>
+              <CopyEmailLink
+                email={siteConfig.publicContactEmail}
+                copiedToast={messages.common.emailCopiedToast}
+                copyFailedToast={messages.common.emailCopyFailedToast}
+                ariaLabel={messages.common.copyEmailAriaLabel}
+                color="inherit"
+                variant="inherit"
+                sx={{ color: "inherit" }}
+              >
                 {siteConfig.publicContactEmail}
-              </Link>
+              </CopyEmailLink>
             </Typography>
           </Stack>
         </PageContainer>

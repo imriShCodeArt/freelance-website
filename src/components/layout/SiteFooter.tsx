@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { CopyEmailLink } from "@/components/ui";
 import type { Messages } from "@/lib/i18n/get-messages";
 import { siteConfig } from "@/lib/site-config";
 import type { NavItem } from "@/lib/navigation";
@@ -98,15 +99,18 @@ export default function SiteFooter({
                   {f.linkedin}
                 </Link>
               ) : null}
-              <Link
-                href={`mailto:${siteConfig.publicContactEmail}`}
+              <CopyEmailLink
+                email={siteConfig.publicContactEmail}
+                copiedToast={messages.common.emailCopiedToast}
+                copyFailedToast={messages.common.emailCopyFailedToast}
+                ariaLabel={messages.common.copyEmailAriaLabel}
                 color="text.secondary"
                 variant="body2"
                 fontWeight={500}
                 underline="hover"
               >
                 {f.email}
-              </Link>
+              </CopyEmailLink>
               <Link
                 href={siteConfig.resumePath}
                 download

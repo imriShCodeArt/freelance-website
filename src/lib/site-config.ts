@@ -9,7 +9,8 @@ export const siteConfig = {
   publicGithubUrl:
     process.env.NEXT_PUBLIC_GITHUB_URL ?? "https://github.com/imriShCodeArt",
   publicLinkedInUrl:
-    process.env.NEXT_PUBLIC_LINKEDIN_URL ?? "",
+    process.env.NEXT_PUBLIC_LINKEDIN_URL ??
+    "https://www.linkedin.com/in/imrish/",
   /** Static file in `public/` */
   resumePath: "/imri-wainberg-resume.pdf",
 } as const;

@@ -9,6 +9,9 @@ export const he: Messages = {
     typicalStackTrail:
       "הכלים נבחרים לפי תחזוקה ואילוצי פרודקשן, לא רק לפי טרנדים.",
     stepPrefix: "שלב",
+    emailCopiedToast: "האימייל הועתק ללוח",
+    emailCopyFailedToast: "לא ניתן להעתיק. נא להעתיק את הכתובת ידנית.",
+    copyEmailAriaLabel: "העתקת כתובת האימייל ללוח",
   },
   nav: {
     home: "בית",

@@ -20,9 +20,14 @@ const initialState: ContactState = {};
 type Props = {
   locale: Locale;
   contact: Messages["contact"];
+  emailCopy: {
+    copiedToast: string;
+    copyFailedToast: string;
+    ariaLabel: string;
+  };
 };
 
-export default function ContactForm({ locale, contact }: Props) {
+export default function ContactForm({ locale, contact, emailCopy }: Props) {
   const [state, formAction, isPending] = useActionState(
     submitContact,
     initialState,
@@ -51,6 +56,7 @@ export default function ContactForm({ locale, contact }: Props) {
         {showSummaryAlert ? (
           <ContactFormErrorSummary
             contact={contact}
+            emailCopy={emailCopy}
             state={state}
             errorSummaryRef={errorSummaryRef}
             hasFieldErrors={hasFieldErrors}

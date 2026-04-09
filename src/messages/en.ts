@@ -7,6 +7,9 @@ export const en = {
     typicalStackTrail:
       "Tools are chosen for maintainability and real production constraints, not trends alone.",
     stepPrefix: "Step",
+    emailCopiedToast: "Email copied to clipboard",
+    emailCopyFailedToast: "Could not copy. Please copy the address manually.",
+    copyEmailAriaLabel: "Copy email address to clipboard",
   },
   nav: {
     home: "Home",

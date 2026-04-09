@@ -1,9 +1,9 @@
 "use client";
 
 import Alert from "@mui/material/Alert";
-import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import type { RefObject } from "react";
+import { CopyEmailLink } from "@/components/ui";
 import type { Messages } from "@/messages/en";
 import { siteConfig } from "@/lib/site-config";
 
@@ -26,6 +26,11 @@ export function ContactFormSuccessAlert({ message }: { message: string }) {
 
 type ErrorSummaryProps = {
   contact: Messages["contact"];
+  emailCopy: {
+    copiedToast: string;
+    copyFailedToast: string;
+    ariaLabel: string;
+  };
   state: Pick<ContactState, "error" | "notConfigured" | "fieldErrors">;
   errorSummaryRef: RefObject<HTMLDivElement | null>;
   hasFieldErrors: boolean;
@@ -33,6 +38,7 @@ type ErrorSummaryProps = {
 
 export function ContactFormErrorSummary({
   contact,
+  emailCopy,
   state,
   errorSummaryRef,
   hasFieldErrors,
@@ -50,9 +56,15 @@ export function ContactFormErrorSummary({
       {state.notConfigured ? (
         <Typography variant="body2" sx={{ mt: 1 }}>
           {contact.emailPrefix}{" "}
-          <Link href={`mailto:${siteConfig.publicContactEmail}`}>
+          <CopyEmailLink
+            email={siteConfig.publicContactEmail}
+            copiedToast={emailCopy.copiedToast}
+            copyFailedToast={emailCopy.copyFailedToast}
+            ariaLabel={emailCopy.ariaLabel}
+            variant="body2"
+          >
             {siteConfig.publicContactEmail}
-          </Link>
+          </CopyEmailLink>
         </Typography>
       ) : null}
     </Alert>
