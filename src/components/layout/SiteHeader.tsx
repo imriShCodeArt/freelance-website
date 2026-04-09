@@ -85,7 +85,7 @@ export default function SiteHeader({
       >
         <CloseIcon />
       </IconButton>
-      <Typography variant="h6" sx={{ my: 2, fontWeight: 700 }}>
+      <Typography component="p" variant="h6" sx={{ my: 2, fontWeight: 700 }}>
         {brandName}
       </Typography>
       <Divider />

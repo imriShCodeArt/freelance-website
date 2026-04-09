@@ -121,13 +121,13 @@ export default async function WorkPage({ params }: Props) {
                         <Typography variant="body2" color="text.secondary" paragraph>
                           {copy.summary}
                         </Typography>
-                        <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+                        <Typography component="p" variant="subtitle2" color="text.secondary" gutterBottom>
                           {w.cardRoleLabel}
                         </Typography>
                         <Typography variant="body2" color="text.secondary" paragraph>
                           {copy.role}
                         </Typography>
-                        <Typography variant="subtitle2" color="secondary" fontWeight={700} gutterBottom>
+                        <Typography component="p" variant="subtitle2" color="secondary" fontWeight={700} gutterBottom>
                           {w.cardHighlightsLabel}
                         </Typography>
                         <Box component="ul" sx={{ m: 0, pl: 2.25, color: "text.secondary" }}>
@@ -137,7 +137,7 @@ export default async function WorkPage({ params }: Props) {
                             </Typography>
                           ))}
                         </Box>
-                        <Typography variant="subtitle2" color="text.secondary" sx={{ mt: 2 }} gutterBottom>
+                        <Typography component="p" variant="subtitle2" color="text.secondary" sx={{ mt: 2 }} gutterBottom>
                           {w.cardRecruiterLabel}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">

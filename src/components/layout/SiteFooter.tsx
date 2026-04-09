@@ -37,7 +37,7 @@ export default function SiteFooter({
           alignItems={{ xs: "flex-start", sm: "flex-start" }}
         >
           <Box>
-            <Typography variant="subtitle1" fontWeight={700} gutterBottom>
+            <Typography component="p" variant="subtitle1" fontWeight={700} gutterBottom>
               {siteConfig.shortName}
             </Typography>
             <Typography variant="body2" color="text.secondary" maxWidth={360}>

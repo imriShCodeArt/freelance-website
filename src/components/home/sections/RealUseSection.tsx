@@ -65,13 +65,13 @@ export function RealUseSection({
           <Grid size={{ xs: 12, md: 5 }}>
             <Card variant="outlined" sx={{ bgcolor: "background.default" }}>
               <CardContent>
-                <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+                <Typography component="p" variant="subtitle2" color="text.secondary" gutterBottom>
                   {home.cardTypicalEngagements}
                 </Typography>
                 <Typography variant="body2" paragraph>
                   {home.strengthsCardBody}
                 </Typography>
-                <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+                <Typography component="p" variant="subtitle2" color="text.secondary" gutterBottom>
                   {home.cardBestFit}
                 </Typography>
                 <Typography variant="body2">{home.cardBestFitBody}</Typography>

@@ -69,7 +69,7 @@ export default async function ContactPage({ params }: Props) {
             }}
           />
           <Stack spacing={2} sx={{ mt: 5, maxWidth: 560 }}>
-            <Typography variant="subtitle1" fontWeight={700}>
+            <Typography component="h2" variant="subtitle1" fontWeight={700}>
               {c.directHeading}
             </Typography>
             <Stack spacing={1}>
@@ -91,7 +91,7 @@ export default async function ContactPage({ params }: Props) {
                 </Link>
               </Typography>
             </Stack>
-            <Typography variant="subtitle2" color="text.secondary" sx={{ pt: 1 }}>
+            <Typography component="p" variant="subtitle2" color="text.secondary" sx={{ pt: 1 }}>
               {c.preferEmail}
             </Typography>
             <Typography variant="body2" color="text.secondary">
