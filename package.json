@@ -11,7 +11,8 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "sanity": "sanity",
-    "studio:dev": "sanity dev --port 3333"
+    "studio:dev": "node scripts/studio-dev.mjs",
+    "migrate:sanity": "tsx scripts/migrate-content-to-sanity.ts"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
@@ -39,11 +40,13 @@
     "@types/react-dom": "^19",
     "@types/stylis": "^4",
     "babel-plugin-react-compiler": "1.0.0",
+    "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "prettier": "^3.8.1",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   },
   "packageManager": "yarn@4.13.0+sha512.5c20ba010c99815433e5c8453112165e673f1c7948d8d2b267f4b5e52097538658388ebc9f9580656d9b75c5cc996f990f611f99304a2197d4c56d21eea370e7"

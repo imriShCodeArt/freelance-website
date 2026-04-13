@@ -9,7 +9,7 @@ import {
 
 /**
  * Server-side Sanity client for published content (CDN, no draft perspective).
- * Call only after `NEXT_PUBLIC_SANITY_PROJECT_ID` is set to a real project.
+ * Call only after a real project id is set (`NEXT_PUBLIC_*` and/or `SANITY_STUDIO_*` in env).
  */
 export function getSanityReadClient(): SanityClient {
   const projectId = getSanityProjectId();
@@ -17,7 +17,7 @@ export function getSanityReadClient(): SanityClient {
 
   if (!projectId || projectId === PLACEHOLDER_SANITY_PROJECT_ID) {
     throw new Error(
-      "Sanity is not configured: set NEXT_PUBLIC_SANITY_PROJECT_ID in .env.local (create a project at https://www.sanity.io/manage).",
+      "Sanity is not configured: set NEXT_PUBLIC_SANITY_PROJECT_ID (or SANITY_STUDIO_PROJECT_ID) in .env / .env.local (create a project at https://www.sanity.io/manage).",
     );
   }
 
