@@ -9,7 +9,10 @@
     "lint": "eslint",
     "lint:a11y": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "sanity": "sanity",
+    "studio:dev": "node scripts/studio-dev.mjs",
+    "migrate:sanity": "tsx scripts/migrate-content-to-sanity.ts"
   },
   "dependencies": {
     "@emotion/cache": "^11.14.0",
@@ -17,14 +20,19 @@
     "@emotion/styled": "^11.14.1",
     "@mui/material": "^7.3.9",
     "@mui/material-nextjs": "^7.3.9",
+    "@sanity/client": "^7.21.0",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "next": "16.2.1",
+    "next-sanity": "^12.2.2",
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "resend": "^6.9.4",
+    "sanity": "^5.20.0",
+    "styled-components": "^6.4.0",
     "stylis": "^4.3.6",
-    "stylis-plugin-rtl": "^2.1.1"
+    "stylis-plugin-rtl": "^2.1.1",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@types/node": "^20",
@@ -32,11 +40,13 @@
     "@types/react-dom": "^19",
     "@types/stylis": "^4",
     "babel-plugin-react-compiler": "1.0.0",
+    "dotenv": "^17.4.2",
     "eslint": "^9",
     "eslint-config-next": "16.2.1",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "prettier": "^3.8.1",
+    "tsx": "^4.21.0",
     "typescript": "^5"
   },
   "packageManager": "yarn@4.13.0+sha512.5c20ba010c99815433e5c8453112165e673f1c7948d8d2b267f4b5e52097538658388ebc9f9580656d9b75c5cc996f990f611f99304a2197d4c56d21eea370e7"

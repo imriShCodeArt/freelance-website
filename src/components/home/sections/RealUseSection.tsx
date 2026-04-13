@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import Eyebrow from "@/components/layout/Eyebrow";
 import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
-import type { Messages } from "@/lib/i18n/get-messages";
+import type { Messages } from "@/lib/i18n/static-messages";
 
 import type { HomeCopy } from "./section-types";
 

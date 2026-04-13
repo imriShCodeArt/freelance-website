@@ -9,7 +9,11 @@ import { notFound } from "next/navigation";
 import Eyebrow from "@/components/layout/Eyebrow";
 import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
-import { caseStudies, getCaseStudyLocaleCopy, getCaseStudyMeta } from "@/content/case-studies";
+import {
+  getCaseStudyLocaleCopy,
+  getCaseStudyMeta,
+  listCaseStudySlugs,
+} from "@/lib/content/case-studies-access";
 import { hasLocale, locales, type Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { localeAlternates } from "@/lib/i18n/metadata-helpers";
@@ -17,9 +21,10 @@ import { withLocale } from "@/lib/i18n/paths";
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const slugs = await listCaseStudySlugs();
   return locales.flatMap((locale) =>
-    caseStudies.map((c) => ({ locale, slug: c.slug })),
+    slugs.map((slug) => ({ locale, slug })),
   );
 }
 
@@ -27,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: raw, slug } = await params;
   if (!hasLocale(raw)) return {};
   const locale = raw as Locale;
-  const copy = getCaseStudyLocaleCopy(slug, locale);
+  const copy = await getCaseStudyLocaleCopy(slug, locale);
   if (!copy) return {};
   return {
     title: copy.title,
@@ -53,13 +58,13 @@ export default async function CaseStudyPage({ params }: Props) {
   const { locale: raw, slug } = await params;
   if (!hasLocale(raw)) notFound();
   const locale = raw as Locale;
-  const meta = getCaseStudyMeta(slug);
+  const meta = await getCaseStudyMeta(slug);
   if (!meta) notFound();
 
-  const copy = getCaseStudyLocaleCopy(slug, locale);
+  const copy = await getCaseStudyLocaleCopy(slug, locale);
   if (!copy) notFound();
 
-  const messages = getMessages(locale);
+  const messages = await getMessages(locale);
   const d = messages.workDetail;
   const workHref = withLocale(locale, "/work");
   const contactHref = withLocale(locale, "/contact");

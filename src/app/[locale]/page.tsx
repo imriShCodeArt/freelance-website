@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { listCaseStudyMeta } from "@/content/case-studies";
+import { listFeaturedCaseStudyMeta } from "@/lib/content/case-studies-access";
 import {
   CtaBandSection,
   FeaturedWorkSection,
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: raw } = await params;
   if (!hasLocale(raw)) return {};
   const locale = raw;
-  const m = getMessages(locale);
+  const m = await getMessages(locale);
   return {
     title: { absolute: m.meta.defaultTitle },
     description: m.meta.defaultDescription,
@@ -32,9 +32,9 @@ export default async function Home({ params }: Props) {
   const { locale: raw } = await params;
   if (!hasLocale(raw)) notFound();
   const locale = raw as Locale;
-  const messages = getMessages(locale);
+  const messages = await getMessages(locale);
   const h = messages.home;
-  const featured = listCaseStudyMeta().slice(0, 2);
+  const featured = await listFeaturedCaseStudyMeta();
 
   return (
     <>

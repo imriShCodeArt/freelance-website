@@ -12,7 +12,7 @@ import { notFound } from "next/navigation";
 import Eyebrow from "@/components/layout/Eyebrow";
 import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
-import { caseStudies, getCaseStudyLocaleCopy } from "@/content/case-studies";
+import { getCaseStudyLocaleCopy, listCaseStudyMeta } from "@/lib/content/case-studies-access";
 import { hasLocale, type Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { localeAlternates } from "@/lib/i18n/metadata-helpers";
@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: raw } = await params;
   if (!hasLocale(raw)) return {};
   const locale = raw;
-  const m = getMessages(locale);
+  const m = await getMessages(locale);
   return {
     title: m.meta.workTitle,
     description: m.meta.workDescription,
@@ -48,10 +48,17 @@ export default async function WorkPage({ params }: Props) {
   const { locale: raw } = await params;
   if (!hasLocale(raw)) notFound();
   const locale = raw as Locale;
-  const messages = getMessages(locale);
+  const messages = await getMessages(locale);
   const w = messages.work;
   const contactHref = withLocale(locale, "/contact");
   const aboutHref = withLocale(locale, "/about");
+  const studies = await listCaseStudyMeta();
+  const studyRows = await Promise.all(
+    studies.map(async (study) => ({
+      study,
+      copy: await getCaseStudyLocaleCopy(study.slug, locale),
+    })),
+  );
 
   return (
     <>
@@ -78,8 +85,7 @@ export default async function WorkPage({ params }: Props) {
             {w.caseStudiesListHeading}
           </Typography>
           <Grid container spacing={3}>
-            {caseStudies.map((study) => {
-              const copy = getCaseStudyLocaleCopy(study.slug, locale);
+            {studyRows.map(({ study, copy }) => {
               if (!copy) return null;
               return (
                 <Grid key={study.slug} size={{ xs: 12, md: 6 }}>

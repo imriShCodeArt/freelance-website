@@ -24,7 +24,7 @@ type Props = { params: Promise<{ locale: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: raw } = await params;
   if (!hasLocale(raw)) return {};
-  const m = getMessages(raw as Locale);
+  const m = await getMessages(raw as Locale);
   return {
     title: m.meta.contactTitle,
     description: m.meta.contactDescription,
@@ -36,7 +36,7 @@ export default async function ContactPage({ params }: Props) {
   const { locale: raw } = await params;
   if (!hasLocale(raw)) notFound();
   const locale = raw as Locale;
-  const messages = getMessages(locale);
+  const messages = await getMessages(locale);
   const c = messages.contact;
   const experienceHref = withLocale(locale, "/services");
   const workHref = withLocale(locale, "/work");

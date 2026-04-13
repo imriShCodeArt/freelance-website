@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
 import { defaultLocale, hasLocale, type Locale } from "@/lib/i18n/config";
-import { getMessages } from "@/lib/i18n/get-messages";
+import { getStaticMessages } from "@/lib/i18n/static-messages";
 import { withLocale } from "@/lib/i18n/paths";
 
 const btnPrimary: CSSProperties = {
@@ -45,7 +45,7 @@ function localeFromPathname(pathname: string | null): Locale {
 export default function NotFoundContent() {
   const pathname = usePathname();
   const locale = localeFromPathname(pathname);
-  const messages = getMessages(locale);
+  const messages = getStaticMessages(locale);
   const n = messages.notFound;
 
   return (

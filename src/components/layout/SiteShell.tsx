@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import type { Locale } from "@/lib/i18n/config";
-import type { Messages } from "@/lib/i18n/get-messages";
+import type { Messages } from "@/lib/i18n/static-messages";
 import { getMainNav } from "@/lib/navigation";
 import { siteConfig } from "@/lib/site-config";
 import SiteFooter from "./SiteFooter";
