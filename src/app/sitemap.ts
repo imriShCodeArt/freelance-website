@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
-import { caseStudies } from "@/content/case-studies";
+import { listCaseStudySlugs } from "@/lib/content/case-studies-access";
 import { locales } from "@/lib/i18n/config";
 import { getSiteUrl } from "@/lib/site-config";
 import { withLocale } from "@/lib/i18n/paths";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = getSiteUrl();
   const lastModified = new Date();
 
@@ -19,9 +19,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
+  const slugs = await listCaseStudySlugs();
   const workRoutes = locales.flatMap((locale) =>
-    caseStudies.map((c) => ({
-      url: `${base}${withLocale(locale, `/work/${c.slug}`)}`,
+    slugs.map((slug) => ({
+      url: `${base}${withLocale(locale, `/work/${slug}`)}`,
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.6,

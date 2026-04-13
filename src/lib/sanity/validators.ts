@@ -50,7 +50,11 @@ export const caseStudyFullSchema = z.object({
   githubUrl: optionalUrl,
   liveUrl: optionalUrl,
   featuredOnHome: z.boolean().optional(),
-  homeFeatureOrder: z.number().optional(),
+  /** Sanity may store `null` when the field is unset. */
+  homeFeatureOrder: z.preprocess(
+    (v) => (v === null || v === undefined ? undefined : v),
+    z.number().optional(),
+  ),
   en: caseStudyLocalePayloadSchema,
   he: caseStudyLocalePayloadSchema,
 });

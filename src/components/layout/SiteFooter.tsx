@@ -3,7 +3,7 @@ import Link from "@mui/material/Link";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { CopyEmailLink } from "@/components/ui";
-import type { Messages } from "@/lib/i18n/get-messages";
+import type { Messages } from "@/lib/i18n/static-messages";
 import { siteConfig } from "@/lib/site-config";
 import type { NavItem } from "@/lib/navigation";
 import PageContainer from "./PageContainer";

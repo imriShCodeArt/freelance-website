@@ -4,11 +4,11 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 import type { CaseStudyMeta } from "@/content/case-studies";
-import { getCaseStudyLocaleCopy } from "@/content/case-studies";
+import { getCaseStudyLocaleCopy } from "@/lib/content/case-studies-access";
 import Eyebrow from "@/components/layout/Eyebrow";
 import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
-import type { Messages } from "@/lib/i18n/get-messages";
+import type { Messages } from "@/lib/i18n/static-messages";
 import type { Locale } from "@/lib/i18n/config";
 import { withLocale } from "@/lib/i18n/paths";
 
@@ -16,7 +16,7 @@ import { FeaturedCaseStudyCard } from "../featured-work/FeaturedCaseStudyCard";
 import { LinkButton } from "@/components/ui/LinkButton";
 import type { HomeCopy } from "./section-types";
 
-export function FeaturedWorkSection({
+export async function FeaturedWorkSection({
   home,
   locale,
   messages,
@@ -28,6 +28,12 @@ export function FeaturedWorkSection({
   featured: CaseStudyMeta[];
 }) {
   const workHref = withLocale(locale, "/work");
+  const cards = await Promise.all(
+    featured.map(async (study) => {
+      const copy = await getCaseStudyLocaleCopy(study.slug, locale);
+      return { study, copy };
+    }),
+  );
   return (
     <Section spacing="lg">
       <PageContainer>
@@ -52,8 +58,7 @@ export function FeaturedWorkSection({
           </LinkButton>
         </Stack>
         <Grid container spacing={2}>
-          {featured.map((study) => {
-            const copy = getCaseStudyLocaleCopy(study.slug, locale);
+          {cards.map(({ study, copy }) => {
             if (!copy) return null;
             return (
               <Grid key={study.slug} size={{ xs: 12, md: 6 }}>

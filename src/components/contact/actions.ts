@@ -65,7 +65,7 @@ export async function submitContact(
   formData: FormData,
 ): Promise<ContactState> {
   const locale = localeFromForm(formData);
-  const t = getMessages(locale).contact;
+  const t = (await getMessages(locale)).contact;
 
   const trap = formData.get("website_confirm");
   if (trap != null && String(trap).trim() !== "") {

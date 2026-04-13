@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale: raw } = await params;
   if (!hasLocale(raw)) return {};
   const locale = raw as Locale;
-  const m = getMessages(locale);
+  const m = await getMessages(locale);
 
   return {
     metadataBase: new URL(getSiteUrl()),
@@ -43,7 +43,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   const { locale: raw } = await params;
   if (!hasLocale(raw)) notFound();
   const locale = raw as Locale;
-  const messages = getMessages(locale);
+  const messages = await getMessages(locale);
   const dir = locale === "he" ? "rtl" : "ltr";
 
   return (

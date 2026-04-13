@@ -1,11 +1,24 @@
-import { en, type Messages } from "@/messages/en";
-import { he } from "@/messages/he";
-import type { Locale } from "./config";
+import "server-only";
 
-const byLocale: Record<Locale, Messages> = { en, he };
+import { getSiteCopyFromSanity } from "@/lib/sanity/get-site-copy";
+import { isSanityContentEnabled } from "@/lib/sanity/use-sanity-content";
+
+import type { Locale } from "./config";
+import { getStaticMessages, type Messages } from "./static-messages";
 
 export type { Messages };
 
-export function getMessages(locale: Locale): Messages {
-  return byLocale[locale];
+export async function getMessages(locale: Locale): Promise<Messages> {
+  if (!isSanityContentEnabled()) {
+    return getStaticMessages(locale);
+  }
+  try {
+    return await getSiteCopyFromSanity(locale);
+  } catch (err) {
+    console.error(
+      "[sanity] getMessages: failed to load site copy, using static fallback",
+      err,
+    );
+    return getStaticMessages(locale);
+  }
 }
