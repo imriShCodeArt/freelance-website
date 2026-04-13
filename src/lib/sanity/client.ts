@@ -25,7 +25,7 @@ export function getSanityReadClient(): SanityClient {
     projectId,
     dataset,
     apiVersion,
-    useCdn: true,
+    useCdn: false,
     perspective: "published",
     token: process.env.SANITY_API_READ_TOKEN?.trim() || undefined,
   });
