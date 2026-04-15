@@ -1,4 +1,28 @@
-import type { StructureResolver } from "sanity/structure";
+import type { StructureBuilder, StructureResolver } from "sanity/structure";
+
+import { apiVersion } from "./env";
+import { LOCALES, SECTION_KEYS } from "./schemaTypes/constants";
+
+/** Structure custom filters require an explicit API version (Sanity v5+). */
+const structureApiVersion = apiVersion.startsWith("v") ? apiVersion : `v${apiVersion}`;
+
+function siteCopyLocaleList(S: StructureBuilder, locale: "en" | "he") {
+  return S.list()
+    .title(locale === "en" ? "English sections" : "Hebrew sections")
+    .items(
+      SECTION_KEYS.map((sectionKey) =>
+        S.listItem()
+          .title(`${locale} / ${sectionKey}`)
+          .id(`siteSectionCopy-${locale}-${sectionKey}`)
+          .child(
+            S.document()
+              .schemaType("siteSectionCopy")
+              .documentId(`siteSectionCopy.${locale}.${sectionKey}`)
+              .title(`${locale} / ${sectionKey}`),
+          ),
+      ),
+    );
+}
 
 export const structure: StructureResolver = (S) =>
   S.list()
@@ -17,32 +41,32 @@ export const structure: StructureResolver = (S) =>
       S.listItem()
         .title("Site copy (English)")
         .id("siteCopyEn")
-        .child(
-          S.documentList()
-            .title("English sections")
-            .filter('_type == "siteSectionCopy" && locale == "en"')
-            .defaultOrdering([{ field: "sectionKey", direction: "asc" }]),
-        ),
+        .child(siteCopyLocaleList(S, "en")),
       S.listItem()
         .title("Site copy (Hebrew)")
         .id("siteCopyHe")
-        .child(
-          S.documentList()
-            .title("Hebrew sections")
-            .filter('_type == "siteSectionCopy" && locale == "he"')
-            .defaultOrdering([{ field: "sectionKey", direction: "asc" }]),
-        ),
+        .child(siteCopyLocaleList(S, "he")),
       S.listItem()
         .title("Site copy (all)")
         .id("siteCopyAll")
         .child(
-          S.documentList()
-            .title("All section documents")
-            .filter('_type == "siteSectionCopy"')
-            .defaultOrdering([
-              { field: "locale", direction: "asc" },
-              { field: "sectionKey", direction: "asc" },
-            ]),
+          S.list()
+            .title("All section documents (canonical)")
+            .items(
+              LOCALES.flatMap((locale) =>
+                SECTION_KEYS.map((sectionKey) =>
+                  S.listItem()
+                    .title(`${locale} / ${sectionKey}`)
+                    .id(`siteSectionCopy-all-${locale}-${sectionKey}`)
+                    .child(
+                      S.document()
+                        .schemaType("siteSectionCopy")
+                        .documentId(`siteSectionCopy.${locale}.${sectionKey}`)
+                        .title(`${locale} / ${sectionKey}`),
+                    ),
+                ),
+              ),
+            ),
         ),
       S.divider(),
       S.listItem()
@@ -51,6 +75,7 @@ export const structure: StructureResolver = (S) =>
         .child(
           S.documentList()
             .title("Case studies")
+            .apiVersion(structureApiVersion)
             .filter('_type == "caseStudy"')
             .defaultOrdering([{ field: "slug.current", direction: "asc" }]),
         ),
@@ -60,6 +85,7 @@ export const structure: StructureResolver = (S) =>
         .child(
           S.documentList()
             .title("Featured on home")
+            .apiVersion(structureApiVersion)
             .filter('_type == "caseStudy" && featuredOnHome == true')
             .defaultOrdering([{ field: "homeFeatureOrder", direction: "asc" }]),
         ),

@@ -45,6 +45,9 @@ if (!projectId || projectId === placeholder) {
 /** Run the real `sanity` entry with Node (no shell) — avoids Node DEP0190 when `shell: true`. */
 const sanityBin = resolve(root, "node_modules", "sanity", "bin", "sanity");
 
+// `sanity.config.ts` sets `basePath: "/studio"` (same as embedded Next route).
+console.log("[studio-dev] Open http://localhost:3333/studio after the dev server starts.");
+
 const child = spawn(process.execPath, [sanityBin, "dev", "--port", "3333"], {
   cwd: root,
   env: process.env,
