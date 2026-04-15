@@ -1,7 +1,7 @@
 "use client";
 
 import Box from "@mui/material/Box";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 
 /** Tuned between density and cost (several instances can mount site-wide). */
 const STAR_COUNT_SMALL = 72;
@@ -10,18 +10,22 @@ const COMET_DELAY_MIN_MS = 8000;
 const COMET_DELAY_MAX_MS = 16000;
 
 export function StarsBgElm() {
+  const rootRef = useRef<HTMLDivElement | null>(null);
   const smallLayerRef = useRef<HTMLDivElement | null>(null);
   const midLayerRef = useRef<HTMLDivElement | null>(null);
   const shineLayerRef = useRef<HTMLDivElement | null>(null);
   const cometLayerRef = useRef<HTMLDivElement | null>(null);
-  const [tabHidden, setTabHidden] = useState(
-    typeof document !== "undefined" ? document.hidden : false,
-  );
 
-  useEffect(() => {
-    const onVisibility = () => setTabHidden(document.hidden);
-    document.addEventListener("visibilitychange", onVisibility);
-    return () => document.removeEventListener("visibilitychange", onVisibility);
+  /** Toggle pause class on the DOM node only — never in React render tree (avoids hydration mismatch). */
+  useLayoutEffect(() => {
+    const el = rootRef.current;
+    if (!el) return;
+    const sync = () => {
+      el.classList.toggle("stars-bg--paused", document.hidden);
+    };
+    sync();
+    document.addEventListener("visibilitychange", sync);
+    return () => document.removeEventListener("visibilitychange", sync);
   }, []);
 
   useEffect(() => {
@@ -179,8 +183,8 @@ export function StarsBgElm() {
 
   return (
     <Box
+      ref={rootRef}
       aria-hidden
-      className={tabHidden ? "stars-bg--paused" : undefined}
       sx={{
         position: "absolute",
         inset: 0,
