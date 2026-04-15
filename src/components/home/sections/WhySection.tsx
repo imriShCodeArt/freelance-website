@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import Eyebrow from "@/components/layout/Eyebrow";
 import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
+import { MultiParagraphBody } from "@/components/ui/MultiParagraphBody";
 
 import type { HomeCopy } from "./section-types";
 
@@ -28,9 +29,7 @@ export function WhySection({ home }: { home: HomeCopy }) {
                   <Typography variant="subtitle1" component="h3" fontWeight={650} gutterBottom>
                     {item.title}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {item.body}
-                  </Typography>
+                  <MultiParagraphBody body={item.body} variant="body2" color="text.secondary" />
                 </CardContent>
               </Card>
             </Grid>

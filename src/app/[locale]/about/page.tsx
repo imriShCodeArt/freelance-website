@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
@@ -7,6 +8,7 @@ import { notFound } from "next/navigation";
 import Eyebrow from "@/components/layout/Eyebrow";
 import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
+import { MultiParagraphBody } from "@/components/ui/MultiParagraphBody";
 import { hasLocale, type Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { localeAlternates } from "@/lib/i18n/metadata-helpers";
@@ -53,9 +55,9 @@ export default async function AboutPage({ params }: Props) {
               >
                 {block.heading}
               </Typography>
-              <Typography variant="body1" color="text.secondary" paragraph>
-                {block.body}
-              </Typography>
+              <Box sx={{ mb: 2 }}>
+                <MultiParagraphBody body={block.body} variant="body1" color="text.secondary" />
+              </Box>
             </section>
           ))}
           <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ mt: 4 }} flexWrap="wrap" useFlexGap>

@@ -2,11 +2,13 @@
 
 import type { CSSProperties } from "react";
 import Link from "next/link";
+import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { usePathname } from "next/navigation";
 import PageContainer from "@/components/layout/PageContainer";
 import Section from "@/components/layout/Section";
+import { MultiParagraphBody } from "@/components/ui/MultiParagraphBody";
 import { defaultLocale, hasLocale, type Locale } from "@/lib/i18n/config";
 import { getStaticMessages } from "@/lib/i18n/static-messages";
 import { withLocale } from "@/lib/i18n/paths";
@@ -57,9 +59,9 @@ export default function NotFoundContent() {
         <Typography variant="h3" component="h1" fontWeight={700} gutterBottom>
           {n.title}
         </Typography>
-        <Typography variant="body1" color="text.secondary" maxWidth="45ch" paragraph>
-          {n.body}
-        </Typography>
+        <Box sx={{ maxWidth: "45ch", mb: 2 }}>
+          <MultiParagraphBody body={n.body} variant="body1" color="text.secondary" />
+        </Box>
         <Stack direction={{ xs: "column", sm: "row" }} spacing={2} sx={{ pt: 1 }}>
           <Link href={withLocale(locale, "/")} style={btnPrimary}>
             {n.home}

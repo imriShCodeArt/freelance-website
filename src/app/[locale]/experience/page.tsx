@@ -12,6 +12,7 @@ import Eyebrow from "@/components/layout/Eyebrow";
 import PageContainer from "@/components/layout/PageContainer";
 import RouterLink from "@/components/layout/RouterLink";
 import Section from "@/components/layout/Section";
+import { MultiParagraphBody } from "@/components/ui/MultiParagraphBody";
 import { hasLocale, type Locale } from "@/lib/i18n/config";
 import { getMessages } from "@/lib/i18n/get-messages";
 import { localeAlternates } from "@/lib/i18n/metadata-helpers";
@@ -95,9 +96,7 @@ export default async function ServicesPage({ params }: Props) {
                     <Typography variant="h5" component="h2" fontWeight={700} gutterBottom>
                       {area.title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {area.body}
-                    </Typography>
+                    <MultiParagraphBody body={area.body} variant="body2" color="text.secondary" />
                   </CardContent>
                 </Card>
               </Grid>
