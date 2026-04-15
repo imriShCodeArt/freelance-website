@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: m.meta.servicesTitle,
     description: m.meta.servicesDescription,
-    alternates: localeAlternates(locale, "/services"),
+    alternates: localeAlternates(locale, "/experience"),
   };
 }
 
@@ -37,7 +37,7 @@ export default async function ServicesPage({ params }: Props) {
   const locale = raw as Locale;
   const messages = await getMessages(locale);
   const x = messages.experience;
-  const workHref = withLocale(locale, "/work");
+  const workHref = withLocale(locale, "/projects");
   const contactHref = withLocale(locale, "/contact");
 
   return (

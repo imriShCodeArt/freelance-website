@@ -8,7 +8,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = getSiteUrl();
   const lastModified = new Date();
 
-  const paths = ["", "/services", "/work", "/about", "/contact"];
+  const paths = ["", "/experience", "/projects", "/about", "/contact"];
 
   const staticRoutes = locales.flatMap((locale) =>
     paths.map((path) => ({
@@ -22,7 +22,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const slugs = await listCaseStudySlugs();
   const workRoutes = locales.flatMap((locale) =>
     slugs.map((slug) => ({
-      url: `${base}${withLocale(locale, `/work/${slug}`)}`,
+      url: `${base}${withLocale(locale, `/projects/${slug}`)}`,
       lastModified,
       changeFrequency: "monthly" as const,
       priority: 0.6,

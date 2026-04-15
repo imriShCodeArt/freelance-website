@@ -27,7 +27,7 @@ export async function FeaturedWorkSection({
   messages: Messages;
   featured: CaseStudyMeta[];
 }) {
-  const workHref = withLocale(locale, "/work");
+  const workHref = withLocale(locale, "/projects");
   const cards = await Promise.all(
     featured.map(async (study) => {
       const copy = await getCaseStudyLocaleCopy(study.slug, locale);

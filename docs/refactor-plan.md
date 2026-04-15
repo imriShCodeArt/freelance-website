@@ -118,7 +118,7 @@ Change nav labels:
 * `services` → `Experience`
 * `work` → `Projects`
 
-You can keep `/services` and `/work` routes at first to avoid breaking structure, then rename routes later.
+You can keep `/experience` and `/work` routes at first to avoid breaking structure, then rename routes later.
 
 ---
 
@@ -511,13 +511,13 @@ The point is to show engineering maturity.
 
 ### File
 
-* `src/app/[locale]/services/page.tsx`
+* `src/app/[locale]/experience/page.tsx`
 
 This page is currently one of the most agency-like parts of the repo. Refactor it hard.
 
 ### Rename its purpose
 
-Treat `/services` as `/experience` for now.
+Treat `/experience` as `/experience` for now.
 
 ### New structure
 
@@ -909,14 +909,14 @@ Even if you keep the current route file names for now, this is what the site sho
 
 * `/` → Home
 * `/work` → Projects
-* `/services` → Experience
+* `/experience` → Experience
 * `/about` → About
 * `/contact` → Contact
 
 Later, if you want a cleaner repo, rename:
 
 * `/work` → `/projects`
-* `/services` → `/experience`
+* `/experience` → `/experience`
 
 But that is phase two.
 
@@ -931,7 +931,7 @@ If you want the shortest path to a much better hire-me site, do these first:
 3. Remove `PackagesSection` from homepage
 4. Move `FeaturedWorkSection` near the top
 5. Replace conceptual case studies in `src/content/case-studies.ts`
-6. Rewrite `/services` into `/experience`
+6. Rewrite `/experience` into `/experience`
 7. Rewrite `/about`
 8. Add resume / GitHub / LinkedIn / email
 9. Rewrite all CTAs
@@ -954,7 +954,7 @@ If I were refactoring this repo, I would do this:
 * remove service-selling logic
 * replace case-study model
 * rebuild homepage order
-* repurpose `/services` into `/experience`
+* repurpose `/experience` into `/experience`
 * repurpose `/work` into `/projects`
 * make real projects the center of the site
 * add resume and public links everywhere they matter
@@ -975,7 +975,7 @@ Run these checks after substantive changes so the site stays merge-ready and ali
 ## Routing and i18n
 
 * Open `/en` and `/he` (or your default locale): home sections render in the intended order (hero → strengths → featured projects → bridge → why → fit → CTA).
-* Every main nav item resolves: Home, Experience (`/services`), Projects (`/work`), About, Contact.
+* Every main nav item resolves: Home, Experience (`/experience`), Projects (`/work`), About, Contact.
 * Each project slug under `/work/[slug]` returns 200 for both locales (static params match `src/content/case-studies.ts`).
 
 ## Content and links

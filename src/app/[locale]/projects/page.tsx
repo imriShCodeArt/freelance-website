@@ -40,7 +40,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: m.meta.workTitle,
     description: m.meta.workDescription,
-    alternates: localeAlternates(locale, "/work"),
+    alternates: localeAlternates(locale, "/projects"),
   };
 }
 
@@ -90,7 +90,7 @@ export default async function WorkPage({ params }: Props) {
               return (
                 <Grid key={study.slug} size={{ xs: 12, md: 6 }}>
                   <NextLink
-                    href={withLocale(locale, `/work/${study.slug}`)}
+                    href={withLocale(locale, `/projects/${study.slug}`)}
                     className="card-as-link"
                     style={{
                       textDecoration: "none",

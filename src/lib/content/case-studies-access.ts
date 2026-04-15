@@ -28,7 +28,7 @@ function staticFeaturedSlice(): CaseStudyMeta[] {
   return listStaticCaseStudyMeta().slice(0, 2);
 }
 
-/** Ordered metadata for `/work` and similar listings. */
+/** Ordered metadata for `/projects` and similar listings. */
 export async function listCaseStudyMeta(): Promise<CaseStudyMeta[]> {
   if (!isSanityContentEnabled()) {
     return listStaticCaseStudyMeta();

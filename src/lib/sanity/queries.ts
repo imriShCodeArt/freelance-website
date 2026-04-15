@@ -27,7 +27,7 @@ export const caseStudyBySlugQuery = `
   }
 `;
 
-/** Metadata only for /work list, cards, sitemap, static params. */
+/** Metadata only for /projects list, cards, sitemap, static params. */
 export const caseStudyListMetaQuery = `
   *[_type == "caseStudy"] | order(slug.current asc) {
     "slug": slug.current,

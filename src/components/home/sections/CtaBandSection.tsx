@@ -13,7 +13,7 @@ import type { SectionProps } from "./section-types";
 
 export function CtaBandSection({ home, locale }: SectionProps) {
   const contactHref = withLocale(locale, "/contact");
-  const workHref = withLocale(locale, "/work");
+  const workHref = withLocale(locale, "/projects");
 
   return (
     <Section spacing="lg">

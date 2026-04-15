@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: copy.title,
     description: copy.summary,
-    alternates: localeAlternates(locale, `/work/${slug}`),
+    alternates: localeAlternates(locale, `/projects/${slug}`),
   };
 }
 
@@ -66,7 +66,7 @@ export default async function CaseStudyPage({ params }: Props) {
 
   const messages = await getMessages(locale);
   const d = messages.workDetail;
-  const workHref = withLocale(locale, "/work");
+  const workHref = withLocale(locale, "/projects");
   const contactHref = withLocale(locale, "/contact");
 
   return (

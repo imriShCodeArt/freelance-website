@@ -4,7 +4,7 @@ This project targets **WCAG 2.2 Level AA** for user-facing UI. Use this document
 
 ## Page structure (snapshot)
 
-Each locale route exposes a single primary **`h1`**: home (hero), about, contact, services (`/services`), work index, work detail, and not-found content use `Typography` with `component="h1"`.
+Each locale route exposes a single primary **`h1`**: home (hero), about, contact, services (`/experience`), work index, work detail, and not-found content use `Typography` with `component="h1"`.
 
 ## Principles
 

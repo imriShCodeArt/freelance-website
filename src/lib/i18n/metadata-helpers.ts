@@ -4,7 +4,7 @@ import { getSiteUrl } from "@/lib/site-config";
 import { withLocale } from "./paths";
 
 /**
- * href pathname without locale, e.g. `/work/slug` or `/`.
+ * href pathname without locale, e.g. `/projects/slug` or `/`.
  * Produces canonical and `alternates.languages`.
  */
 export function localeAlternates(

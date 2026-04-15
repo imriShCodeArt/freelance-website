@@ -38,8 +38,8 @@ export default async function ContactPage({ params }: Props) {
   const locale = raw as Locale;
   const messages = await getMessages(locale);
   const c = messages.contact;
-  const experienceHref = withLocale(locale, "/services");
-  const workHref = withLocale(locale, "/work");
+  const experienceHref = withLocale(locale, "/experience");
+  const workHref = withLocale(locale, "/projects");
 
   return (
     <>

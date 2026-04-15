@@ -32,7 +32,7 @@ export default async function AboutPage({ params }: Props) {
   const locale = raw as Locale;
   const messages = await getMessages(locale);
   const a = messages.about;
-  const workHref = withLocale(locale, "/work");
+  const workHref = withLocale(locale, "/projects");
   const contactHref = withLocale(locale, "/contact");
 
   return (
