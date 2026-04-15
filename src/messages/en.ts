@@ -202,8 +202,10 @@ export const en = {
   work: {
     eyebrow: "Projects",
     title: "Selected work",
-    intro:
-      "The projects below reflect the strongest themes in my resume: WooCommerce plugin development, custom integrations, and React-based product work.",
+    introParagraphs: [
+      "The projects below reflect the strongest themes in my resume:",
+      "WooCommerce plugin development, custom integrations, and React-based product work.",
+    ],
     caseStudiesListHeading: "Project list",
     cta: "Contact me",
     cardSummaryLabel: "Summary",

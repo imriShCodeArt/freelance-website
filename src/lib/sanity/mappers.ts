@@ -70,6 +70,39 @@ function coerceAboutAfterCms(
   };
 }
 
+const introParagraphSections = ["experience", "work"] as const;
+type IntroParagraphSection = (typeof introParagraphSections)[number];
+
+function isIntroParagraphSection(key: SectionKey): key is IntroParagraphSection {
+  return (introParagraphSections as readonly SectionKey[]).includes(key);
+}
+
+/** `introParagraphs` array, or legacy single `intro` string from older CMS rows. */
+function normalizeIntroParagraphsPayload(
+  raw: Record<string, unknown>,
+  sectionName: IntroParagraphSection,
+): Record<string, unknown> {
+  const o = { ...raw };
+  const paras = o.introParagraphs;
+  if (
+    Array.isArray(paras) &&
+    paras.length > 0 &&
+    paras.every((p) => typeof p === "string")
+  ) {
+    delete o.intro;
+    return o;
+  }
+  const legacy = o.intro;
+  if (typeof legacy === "string" && legacy.trim()) {
+    delete o.intro;
+    o.introParagraphs = [legacy.trim()];
+    return o;
+  }
+  throw new Error(
+    `siteSectionCopy.${sectionName}: add introParagraphs (list of paragraphs) or a legacy intro string`,
+  );
+}
+
 function mapSectionPayload<K extends SectionKey>(
   sectionKey: K,
   raw: unknown,
@@ -80,29 +113,15 @@ function mapSectionPayload<K extends SectionKey>(
     }
     return mapCommonBlock(raw as Record<string, unknown>) as Messages[K];
   }
-  if (sectionKey === "experience") {
+  if (isIntroParagraphSection(sectionKey)) {
     if (raw == null || typeof raw !== "object") {
-      throw new Error(`siteSectionCopy.experience: expected object content`);
+      throw new Error(`siteSectionCopy.${sectionKey}: expected object content`);
     }
-    const o = { ...(raw as Record<string, unknown>) };
-    const paras = o.introParagraphs;
-    if (
-      Array.isArray(paras) &&
-      paras.length > 0 &&
-      paras.every((p) => typeof p === "string")
-    ) {
-      delete o.intro;
-      return structuredClone(o) as Messages[K];
-    }
-    const legacy = o.intro;
-    if (typeof legacy === "string" && legacy.trim()) {
-      delete o.intro;
-      o.introParagraphs = [legacy.trim()];
-      return structuredClone(o) as Messages[K];
-    }
-    throw new Error(
-      "siteSectionCopy.experience: add introParagraphs (list of paragraphs) or a legacy intro string",
+    const normalized = normalizeIntroParagraphsPayload(
+      raw as Record<string, unknown>,
+      sectionKey,
     );
+    return structuredClone(normalized) as Messages[K];
   }
   if (raw == null || typeof raw !== "object") {
     throw new Error(`siteSectionCopy.${sectionKey}: expected object content`);

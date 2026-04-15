@@ -68,9 +68,19 @@ export default async function WorkPage({ params }: Props) {
           <Typography variant="h2" component="h1" fontWeight={700} gutterBottom>
             {w.title}
           </Typography>
-          <Typography variant="body1" color="text.secondary" maxWidth="60ch" sx={{ mb: 3 }}>
-            {w.intro}
-          </Typography>
+          <Box component="div" maxWidth="60ch" sx={{ mb: 3 }}>
+            {w.introParagraphs.map((paragraph, index) => (
+              <Typography
+                key={`intro-${index}`}
+                variant="body1"
+                color="text.secondary"
+                component="p"
+                sx={{ m: 0, mb: index < w.introParagraphs.length - 1 ? 2 : 0 }}
+              >
+                {paragraph}
+              </Typography>
+            ))}
+          </Box>
           <NextLink href={contactHref} style={{ textDecoration: "none" }}>
             <Button component="span" variant="outlined">
               {w.cta}

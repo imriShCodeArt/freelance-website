@@ -204,8 +204,10 @@ export const he: Messages = {
   work: {
     eyebrow: "פרויקטים",
     title: "עבודה נבחרת",
-    intro:
-      "הפרויקטים כאן משקפים את הנושאים המרכזיים בקורות החיים שלי: תוספי WooCommerce, אינטגרציות מותאמות ועבודת מוצר מבוססת React.",
+    introParagraphs: [
+      "הפרויקטים כאן משקפים את הנושאים המרכזיים בקורות החיים שלי:",
+      "תוספי WooCommerce, אינטגרציות מותאמות ועבודת מוצר מבוססת React.",
+    ],
     caseStudiesListHeading: "רשימת פרויקטים",
     cta: "צור קשר",
     cardSummaryLabel: "תקציר",
