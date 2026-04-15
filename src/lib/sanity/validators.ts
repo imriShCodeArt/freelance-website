@@ -23,6 +23,7 @@ const caseStudyKindSchema = z.enum(
 export const siteSectionCopyDocumentSchema = z
   .object({
     _id: z.string(),
+    _updatedAt: z.string().optional(),
     locale: z.enum(["en", "he"]),
     sectionKey: sectionKeySchema,
     content: z.record(z.string(), z.unknown()),

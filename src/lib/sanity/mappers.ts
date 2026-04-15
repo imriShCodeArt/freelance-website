@@ -39,6 +39,37 @@ function setMessagesSection<K extends SectionKey>(
   (messages as Record<SectionKey, Messages[SectionKey]>)[key] = value;
 }
 
+/** `structuredClone` cannot copy `common.builtWith` (a function). */
+function cloneMessagesFallback(source: Messages): Messages {
+  const out = {} as Messages;
+  for (const key of SECTION_KEYS) {
+    if (key === "common") {
+      const { builtWith, ...commonRest } = source.common;
+      out.common = {
+        ...structuredClone(commonRest),
+        builtWith,
+      };
+    } else {
+      setMessagesSection(out, key, structuredClone(source[key]));
+    }
+  }
+  return out;
+}
+
+function coerceAboutAfterCms(
+  fromCms: Messages["about"],
+  bundle: Messages["about"] | undefined,
+): Messages["about"] {
+  const blocks = Array.isArray(fromCms.blocks)
+    ? fromCms.blocks
+    : (bundle?.blocks ?? []);
+  return {
+    ...(bundle ?? fromCms),
+    ...fromCms,
+    blocks,
+  };
+}
+
 function mapSectionPayload<K extends SectionKey>(
   sectionKey: K,
   raw: unknown,
@@ -55,18 +86,23 @@ function mapSectionPayload<K extends SectionKey>(
   return structuredClone(raw) as Messages[K];
 }
 
+export type MapSiteSectionMessagesOptions = {
+  /**
+   * Bundled locale copy. When the CMS is missing some `siteSectionCopy` rows, those
+   * sections are taken from here so the site still renders.
+   */
+  fallback?: Messages;
+};
+
 /**
  * Assemble `Messages` from validated `siteSectionCopy` documents for one locale.
+ * With `fallback`, missing sections use bundled copy (silent).
+ * Without `fallback`, every `SECTION_KEYS` entry must have exactly one document.
  */
 export function mapSiteSectionDocumentsToMessages(
   docs: ValidatedSiteSectionCopyDoc[],
+  options?: MapSiteSectionMessagesOptions,
 ): Messages {
-  if (docs.length !== SECTION_KEYS.length) {
-    throw new Error(
-      `Expected ${SECTION_KEYS.length} siteSectionCopy documents, got ${docs.length}`,
-    );
-  }
-
   const byKey = new Map<SectionKey, ValidatedSiteSectionCopyDoc>();
   for (const doc of docs) {
     if (byKey.has(doc.sectionKey)) {
@@ -75,15 +111,32 @@ export function mapSiteSectionDocumentsToMessages(
     byKey.set(doc.sectionKey, doc);
   }
 
-  const messages = {} as Messages;
+  const fallback = options?.fallback;
+  if (!fallback) {
+    if (docs.length !== SECTION_KEYS.length) {
+      throw new Error(
+        `Expected ${SECTION_KEYS.length} siteSectionCopy documents, got ${docs.length}`,
+      );
+    }
+  }
+
+  const messages = fallback ? cloneMessagesFallback(fallback) : ({} as Messages);
 
   for (const key of SECTION_KEYS) {
     const doc = byKey.get(key);
     if (!doc) {
+      if (fallback) {
+        continue;
+      }
       throw new Error(`Missing siteSectionCopy for section "${key}"`);
     }
     const block = doc.content[key];
-    setMessagesSection(messages, key, mapSectionPayload(key, block));
+    const mapped = mapSectionPayload(key, block);
+    const final =
+      key === "about"
+        ? coerceAboutAfterCms(mapped as Messages["about"], fallback?.about)
+        : mapped;
+    setMessagesSection(messages, key, final);
   }
 
   return messages;

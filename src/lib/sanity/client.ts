@@ -8,7 +8,7 @@ import {
 } from "@/sanity/env";
 
 /**
- * Server-side Sanity client for published content (CDN, no draft perspective).
+ * Server-side Sanity client for published content (`useCdn: false`, no draft perspective).
  * Call only after a real project id is set (`NEXT_PUBLIC_*` and/or `SANITY_STUDIO_*` in env).
  */
 export function getSanityReadClient(): SanityClient {

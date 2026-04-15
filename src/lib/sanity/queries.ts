@@ -5,6 +5,7 @@
 export const siteSectionCopyByLocaleQuery = `
   *[_type == "siteSectionCopy" && locale == $locale]{
     _id,
+    _updatedAt,
     locale,
     sectionKey,
     content

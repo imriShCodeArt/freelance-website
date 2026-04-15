@@ -5,10 +5,13 @@ import { cache } from "react";
 
 import type { Locale } from "@/lib/i18n/config";
 import { hasLocale } from "@/lib/i18n/config";
+import { getStaticMessages } from "@/lib/i18n/static-messages";
 import type { Messages } from "@/messages/en";
 
 import { getSanityReadClient } from "./client";
+import { dedupeSiteSectionCopyDocs } from "./dedupe-site-section-copy";
 import { mapSiteSectionDocumentsToMessages } from "./mappers";
+import { warnSanityOnce } from "./warn-once";
 import { siteSectionCopyByLocaleQuery } from "./queries";
 import type { ValidatedSiteSectionCopyDoc } from "./validators";
 import { siteSectionCopyListSchema } from "./validators";
@@ -25,8 +28,15 @@ async function fetchValidatedSiteCopyDocs(
     locale,
   });
   const parsed = siteSectionCopyListSchema.parse(raw);
+  const deduped = dedupeSiteSectionCopyDocs(parsed, locale);
+  if (parsed.length > deduped.length) {
+    warnSanityOnce(
+      `site-copy:duplicates:${locale}`,
+      `[sanity] Dropped ${parsed.length - deduped.length} duplicate siteSectionCopy document(s) for locale "${locale}" (preferring ids like siteSectionCopy.${locale}.<section>). Remove stray rows in Studio.`,
+    );
+  }
 
-  for (const doc of parsed) {
+  for (const doc of deduped) {
     const block = doc.content[doc.sectionKey];
     if (block == null) {
       throw new Error(
@@ -35,7 +45,7 @@ async function fetchValidatedSiteCopyDocs(
     }
   }
 
-  return parsed;
+  return deduped;
 }
 
 function createSiteCopyDocsFetcher(locale: Locale) {
@@ -59,5 +69,7 @@ export const getSiteCopyFromSanity = cache(async (locale: Locale): Promise<Messa
     throw new Error(`Invalid locale: ${String(locale)}`);
   }
   const docs = await (locale === "en" ? siteCopyDocsEn() : siteCopyDocsHe());
-  return mapSiteSectionDocumentsToMessages(docs);
+  return mapSiteSectionDocumentsToMessages(docs, {
+    fallback: getStaticMessages(locale),
+  });
 });
