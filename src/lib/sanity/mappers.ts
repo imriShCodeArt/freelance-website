@@ -80,6 +80,30 @@ function mapSectionPayload<K extends SectionKey>(
     }
     return mapCommonBlock(raw as Record<string, unknown>) as Messages[K];
   }
+  if (sectionKey === "experience") {
+    if (raw == null || typeof raw !== "object") {
+      throw new Error(`siteSectionCopy.experience: expected object content`);
+    }
+    const o = { ...(raw as Record<string, unknown>) };
+    const paras = o.introParagraphs;
+    if (
+      Array.isArray(paras) &&
+      paras.length > 0 &&
+      paras.every((p) => typeof p === "string")
+    ) {
+      delete o.intro;
+      return structuredClone(o) as Messages[K];
+    }
+    const legacy = o.intro;
+    if (typeof legacy === "string" && legacy.trim()) {
+      delete o.intro;
+      o.introParagraphs = [legacy.trim()];
+      return structuredClone(o) as Messages[K];
+    }
+    throw new Error(
+      "siteSectionCopy.experience: add introParagraphs (list of paragraphs) or a legacy intro string",
+    );
+  }
   if (raw == null || typeof raw !== "object") {
     throw new Error(`siteSectionCopy.${sectionKey}: expected object content`);
   }

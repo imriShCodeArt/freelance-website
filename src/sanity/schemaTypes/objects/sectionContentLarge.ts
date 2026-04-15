@@ -153,10 +153,11 @@ export const sectionContentExperienceType = defineType({
     defineField({ name: "eyebrow", type: "string", validation: (r) => r.required() }),
     defineField({ name: "title", type: "string", validation: (r) => r.required() }),
     defineField({
-      name: "intro",
-      type: "text",
-      rows: 4,
-      validation: (r) => r.required(),
+      name: "introParagraphs",
+      title: "Intro paragraphs",
+      type: "array",
+      of: [{ type: "text", rows: 3 }],
+      validation: (r) => r.min(1).error("Add at least one intro paragraph"),
     }),
     defineField({
       name: "introWorkBefore",

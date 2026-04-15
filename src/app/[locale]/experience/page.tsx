@@ -48,9 +48,19 @@ export default async function ServicesPage({ params }: Props) {
           <Typography variant="h2" component="h1" fontWeight={700} gutterBottom>
             {x.title}
           </Typography>
-          <Typography variant="body1" color="text.secondary" maxWidth="65ch" sx={{ mb: 2 }}>
-            {x.intro}
-          </Typography>
+          <Box component="div" maxWidth="65ch" sx={{ mb: 2 }}>
+            {x.introParagraphs.map((paragraph, index) => (
+              <Typography
+                key={`intro-${index}`}
+                variant="body1"
+                color="text.secondary"
+                component="p"
+                sx={{ m: 0, mb: index < x.introParagraphs.length - 1 ? 2 : 0 }}
+              >
+                {paragraph}
+              </Typography>
+            ))}
+          </Box>
           <Typography variant="body2" color="text.secondary" maxWidth="65ch">
             {x.introWorkBefore}{" "}
             <RouterLink href={workHref} fontWeight={600}>

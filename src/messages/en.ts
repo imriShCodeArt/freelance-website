@@ -149,8 +149,10 @@ export const en = {
   experience: {
     eyebrow: "Experience",
     title: "Where I add value",
-    intro:
-      "My experience combines frontend delivery, e-commerce work, full-stack implementation, project management, custom WordPress development, and large-scale website maintenance.",
+    introParagraphs: [
+      "My experience combines frontend delivery, e-commerce work, full-stack implementation, and project management.",
+      "That work spans custom WordPress development and large-scale website maintenance.",
+    ],
     introWorkBefore: "See",
     introWorkLink: "projects",
     introWorkMiddle: "for concrete examples, or",
